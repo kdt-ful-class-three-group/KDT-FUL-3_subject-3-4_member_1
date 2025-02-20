@@ -190,6 +190,9 @@ const server = http.createServer((req, res) => {
       res.end();
     }
     //작성완료 버튼
+    if (req.url === "/add") {
+      res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+    }
     // 지정한 url이외의 요청
     else {
       res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
