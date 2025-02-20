@@ -19,11 +19,15 @@ const list = [
 
 //[x]form태그로 받아올 데이터 객체 형식 정하기
 // list.json
-// {date : '2025-02-20',name : '하리보', content: '작은 사이즈 봉투에 들어있음'}
+// date를 숫자만 작성하면 크기 비교하기 괜찮을지도...?
+// {date : '20250220',name : '하리보', content: '작은 사이즈 봉투에 들어있음'}
 
 //[ ]liTag 만드는 함수
 //a태그 > url에 date와 name포함...?
 //제목은 list[i].name
+function liTag(){
+  return `<li><a href=${}>${}</a></li>`
+}
 
 //[ ]liTag를 사용해서 ul태그 만드는 함수
 
