@@ -94,6 +94,8 @@ const server = http.createServer((req, res) => {
   //GET
   if (req.method === "GET") {
     if (req.url === "/") {
+      res.writeHead(200, { "content-type": "utf-8;text-html" });
+      res.end(indexHtml(list));
     }
   }
   //POST
