@@ -93,6 +93,8 @@ const server = http.createServer((req, res) => {
   console.log(`${req.method}  ${req.url}`);
   //GET
   if (req.method === "GET") {
+    if (req.url === "/") {
+    }
   }
   //POST
   if (req.method === "POST") {
