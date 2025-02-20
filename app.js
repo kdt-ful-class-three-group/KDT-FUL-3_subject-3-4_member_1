@@ -3,15 +3,8 @@ import fs from "fs";
 import qs from "querystring";
 
 //list.json 파일이 존재한다면
-const list = [
-  { date: "20250220", name: "하리보", content: "작은 사이즈 봉투에 들어있음" },
-  {
-    date: "20250221",
-    name: "그래놀라",
-    content: "바형식으로 되어있어 간단하게 먹기 좋음",
-  },
-  { date: "20250220", name: "감자칩", content: "수업시간에 하나씩 집어먹기" },
-];
+let listJson = fs.readFileSync("list.json");
+console.log(listJson);
 //JSON문자열
 // console.log(JSON.stringify(list[0]));
 // console.log(qs.stringify(list[0]).split("&", 2).join("&"));
