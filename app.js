@@ -211,6 +211,10 @@ const server = http.createServer((req, res) => {
     // [ ] 입력한 데이터로 list.json 생성
     if (req.url === "/plus") {
       //data 받아올 때
+      let body = "";
+      req.on("data", (data) => {
+        body += data;
+      });
       //data 받아온 후
     }
   }
