@@ -101,6 +101,8 @@ function indexHtml(obj) {
 //일단 다 들고와
 // [ ] date는 숫자만 입력
 // html파일의 script에서 유효성 검사를 해야할 거 같음.....
+// 제출 버튼을 눌렀을 때 -> input 데이터가 숫자면 제출됨
+// 제출 버튼 누르면 이벤트 작동 안함 -> input 타입 확인후 -> 제출됨
 function addHtml() {
   let htmlString = `
   <!DOCTYPE html>
@@ -175,7 +177,6 @@ function addHtml() {
     </div>
     <script>
       let date = document.getElementsByTagName("input")[0];
-      let name = document.getElementsByTagName("input")[1];
       let button = document.getElementsByTagName("button")[0];
     </script>
   </body>
