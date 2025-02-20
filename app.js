@@ -1,6 +1,7 @@
 import http from "http";
 import fs from "fs";
 import qs from "querystring";
+import { buffer } from "stream/consumers";
 
 //list.json 파일이 존재한다면
 let listJson = fs.readFileSync("list.json");
@@ -96,7 +97,8 @@ function indexHtml(obj) {
   return htmlString;
 }
 
-//[ ] page를 readFile로 읽기 > err일 때 : 404에러
+//* page를 readFile로 읽기 > err일 때 : 404에러
+//[ ] write에 넣어주고 이 외의 req.url일 때 404 에러
 const server = http.createServer((req, res) => {
   //req.method, req.url 확인
   console.log(`${req.method}  ${req.url}`);
@@ -104,7 +106,7 @@ const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
       res.writeHead(200, { "content-type": "utf-8;text-html" });
-      res.write(indexHtml(list));
+      res.write(page);
       res.end();
     }
   }
