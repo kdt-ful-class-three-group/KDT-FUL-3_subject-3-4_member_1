@@ -108,6 +108,9 @@ const server = http.createServer((req, res) => {
       res.write(page);
       res.end();
     }
+    res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
+    res.write("NOT FOUND");
+    res.end;
   }
   //POST
   if (req.method === "POST") {
