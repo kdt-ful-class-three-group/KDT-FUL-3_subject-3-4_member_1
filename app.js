@@ -99,6 +99,7 @@ function indexHtml(obj) {
 //[x]addPage 함수 만들기
 //따로 추가할 내용 없어보임...?
 //일단 다 들고와
+// [ ] date는 숫자만 입력
 function addHtml() {
   let htmlString = `
   <!DOCTYPE html>
@@ -205,7 +206,6 @@ const server = http.createServer((req, res) => {
   //POST
   if (req.method === "POST") {
     //addPage에서 form 태그에 대한 응답
-    // [ ] date는 숫자만 입력
     // [ ] 입력한 데이터로 list.json 생성
     // [ ] date와 name만 입력해도 제출 완료 > content는 없어도 됨
   }
