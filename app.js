@@ -96,6 +96,87 @@ function indexHtml(obj) {
   return htmlString;
 }
 
+//[x]addPage 함수 만들기
+//따로 추가할 내용 없어보임...?
+//일단 다 들고와
+function addHtml() {
+  let htmlString = `
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADD</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+      }
+      #root {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #root > section {
+        width: 90%;
+      }
+      #root > section > form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      form > div:last-of-type {
+        display: flex;
+        gap: 10px;
+      }
+      form > div:last-of-type textarea {
+        width: 380px;
+      }
+      form > button {
+        border-style: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        background-color: #ccc;
+      }
+      form > button:hover {
+        background-color: black;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <h1>간식 추가</h1>
+      <section>
+        <form action="/plus" method="POST">
+          <div>
+            <label for="date">간식 먹은 날</label>
+            <input type="text" name="date" placeholder="2025-MM-DD" />
+            <label for="name">간식</label>
+            <input type="text" name="name" placeholder="간식 이름" />
+          </div>
+          <div>
+            <label for="content">내용</label>
+            <textarea
+              name="content"
+              placeholder="후기나 하고싶은 말"
+            ></textarea>
+          </div>
+          <button type="submit">작성완료</button>
+        </form>
+      </section>
+    </div>
+  </body>
+</html>
+  `;
+  return htmlString;
+}
+
 //* page를 readFile로 읽기 > err일 때 : 404에러
 //[x] write에 넣어주고 이 외의 req.url일 때 404 에러
 const server = http.createServer((req, res) => {
@@ -104,11 +185,17 @@ const server = http.createServer((req, res) => {
   //GET
   if (req.method === "GET") {
     if (req.url === "/") {
-      res.writeHead(200, { "content-type": "utf-8;text-html" });
+      res.writeHead(200, { "content-type": "utf-8;text/html" });
       res.write(indexHtml(list));
       res.end();
     }
-    // 지정한 url이외의 요청
+    //작성완료 버튼
+    else if (req.url === "/add") {
+      res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+      res.write(addHtml());
+      res.end();
+    }
+    //! 지정한 url이외의 요청, else문 안에 넣어야함
     else {
       res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
       res.write("NOT FOUND");

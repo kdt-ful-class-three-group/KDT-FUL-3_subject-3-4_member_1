@@ -2,6 +2,7 @@
   "name": "kdt-ful-3_subject-3-4_member_1",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
