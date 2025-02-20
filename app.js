@@ -77,6 +77,9 @@ function indexHtml(obj) {
       ul > li {
         margin-bottom: 10px;
       }
+      ul > li > a:hover {
+        color: #ccc;
+      }
     </style>
   </head>
   <body>
