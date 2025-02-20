@@ -209,6 +209,7 @@ const server = http.createServer((req, res) => {
     //addPage에서 form 태그에 대한 응답
     // [ ] 입력한 데이터로 list.json 생성
     // [ ] date와 name만 입력해도 제출 완료 > content는 없어도 됨
+    //서버에서 데이터 타입 확인할 수 있나?
   }
 });
 
