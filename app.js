@@ -216,6 +216,7 @@ const server = http.createServer((req, res) => {
         body += data;
       });
       //data 받아온 후
+      req.on("end", () => {});
     }
   }
 });
