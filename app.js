@@ -241,7 +241,7 @@ const server = http.createServer((req, res) => {
         let origin = fs.readFileSync("list.json");
         //[x] json에 저장된 데이터는 문자열-> 객체로 변경이 필요
         let originObj = JSON.parse(origin);
-        //[ ] 객체로 변경된 기존 데이터에 새로 받아온 데이터 추가
+        //[x] 객체로 변경된 기존 데이터에 새로 받아온 데이터 추가
         originObj.push(dataObj);
         console.log(originObj);
         //[ ] 객체를 문자열로 바꾼 후 저장 필요
