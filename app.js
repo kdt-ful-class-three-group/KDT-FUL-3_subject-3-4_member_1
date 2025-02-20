@@ -69,6 +69,11 @@ function indexHtml(obj) {
       section > a {
         background-color: #ccc;
         padding: 5px 10px;
+        translate : all 0.2s;
+      }
+      section > a:hover {
+        background-color: black;
+        color:white;
       }
       ul > li {
         margin-bottom: 10px;
