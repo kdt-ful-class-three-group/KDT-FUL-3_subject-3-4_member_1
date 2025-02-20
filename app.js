@@ -100,6 +100,7 @@ function indexHtml(obj) {
 //따로 추가할 내용 없어보임...?
 //일단 다 들고와
 // [ ] date는 숫자만 입력
+// html파일의 script에서 유효성 검사를 해야할 거 같음.....
 function addHtml() {
   let htmlString = `
   <!DOCTYPE html>
