@@ -35,6 +35,10 @@ function ulTag(obj) {
 
 //[x]만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
 //[x] a태그에 hover하면 스타일 변화
+//[ ] list.json 파일이 존재하지 않으면 오류 발생
+//파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
+//만약에 파일이 존재하지 않으면 > ul태그 없이 작성
+//만약에 파일이 있으면 원래 하려던 방향으로 진행
 function indexHtml(obj) {
   let htmlString = `
   <!DOCTYPE html>
@@ -188,10 +192,6 @@ const server = http.createServer((req, res) => {
   //GET
   if (req.method === "GET") {
     if (req.url === "/") {
-      //[ ] list.json 파일이 존재하지 않으면 오류 발생
-      //파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
-      //만약에 파일이 존재하지 않으면 > ul태그 없이 작성
-      //만약에 파일이 있으면 원래 하려던 방향으로 진행
       res.writeHead(200, { "content-type": "utf-8;text/html" });
       res.write(indexHtml(list));
       res.end();
