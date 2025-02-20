@@ -231,11 +231,12 @@ const server = http.createServer((req, res) => {
       });
       //data 받아온 후
       req.on("end", () => {
-        //[ ]입력한 데이터를 객체로 변경
+        //[x]입력한 데이터를 객체로 변경
         let data = body.toString();
         let dataObj = qs.parse(data);
         console.log(dataObj);
-        //[ ]파일이 없으면 json파일을 만들고 빈 배열 넣어주기
+        //[x]파일이 없으면 json파일을 만들고 빈 배열 넣어주기
+        //indexHtml함수 안에서 처리 > 서버 실행되면 바로 진행됨
         //[ ] 파일이 있으면 기존의 파일 데이터 가져오기
         //[ ] json에 저장된 데이터는 문자열-> 객체로 변경이 필요
         //[ ] 객체로 변경된 기존 데이터에 새로 받아온 데이터 추가
