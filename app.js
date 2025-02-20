@@ -185,7 +185,7 @@ const server = http.createServer((req, res) => {
   //GET
   if (req.method === "GET") {
     if (req.url === "/") {
-      res.writeHead(200, { "content-type": "utf-8;text-html" });
+      res.writeHead(200, { "content-type": "utf-8;text/html" });
       res.write(indexHtml(list));
       res.end();
     }
@@ -193,7 +193,7 @@ const server = http.createServer((req, res) => {
     if (req.url === "/add") {
       res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
       res.write(addHtml());
-      res.write();
+      res.end();
     }
     // 지정한 url이외의 요청
     else {
