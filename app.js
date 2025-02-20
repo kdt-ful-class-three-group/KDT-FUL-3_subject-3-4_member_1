@@ -4,7 +4,7 @@ import qs from "querystring";
 
 //list.json 파일이 존재한다면
 let listJson = fs.readFileSync("list.json");
-console.log(listJson);
+console.log(JSON.parse(listJson));
 //JSON문자열
 // console.log(JSON.stringify(list[0]));
 // console.log(qs.stringify(list[0]).split("&", 2).join("&"));
