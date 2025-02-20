@@ -192,6 +192,8 @@ const server = http.createServer((req, res) => {
     //작성완료 버튼
     if (req.url === "/add") {
       res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
+      res.write(addHtml());
+      res.write();
     }
     // 지정한 url이외의 요청
     else {
