@@ -3,8 +3,8 @@ import fs from "fs";
 import qs from "querystring";
 
 //list.json 파일이 존재한다면
-let listJson = fs.readFileSync("list.json");
-let list = JSON.parse(listJson);
+// let listJson = fs.readFileSync("list.json");
+// let list = JSON.parse(listJson);
 //JSON문자열
 // console.log(JSON.stringify(list[0]));
 // console.log(qs.stringify(list[0]).split("&", 2).join("&"));
@@ -232,7 +232,8 @@ const server = http.createServer((req, res) => {
       //data 받아온 후
       req.on("end", () => {
         //[ ]입력한 데이터를 객체로 변경
-        let dataObj = body.toString();
+        let data = body.toString();
+
         //[ ]파일이 없으면 json파일을 만들고 빈 배열 넣어주기
         //[ ] 파일이 있으면 기존의 파일 데이터 가져오기
         //[ ] json에 저장된 데이터는 문자열-> 객체로 변경이 필요
