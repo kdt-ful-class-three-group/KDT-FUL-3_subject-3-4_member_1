@@ -14,7 +14,7 @@ const list = [
 ];
 //JSON문자열
 console.log(JSON.stringify(list[0]));
-console.log(qs.stringify(list[0]));
+console.log(qs.stringify(list[0]).split("&", 2).join("&"));
 
 //홈페이지
 //[ ]추가하기(/add)버튼
@@ -29,7 +29,9 @@ console.log(qs.stringify(list[0]));
 //a태그 > url에 date와 name포함...?
 //제목은 list[i].name
 function liTag(obj) {
-  // return `<li><a href=${}>${obj.name}</a></li>`
+  let url = qs.stringify(list[0]).split("&", 2).join("&");
+
+  return `<li><a href=${url}>${obj.name}</a></li>`;
 }
 
 //[ ]liTag를 사용해서 ul태그 만드는 함수
