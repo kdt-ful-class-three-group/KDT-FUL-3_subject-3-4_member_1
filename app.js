@@ -25,7 +25,7 @@ console.log(qs.stringify(list[0]).split("&", 2).join("&"));
 // date를 숫자만 작성하면 크기 비교하기 괜찮을지도...?
 // {date : '20250220',name : '하리보', content: '작은 사이즈 봉투에 들어있음'}
 
-//[ ]liTag 만드는 함수
+//[x]liTag 만드는 함수
 //a태그 > url에 date와 name포함...?
 //제목은 list[i].name
 function liTag(obj) {
@@ -33,13 +33,12 @@ function liTag(obj) {
 
   return `<li><a href=/${url}>${obj.name}</a></li>`;
 }
-//test
-console.log(
-  "list",
-  list.reduce((acc, i) => acc + liTag(i), "")
-);
 
 //[ ]liTag를 사용해서 ul태그 만드는 함수
+function ulTag(obj) {
+  let liTags = obj.reduce((acc, i) => acc + liTag(i), "");
+  return `<ul>${liTags}</ul>`;
+}
 
 //[ ]만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
 
