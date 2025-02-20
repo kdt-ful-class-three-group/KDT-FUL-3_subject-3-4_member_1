@@ -12,6 +12,9 @@ const list = [
   },
   { date: "20250220", name: "감자칩", content: "수업시간에 하나씩 집어먹기" },
 ];
+//JSON문자열
+console.log(JSON.stringify(list[0]));
+console.log(qs.stringify(list[0]));
 
 //홈페이지
 //[ ]추가하기(/add)버튼
@@ -25,8 +28,8 @@ const list = [
 //[ ]liTag 만드는 함수
 //a태그 > url에 date와 name포함...?
 //제목은 list[i].name
-function liTag(){
-  return `<li><a href=${}>${}</a></li>`
+function liTag(obj) {
+  // return `<li><a href=${}>${obj.name}</a></li>`
 }
 
 //[ ]liTag를 사용해서 ul태그 만드는 함수
@@ -45,7 +48,7 @@ const server = http.createServer((req, res) => {
 });
 
 //8000번 포트 사용
-PORT = 8000;
+const PORT = 8000;
 server.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
