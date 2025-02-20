@@ -99,8 +99,8 @@ function indexHtml(obj) {
 //[x]addPage 함수 만들기
 //따로 추가할 내용 없어보임...?
 //일단 다 들고와
-// [ ] date는 숫자만 입력
-// [ ] date와 name만 입력해도 제출 완료 > content는 없어도 됨
+// [x] date는 숫자만 입력
+// [x] date와 name만 입력해도 제출 완료 > content는 없어도 됨
 // muunji/issue10-1-1에서 실험 결과 > input타입 변경, 속성 추가하기로 함
 function addHtml() {
   let htmlString = `
