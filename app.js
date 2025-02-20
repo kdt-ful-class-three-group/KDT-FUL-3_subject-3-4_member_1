@@ -210,6 +210,20 @@ const server = http.createServer((req, res) => {
     //addPage에서 form 태그에 대한 응답
     // [ ] 입력한 데이터로 list.json 생성
     if (req.url === "/plus") {
+      //data 받아올 때
+      let body = "";
+      req.on("data", (data) => {
+        body += data;
+      });
+      //data 받아온 후
+      req.on("end", () => {
+        //[ ]입력한 데이터를 객체로 변경
+        //[ ]파일이 없으면 json파일을 만들고 빈 배열 넣어주기
+        //[ ] 파일이 있으면 기존의 파일 데이터 가져오기
+        //[ ] json에 저장된 데이터는 문자열-> 객체로 변경이 필요
+        //[ ] 객체로 변경된 기존 데이터에 새로 받아온 데이터 추가
+        //[ ] 객체를 문자열로 바꾼 후 저장 필요
+      });
     }
   }
 });
