@@ -209,6 +209,8 @@ const server = http.createServer((req, res) => {
   if (req.method === "POST") {
     //addPage에서 form 태그에 대한 응답
     // [ ] 입력한 데이터로 list.json 생성
+    if (req.url === "/plus") {
+    }
   }
 });
 
