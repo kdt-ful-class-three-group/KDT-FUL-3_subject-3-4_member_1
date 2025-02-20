@@ -13,8 +13,8 @@ const list = [
   { date: "20250220", name: "감자칩", content: "수업시간에 하나씩 집어먹기" },
 ];
 //JSON문자열
-console.log(JSON.stringify(list[0]));
-console.log(qs.stringify(list[0]).split("&", 2).join("&"));
+// console.log(JSON.stringify(list[0]));
+// console.log(qs.stringify(list[0]).split("&", 2).join("&"));
 
 //홈페이지
 //[ ]추가하기(/add)버튼
@@ -39,6 +39,8 @@ function ulTag(obj) {
   let liTags = obj.reduce((acc, i) => acc + liTag(i), "");
   return `<ul>${liTags}</ul>`;
 }
+//test
+console.log(ulTag(list));
 
 //[ ]만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
 
