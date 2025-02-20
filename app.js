@@ -18,7 +18,7 @@ const list = [
 
 //홈페이지
 //[ ]추가하기(/add)버튼
-//[ ]글 목록 (ul, li)
+//[x]글 목록 (ul, li)
 
 //[x]form태그로 받아올 데이터 객체 형식 정하기
 // list.json
@@ -41,10 +41,10 @@ function ulTag(obj) {
 }
 
 //[ ]만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
-function indexHtml() {
+function indexHtml(obj) {
   let htmlString = `
   <!DOCTYPE html>
-<html lang="en">
+  <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -86,11 +86,7 @@ function indexHtml() {
       <h1>오늘 간식</h1>
       <section>
         <a href="/add">추가</a>
-        <ul>
-          <li><a href="#">간식 이름</a></li>
-          <li><a href="#">간식 이름</a></li>
-          <li><a href="#">간식 이름</a></li>
-        </ul>
+        ${ulTag(obj)}
       </section>
     </div>
   </body>
