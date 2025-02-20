@@ -17,6 +17,9 @@
         flex-direction: column;
         align-items: center;
       }
+      #root > section {
+        width: 90%;
+      }
     </style>
   </head>
   <body>
@@ -24,13 +27,19 @@
       <h1>간식 추가</h1>
       <section>
         <form action="/plus" method="POST">
-          <label for="date">간식 먹은 날</label>
-          <input type="text" name="date" placeholder="2025-MM-DD" />
-
-          <label for="name">간식</label>
-          <input type="text" name="name" placeholder="간식 이름" />
-          <label for="content">내용</label>
-          <textarea name="content" placeholder="후기나 하고싶은 말"></textarea>
+          <div>
+            <label for="date">간식 먹은 날</label>
+            <input type="text" name="date" placeholder="2025-MM-DD" />
+            <label for="name">간식</label>
+            <input type="text" name="name" placeholder="간식 이름" />
+          </div>
+          <div>
+            <label for="content">내용</label>
+            <textarea
+              name="content"
+              placeholder="후기나 하고싶은 말"
+            ></textarea>
+          </div>
           <button type="submit">작성완료</button>
         </form>
       </section>
