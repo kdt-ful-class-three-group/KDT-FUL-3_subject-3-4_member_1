@@ -116,6 +116,9 @@ function indexHtml() {
 // [x] date는 숫자만 입력
 // [x] date와 name만 입력해도 제출 완료 > content는 없어도 됨
 // muunji/issue10-1-1에서 실험 결과 > input타입 변경, 속성 추가하기로 함
+//[ ] date의 입력 형식 뿐 아니라
+//    [ ] date 앞자리가 2025
+//    [ ] date 입력 자리수 8개 만족하는지
 function addHtml() {
   let htmlString = `
   <!DOCTYPE html>
