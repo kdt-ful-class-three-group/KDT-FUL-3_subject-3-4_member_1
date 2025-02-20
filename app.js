@@ -96,6 +96,7 @@ function indexHtml(obj) {
   return htmlString;
 }
 
+//[ ] page를 readFile로 읽기 > err일 때 : 404에러
 const server = http.createServer((req, res) => {
   //req.method, req.url 확인
   console.log(`${req.method}  ${req.url}`);
