@@ -31,8 +31,13 @@ console.log(qs.stringify(list[0]).split("&", 2).join("&"));
 function liTag(obj) {
   let url = qs.stringify(list[0]).split("&", 2).join("&");
 
-  return `<li><a href=${url}>${obj.name}</a></li>`;
+  return `<li><a href=/${url}>${obj.name}</a></li>`;
 }
+//test
+console.log(
+  "list",
+  list.reduce((acc, i) => acc + liTag(i), "")
+);
 
 //[ ]liTag를 사용해서 ul태그 만드는 함수
 
