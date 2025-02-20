@@ -21,8 +21,6 @@ let list = JSON.parse(listJson);
 //[x]liTag 만드는 함수
 //a태그 > url에 date와 name포함...?
 //제목은 list[i].name
-//[ ] list.json 파일이 존재하지 않으면 오류 발생
-//파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
 function liTag(obj) {
   let url = qs.stringify(list[0]).split("&", 2).join("&");
 
@@ -42,59 +40,59 @@ function indexHtml(obj) {
   <!DOCTYPE html>
   <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HOME</title>
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100vh;
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100vh;
       }
       a {
         text-decoration: none;
         color: black;
-      }
-      ul {
-        list-style: none;
-      }
-      #root {
+        }
+        ul {
+          list-style: none;
+          }
+          #root {
         width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-      }
-      #root > section {
-        width: 90%;
-      }
-      section > a {
-        background-color: #ccc;
-        padding: 5px 10px;
-      }
-      section > a:hover {
-        background-color: black;
-        color:white;
-      }
+        }
+        #root > section {
+          width: 90%;
+          }
+          section > a {
+            background-color: #ccc;
+            padding: 5px 10px;
+            }
+            section > a:hover {
+              background-color: black;
+              color:white;
+              }
       ul > li {
         margin-bottom: 10px;
-      }
-      ul > li > a:hover {
-        color: #ccc;
-      }
-    </style>
-  </head>
-  <body>
+        }
+        ul > li > a:hover {
+          color: #ccc;
+          }
+          </style>
+          </head>
+          <body>
     <div id="root">
-      <h1>오늘 간식</h1>
+    <h1>오늘 간식</h1>
       <section>
-        <a href="/add">추가</a>
-        ${ulTag(obj)}
+      <a href="/add">추가</a>
+      ${ulTag(obj)}
       </section>
-    </div>
-  </body>
-</html>
-  `;
+      </div>
+      </body>
+      </html>
+      `;
   return htmlString;
 }
 
@@ -108,77 +106,77 @@ function addHtml() {
   let htmlString = `
   <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ADD</title>
-    <style>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ADD</title>
+<style>
       body {
         margin: 0;
         padding: 0;
         width: 100%;
         height: 100vh;
-      }
-      #root {
-        width: 100%;
+        }
+        #root {
+          width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
-      }
-      #root > section {
-        width: 90%;
-      }
-      #root > section > form {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        }
+        #root > section {
+          width: 90%;
+          }
+          #root > section > form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         gap: 20px;
       }
       form > div:last-of-type {
         display: flex;
         gap: 10px;
-      }
+        }
       form > div:last-of-type textarea {
         width: 380px;
+        }
+        form > button {
+          border-style: none;
+          padding: 5px 10px;
+          cursor: pointer;
+          background-color: #ccc;
+          }
+          form > button:hover {
+            background-color: black;
+            color: #fff;
       }
-      form > button {
-        border-style: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        background-color: #ccc;
-      }
-      form > button:hover {
-        background-color: black;
-        color: #fff;
-      }
-    </style>
-  </head>
-  <body>
+      </style>
+      </head>
+      <body>
     <div id="root">
-      <h1>간식 추가</h1>
-      <section>
-        <form action="/plus" method="POST">
-          <div>
-            <label for="date">간식 먹은 날</label>
-            <input type="number" name="date" placeholder="2025MMDD" required/>
-            <label for="name">간식</label>
+    <h1>간식 추가</h1>
+    <section>
+    <form action="/plus" method="POST">
+    <div>
+    <label for="date">간식 먹은 날</label>
+    <input type="number" name="date" placeholder="2025MMDD" required/>
+    <label for="name">간식</label>
             <input type="text" name="name" placeholder="간식 이름" required/>
-          </div>
-          <div>
+            </div>
+            <div>
             <label for="content">내용</label>
             <textarea
-              name="content"
+            name="content"
               placeholder="후기나 하고싶은 말"
             ></textarea>
-          </div>
-          <button type="submit">작성완료</button>
-        </form>
-      </section>
-    </div>
-  </body>
+            </div>
+            <button type="submit">작성완료</button>
+            </form>
+            </section>
+            </div>
+            </body>
 </html>
-  `;
+`;
   return htmlString;
 }
 
@@ -190,6 +188,8 @@ const server = http.createServer((req, res) => {
   //GET
   if (req.method === "GET") {
     if (req.url === "/") {
+      //[ ] list.json 파일이 존재하지 않으면 오류 발생
+      //파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
       res.writeHead(200, { "content-type": "utf-8;text/html" });
       res.write(indexHtml(list));
       res.end();
