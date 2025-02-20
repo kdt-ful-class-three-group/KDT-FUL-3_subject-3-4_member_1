@@ -117,6 +117,7 @@ const server = http.createServer((req, res) => {
   }
   //POST
   if (req.method === "POST") {
+    //addPage에서 form 태그에 대한 응답
   }
 });
 
