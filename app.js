@@ -173,6 +173,11 @@ function addHtml() {
         </form>
       </section>
     </div>
+    <script>
+      let date = document.getElementsByTagName("input")[0];
+      let name = document.getElementsByTagName("input")[1];
+      let button = document.getElementsByTagName("button")[0];
+    </script>
   </body>
 </html>
   `;
