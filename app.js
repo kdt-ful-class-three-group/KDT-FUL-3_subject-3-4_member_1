@@ -33,7 +33,7 @@ function ulTag(obj) {
   return `<ul>${liTags}</ul>`;
 }
 
-//[ ]만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
+//[x]만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
 function indexHtml(obj) {
   let htmlString = `
   <!DOCTYPE html>
