@@ -22,7 +22,7 @@ import qs from "querystring";
 //a태그 > url에 date와 name포함...?
 //제목은 list[i].name
 function liTag(obj) {
-  let url = qs.stringify(list[0]).split("&", 2).join("&");
+  let url = qs.stringify(obj).split("&", 2).join("&");
 
   return `<li><a href=/${url}>${obj.name}</a></li>`;
 }
@@ -234,6 +234,7 @@ const server = http.createServer((req, res) => {
         //[ ]입력한 데이터를 객체로 변경
         let data = body.toString();
         let dataObj = qs.parse(data);
+        console.log(dataObj);
         //[ ]파일이 없으면 json파일을 만들고 빈 배열 넣어주기
         //[ ] 파일이 있으면 기존의 파일 데이터 가져오기
         //[ ] json에 저장된 데이터는 문자열-> 객체로 변경이 필요
