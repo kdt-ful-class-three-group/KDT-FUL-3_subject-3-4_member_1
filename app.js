@@ -233,7 +233,7 @@ const server = http.createServer((req, res) => {
       req.on("end", () => {
         //[ ]입력한 데이터를 객체로 변경
         let data = body.toString();
-
+        let dataObj = qs.parse(data);
         //[ ]파일이 없으면 json파일을 만들고 빈 배열 넣어주기
         //[ ] 파일이 있으면 기존의 파일 데이터 가져오기
         //[ ] json에 저장된 데이터는 문자열-> 객체로 변경이 필요
