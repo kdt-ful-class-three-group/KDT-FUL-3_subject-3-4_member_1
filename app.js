@@ -5,6 +5,15 @@ import qs from "querystring";
 //홈페이지
 //[ ]추가하기(/add)버튼
 //[ ]글 목록 (ul, li)
+
+//form태그로 받아올 데이터 객체 형식 정하기
+
+//liTag 만드는 함수
+
+//liTag를 사용해서 ul태그 만드는 함수
+
+//만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
+
 const server = http.createServer((req, res) => {
   //req.method, req.url 확인
   console.log(`${req.method}  ${req.url}`);
