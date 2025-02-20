@@ -190,7 +190,7 @@ const server = http.createServer((req, res) => {
       res.end();
     }
     //작성완료 버튼
-    if (req.url === "/add") {
+    else if (req.url === "/add") {
       res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
       res.write(addHtml());
       res.end();
