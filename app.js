@@ -96,7 +96,7 @@ function indexHtml(obj) {
   return htmlString;
 }
 
-//[ ]addPage 함수 만들기
+//[x]addPage 함수 만들기
 //따로 추가할 내용 없어보임...?
 //일단 다 들고와
 function addHtml() {
@@ -189,6 +189,7 @@ const server = http.createServer((req, res) => {
       res.write(indexHtml(list));
       res.end();
     }
+    //작성완료 버튼
     // 지정한 url이외의 요청
     else {
       res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
