@@ -107,10 +107,11 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { "content-type": "utf-8;text-html" });
       res.write(indexHtml(list));
       res.end();
+    } else {
+      res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
+      res.write("NOT FOUND");
+      res.end();
     }
-    res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
-    res.write("NOT FOUND");
-    res.end();
   }
   //POST
   if (req.method === "POST") {
