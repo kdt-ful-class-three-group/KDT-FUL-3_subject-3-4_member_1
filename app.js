@@ -203,7 +203,7 @@ const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
       res.writeHead(200, { "content-type": "utf-8;text/html" });
-      res.write(indexHtml(list));
+      res.write(indexHtml());
       res.end();
     }
     //작성완료 버튼
