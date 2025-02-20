@@ -2,6 +2,8 @@ import http from "http";
 import fs from "fs";
 import qs from "querystring";
 
+//홈페이지 구성
+
 const server = http.createServer((req, res) => {
   //req.method, req.url 확인
   console.log(`${req.method}  ${req.url}`);
