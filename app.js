@@ -17,7 +17,7 @@ const list = [
 // console.log(qs.stringify(list[0]).split("&", 2).join("&"));
 
 //홈페이지
-//[ ]추가하기(/add)버튼
+//[x]추가하기(/add)버튼
 //[x]글 목록 (ul, li)
 
 //[x]form태그로 받아올 데이터 객체 형식 정하기
@@ -92,6 +92,7 @@ function indexHtml(obj) {
   </body>
 </html>
   `;
+  return htmlString;
 }
 
 const server = http.createServer((req, res) => {
