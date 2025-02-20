@@ -214,6 +214,8 @@ const server = http.createServer((req, res) => {
       let body = "";
       req.on("data", (data) => {
         body += data;
+        //데이터 유효성 검사를 위한 console확인하고 싶음
+        console.log(body);
       });
       //data 받아온 후
       req.on("end", () => {
