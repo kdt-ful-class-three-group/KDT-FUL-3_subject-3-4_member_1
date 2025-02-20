@@ -9,9 +9,6 @@ let list = JSON.parse(listJson);
 // console.log(JSON.stringify(list[0]));
 // console.log(qs.stringify(list[0]).split("&", 2).join("&"));
 
-//[ ] list.json 파일이 존재하지 않으면 오류 발생
-//파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
-
 //홈페이지
 //[x]추가하기(/add)버튼
 //[x]글 목록 (ul, li)
@@ -24,6 +21,8 @@ let list = JSON.parse(listJson);
 //[x]liTag 만드는 함수
 //a태그 > url에 date와 name포함...?
 //제목은 list[i].name
+//[ ] list.json 파일이 존재하지 않으면 오류 발생
+//파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
 function liTag(obj) {
   let url = qs.stringify(list[0]).split("&", 2).join("&");
 
