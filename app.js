@@ -34,15 +34,69 @@ function liTag(obj) {
   return `<li><a href=/${url}>${obj.name}</a></li>`;
 }
 
-//[ ]liTag를 사용해서 ul태그 만드는 함수
+//[x]liTag를 사용해서 ul태그 만드는 함수
 function ulTag(obj) {
   let liTags = obj.reduce((acc, i) => acc + liTag(i), "");
   return `<ul>${liTags}</ul>`;
 }
-//test
-console.log(ulTag(list));
 
 //[ ]만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
+function indexHtml() {
+  let htmlString = `
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOME</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+      }
+      ul {
+        list-style: none;
+      }
+      #root {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #root > section {
+        width: 90%;
+      }
+      section > a {
+        background-color: #ccc;
+        padding: 5px 10px;
+      }
+      ul > li {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <h1>오늘 간식</h1>
+      <section>
+        <a href="/add">추가</a>
+        <ul>
+          <li><a href="#">간식 이름</a></li>
+          <li><a href="#">간식 이름</a></li>
+          <li><a href="#">간식 이름</a></li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
+  `;
+}
 
 const server = http.createServer((req, res) => {
   //req.method, req.url 확인
