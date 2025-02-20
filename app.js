@@ -39,7 +39,17 @@ function ulTag(obj) {
 //파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
 //만약에 파일이 존재하지 않으면 > ul태그 없이 작성
 //만약에 파일이 있으면 원래 하려던 방향으로 진행
-function indexHtml(obj) {
+function indexHtml() {
+  let string = "";
+
+  if (!fs.existsSync("list.json")) {
+    fs.writeFile("list.json", JSON.stringify([]));
+  } else {
+    let listJson = fs.readFileSync("list.json");
+    let list = JSON.parse(listJson);
+    string = ulTag(list);
+  }
+
   let htmlString = `
   <!DOCTYPE html>
   <html lang="en">
