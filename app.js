@@ -43,7 +43,7 @@ function indexHtml() {
   let string = "";
 
   if (!fs.existsSync("list.json")) {
-    fs.writeFile("list.json", JSON.stringify([]));
+    fs.writeFileSync("list.json", JSON.stringify([]));
   } else {
     let listJson = fs.readFileSync("list.json");
     let list = JSON.parse(listJson);
