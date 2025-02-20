@@ -159,8 +159,8 @@ function addHtml() {
           <div>
             <label for="date">간식 먹은 날</label>
             <input type="text" name="date" placeholder="2025-MM-DD" required/>
-            <label for="name" required>간식</label>
-            <input type="text" name="name" placeholder="간식 이름" />
+            <label for="name" >간식</label>
+            <input type="text" name="name" placeholder="간식 이름" required/>
           </div>
           <div>
             <label for="content">내용</label>
