@@ -96,6 +96,10 @@ function indexHtml(obj) {
   return htmlString;
 }
 
+//[ ]addPage 함수 만들기
+//따로 추가할 내용 없어보임...?
+//일단 다 들고와
+
 //* page를 readFile로 읽기 > err일 때 : 404에러
 //[x] write에 넣어주고 이 외의 req.url일 때 404 에러
 const server = http.createServer((req, res) => {
