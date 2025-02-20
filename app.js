@@ -158,8 +158,8 @@ function addHtml() {
         <form action="/plus" method="POST">
           <div>
             <label for="date">간식 먹은 날</label>
-            <input type="text" name="date" placeholder="2025-MM-DD" />
-            <label for="name">간식</label>
+            <input type="text" name="date" placeholder="2025-MM-DD" required/>
+            <label for="name" required>간식</label>
             <input type="text" name="name" placeholder="간식 이름" />
           </div>
           <div>
