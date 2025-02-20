@@ -101,7 +101,7 @@ function indexHtml() {
     <h1>오늘 간식</h1>
       <section>
       <a href="/add">추가</a>
-      ${ulTag(obj)}
+      ${string}
       </section>
       </div>
       </body>
