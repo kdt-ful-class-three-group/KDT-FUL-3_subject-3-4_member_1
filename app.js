@@ -5,6 +5,12 @@ import qs from "querystring";
 const server = http.createServer((req, res) => {
   //req.method, req.url 확인
   console.log(`${req.method}  ${req.url}`);
+  //GET
+  if (req.method === "GET") {
+  }
+  //POST
+  if (req.method === "POST") {
+  }
 });
 
 //8000번 포트 사용
