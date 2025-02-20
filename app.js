@@ -1,7 +1,6 @@
 import http from "http";
 import fs from "fs";
 import qs from "querystring";
-import { buffer } from "stream/consumers";
 
 //list.json 파일이 존재한다면
 let listJson = fs.readFileSync("list.json");
