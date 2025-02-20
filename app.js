@@ -205,6 +205,9 @@ const server = http.createServer((req, res) => {
   //POST
   if (req.method === "POST") {
     //addPage에서 form 태그에 대한 응답
+    // [ ] date는 숫자만 입력
+    // [ ] 입력한 데이터로 list.json 생성
+    // [ ] date와 name만 입력해도 제출 완료 > content는 없어도 됨
   }
 });
 
