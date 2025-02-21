@@ -211,6 +211,10 @@ function addHtml(when) {
 //수정하기 버튼
 //삭제하기 버튼
 
+//[ ] 수정하기 /edit
+
+//[ ] 삭제하기 /delete
+
 //* page를 readFile로 읽기 > err일 때 : 404에러
 //[x] write에 넣어주고 이 외의 req.url일 때 404 에러
 
