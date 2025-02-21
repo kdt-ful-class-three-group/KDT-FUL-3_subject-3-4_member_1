@@ -223,7 +223,7 @@ const server = http.createServer((req, res) => {
     //작성완료 버튼
     else if (req.url === "/add") {
       res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
-      res.write(addHtml());
+      res.write(addHtml('first'));
       res.end();
     }
     //! 지정한 url이외의 요청, else문 안에 넣어야함
