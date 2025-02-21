@@ -116,6 +116,11 @@ function indexHtml() {
 // [x] date는 숫자만 입력
 // [x] date와 name만 입력해도 제출 완료 > content는 없어도 됨
 // muunji/issue10-1-1에서 실험 결과 > input타입 변경, 속성 추가하기로 함
+//[ ] 데이터 유효성 검사를 위한 script넣을 변수 만들어주기
+//[ ] alert을 위한 함수 작성
+function alert(){
+  return `<script>alert('2025MMDD'의 형식을 지켜주세요')</script>`
+}
 function addHtml() {
   let htmlString = `
   <!DOCTYPE html>
