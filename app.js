@@ -188,7 +188,27 @@ function addHtml() {
             </form>
             </section>
             </div>
-            <script></script>
+            <script>
+              let btn = document.getElementsByTagName("button")[0];
+      let date = document.getElementsByTagName("input")[0];
+
+      btn.addEventListener('click',(e)=>{
+        // e.preventDefault()
+        let year = date.value.slice(0,4)
+        let month = date.value.slice(4,6)
+        let day = date.value.slice(-2)
+        console.log('year',year,'month',month,'day',day)
+        year = Number(year)
+        month = Number(month)
+        day = Number(day)
+
+        if(year===2025 && (month >0|| month <13) && (day>0||day<32)){
+          console.log(year,month,day)
+          btn.onsubmit();
+        }
+
+      })
+            </script>
             </body>
 </html>
 `;
