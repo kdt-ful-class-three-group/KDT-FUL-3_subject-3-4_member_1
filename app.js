@@ -184,7 +184,7 @@ function addHtml() {
               placeholder="후기나 하고싶은 말"
             ></textarea>
             </div>
-            <button type="button">작성완료</button>
+            <button type="submit">작성완료</button>
             </form>
             </section>
             </div>
@@ -193,7 +193,7 @@ function addHtml() {
       let date = document.getElementsByTagName("input")[0];
 
       btn.addEventListener('click',(e)=>{
-        // e.preventDefault()
+        e.preventDefault()
         let year = date.value.slice(0,4)
         let month = date.value.slice(4,6)
         let day = date.value.slice(-2)
