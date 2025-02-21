@@ -270,6 +270,7 @@ const server = http.createServer((req, res) => {
         originObj.push(dataObj);
         console.log(originObj);
         //[ ] 객체를 문자열로 바꾼 후 저장 필요
+        console.log(JSON.stringify(originObj))
       });
     }
   }
