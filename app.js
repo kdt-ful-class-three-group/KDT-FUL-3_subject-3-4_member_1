@@ -116,8 +116,8 @@ function indexHtml() {
 // [x] date는 숫자만 입력
 // [x] date와 name만 입력해도 제출 완료 > content는 없어도 됨
 // muunji/issue10-1-1에서 실험 결과 > input타입 변경, 속성 추가하기로 함
-//[ ] 데이터 유효성 검사를 위한 script넣을 변수 만들어주기
-//[ ] alert을 위한 함수 작성
+//[x] 데이터 유효성 검사를 위한 script넣을 변수 만들어주기
+//[x] alert을 위한 함수 작성
 function alert(){
   return `<script>alert("'2025MMDD'의 형식을 지켜주세요")</script>`
 }
@@ -248,14 +248,14 @@ const server = http.createServer((req, res) => {
         //[x]입력한 데이터를 객체로 변경
         let data = body.toString();
         let dataObj = qs.parse(data);
-        //[ ]여기서 유효성 검사
+        //[x]여기서 유효성 검사
         console.log(typeof dataObj.date)
         let year = Number(dataObj.date.slice(0,4))
         let month = Number(dataObj.date.slice(4,6))
         let day = Number(dataObj.date.slice(-2))
         console.log (year,month,day)
         if(!(year===2025 && (month>0||month<13)&&(day>0||day<32))){
-          //[ ]addPage로 돌아감 + alert 안내 메시지
+          //[x]addPage로 돌아감 + alert 안내 메시지
           res.writeHead(200,{"content-type":'text/html;charset=utf-8'})
           res.write(addHtml('alert'))
           res.end();
