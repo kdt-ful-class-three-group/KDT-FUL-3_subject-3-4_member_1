@@ -269,9 +269,10 @@ const server = http.createServer((req, res) => {
         //[x] 객체로 변경된 기존 데이터에 새로 받아온 데이터 추가
         originObj.push(dataObj);
         console.log(originObj);
-        //[ ] 객체를 문자열로 바꾼 후 저장 필요
+        //[x] 객체를 문자열로 바꾼 후 저장 필요
         console.log(JSON.stringify(originObj))
         fs.writeFileSync('list.json',JSON.stringify(originObj));
+        //[ ] 홈페이지로 이동이 필요함
       });
     }
   }
