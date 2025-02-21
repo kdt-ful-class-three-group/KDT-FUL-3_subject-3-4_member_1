@@ -273,6 +273,7 @@ const server = http.createServer((req, res) => {
         console.log(JSON.stringify(originObj))
         fs.writeFileSync('list.json',JSON.stringify(originObj));
         //[ ] 홈페이지로 이동이 필요함
+        res.writeHead(302,{location:'/'})
       });
     }
   }
