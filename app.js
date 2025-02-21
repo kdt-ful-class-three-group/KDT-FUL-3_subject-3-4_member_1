@@ -116,9 +116,6 @@ function indexHtml() {
 // [x] date는 숫자만 입력
 // [x] date와 name만 입력해도 제출 완료 > content는 없어도 됨
 // muunji/issue10-1-1에서 실험 결과 > input타입 변경, 속성 추가하기로 함
-//[ ] date의 입력 형식 뿐 아니라
-//    [ ] date 앞자리가 2025
-//    [ ] date 입력 자리수 8개 만족하는지
 function addHtml() {
   let htmlString = `
   <!DOCTYPE html>
@@ -200,7 +197,7 @@ function addHtml() {
 //* page를 readFile로 읽기 > err일 때 : 404에러
 //[x] write에 넣어주고 이 외의 req.url일 때 404 에러
 
-//TODO 데이터 유효성 검사 필요성 있음
+//TODO데이터 유효성 검사 필요성 있음
 const server = http.createServer((req, res) => {
   //req.method, req.url 확인
   console.log(`${req.method}  ${req.url}`);
@@ -233,8 +230,6 @@ const server = http.createServer((req, res) => {
       let body = "";
       req.on("data", (data) => {
         body += data;
-        //데이터 유효성 검사를 위한 console확인하고 싶음
-        console.log(body);
       });
       //data 받아온 후
       req.on("end", () => {
@@ -262,5 +257,3 @@ const PORT = 8000;
 server.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
-
-//push용 주석
