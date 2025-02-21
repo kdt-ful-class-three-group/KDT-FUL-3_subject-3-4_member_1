@@ -121,7 +121,7 @@ function indexHtml() {
 function alert(){
   return `<script>alert('2025MMDD'의 형식을 지켜주세요')</script>`
 }
-function addHtml() {
+function addHtml(when) {
   let htmlString = `
   <!DOCTYPE html>
 <html lang="en">
@@ -193,6 +193,7 @@ function addHtml() {
             </form>
             </section>
             </div>
+            ${when}
             </body>
 </html>
 `;
