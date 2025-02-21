@@ -184,7 +184,7 @@ function addHtml() {
               placeholder="후기나 하고싶은 말"
             ></textarea>
             </div>
-            <button type="submit">작성완료</button>
+            <button type="button">작성완료</button>
             </form>
             </section>
             </div>
