@@ -236,7 +236,12 @@ const server = http.createServer((req, res) => {
         //[x]입력한 데이터를 객체로 변경
         let data = body.toString();
         let dataObj = qs.parse(data);
-        console.log(dataObj);
+        //[ ]여기서 유효성 검사
+        console.log(typeof dataObj.date)
+        let year = Number(dataObj.date.slice(0,4))
+        let month = Number(dataObj.date.slice(4,6))
+        let day = Number(dataObj.date.slice(-2))
+        console.log (year,month,day)
         //[x]파일이 없으면 json파일을 만들고 빈 배열 넣어주기
         //indexHtml함수 안에서 처리 > 서버 실행되면 바로 진행됨
         //[x] 파일이 있으면 기존의 파일 데이터 가져오기
@@ -244,8 +249,6 @@ const server = http.createServer((req, res) => {
         //[x] json에 저장된 데이터는 문자열-> 객체로 변경이 필요
         let originObj = JSON.parse(origin);
         //[x] 객체로 변경된 기존 데이터에 새로 받아온 데이터 추가
-        //[ ]여기서 유효성 검사
-        console.log(typeof dataObj.date)
         originObj.push(dataObj);
         console.log(originObj);
         //[ ] 객체를 문자열로 바꾼 후 저장 필요
