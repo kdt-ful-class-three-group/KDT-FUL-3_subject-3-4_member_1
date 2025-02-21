@@ -243,7 +243,8 @@ const server = http.createServer((req, res) => {
         let day = Number(dataObj.date.slice(-2))
         console.log (year,month,day)
         if(!(year===2025 && (month>0||month<13)&&(day>0||day<32))){
-          alert('다시 입력하세요');
+          // res.write('다시 입력하세요');
+          window.alert('다시 입력하세요')
         }
         //[x]파일이 없으면 json파일을 만들고 빈 배열 넣어주기
         //indexHtml함수 안에서 처리 > 서버 실행되면 바로 진행됨
