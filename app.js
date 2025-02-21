@@ -119,7 +119,7 @@ function indexHtml() {
 //[ ] 데이터 유효성 검사를 위한 script넣을 변수 만들어주기
 //[ ] alert을 위한 함수 작성
 function alert(){
-  return `<script>alert('2025MMDD'의 형식을 지켜주세요')</script>`
+  return `<script>alert("'2025MMDD'의 형식을 지켜주세요")</script>`
 }
 function addHtml(when) {
   if(when === 'first'){
