@@ -122,6 +122,12 @@ function alert(){
   return `<script>alert('2025MMDD'의 형식을 지켜주세요')</script>`
 }
 function addHtml(when) {
+  if(when === 'first'){
+    when = '';
+  }
+  if(when === alert){
+    when = alert()
+  }
   let htmlString = `
   <!DOCTYPE html>
 <html lang="en">
