@@ -271,6 +271,7 @@ const server = http.createServer((req, res) => {
         console.log(originObj);
         //[ ] 객체를 문자열로 바꾼 후 저장 필요
         console.log(JSON.stringify(originObj))
+        fs.writeFileSync('list.json',JSON.stringify(originObj));
       });
     }
   }
