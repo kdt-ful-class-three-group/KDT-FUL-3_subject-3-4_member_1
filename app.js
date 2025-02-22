@@ -342,6 +342,7 @@ const server = http.createServer((req, res) => {
       res.write(addHtml('first'));
       res.end();
     }
+    //[ ] 상세 페이지 : url에 id와 name이 포함되어 있으면
     //! 지정한 url이외의 요청, else문 안에 넣어야함
     else {
       res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
