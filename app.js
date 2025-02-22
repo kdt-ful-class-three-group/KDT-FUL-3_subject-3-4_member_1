@@ -225,7 +225,7 @@ function addHtml(when) {
 //수정하기 버튼
 //삭제하기 버튼
 
-//[ ]url을 통해 정보 칮기
+//[x]url을 통해 정보 칮기
 //date를 수정하고 싶을 수도 있는데 date를 url에 넣으면 수정한 후엔...?
 //[x]일단 url로 값을 찾는 거 부터 진행
 
@@ -313,7 +313,7 @@ function detailHtml(url){
 
 //페이지 안에서 이동해도 req.url은 href안에 적힌 내용만 해당됨
 //href안에 데이터 추가하기...?
-//[ ] 수정하기 /edit
+//[x] 수정하기 /edit
 //list.json에서 수정하고자하는 데이터에 접근할 수 있어야함함
 //수정하기를 누르면 나오는 페이지는 addHtml가 동일한 구성에 입력창에 내용이 나오면 될듯듯
 function editHtml(url){
@@ -522,7 +522,7 @@ const server = http.createServer((req, res) => {
         res.end()
       });
     }
-    //[ ]수정하기 안에서 수정 완료
+    //[x]수정하기 안에서 수정 완료
     if(req.url==='/edit'){
       let body = ""
       req.on('data',(data)=>
