@@ -393,7 +393,7 @@ function editHtml(url){
             placeholder="후기나 하고싶은 말"
           ></textarea>
         </div>
-        <button type="submit">작성완료</button>
+        <button type="submit">수정완료</button>
       </form>
     </section>
   </div>
@@ -463,7 +463,7 @@ const server = http.createServer((req, res) => {
       res.write(indexHtml());
       res.end()
     }
-    //[ ]수정하기
+    //[x]수정하기
     else if(req.url.includes('edit')){
       //페이지로 이동
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
@@ -522,6 +522,7 @@ const server = http.createServer((req, res) => {
         res.end()
       });
     }
+    //[ ]수정하기 안에서 수정 완료
   }
 });
 
