@@ -321,7 +321,7 @@ function editHtml(url){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(listJson)
 
-  let urlObj = qs.parse(url.slice(1))
+  let urlObj = qs.parse(url.slice(6))
 
   let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
   //post edit으로 가져온 정보를 수정
@@ -408,6 +408,8 @@ function editHtml(url){
 </body>
 </html>
   `
+
+return editHtml
 }
 //[x] 삭제하기 /delete
 //list.json에서 해당 데이터를 삭제
