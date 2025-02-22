@@ -229,6 +229,9 @@ function detailHtml(){
   let list = JSON.parse(list)
 
   //값 찾는게 필요함
+  //url에 id와 date가 있음
+  //이 값이 들어있는 값을 찾는 게 중요할 듯
+  //find / filter 사용
 
   let htmlString = `
   <!DOCTYPE html>
