@@ -269,6 +269,11 @@ function detailHtml(url){
       top: 2%;
       right: 5%;
     }
+    #root > div > a {
+      background-color:#fff;
+      font-size: 30px;
+      color:#ccc;
+    }
     #root > section {
       width: 90%;
     }
