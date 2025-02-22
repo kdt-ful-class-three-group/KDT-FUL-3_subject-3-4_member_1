@@ -316,8 +316,14 @@ function detailHtml(url){
 //[ ] 수정하기 /edit
 //list.json에서 수정하고자하는 데이터에 접근할 수 있어야함함
 //수정하기를 누르면 나오는 페이지는 addHtml가 동일한 구성에 입력창에 내용이 나오면 될듯듯
-function editHtml(){
+function editHtml(url){
   //url에서 가져온 정보를 input value 안에 넣음
+  let listJson = fs.readFileSync('list.json');
+  let list = JSON.parse(listJson)
+
+  let urlObj = qs.parse(url.slice(1))
+
+  let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
   //post edit으로 가져온 정보를 수정
   let editHtml = `
   <!DOCTYPE html>
@@ -394,10 +400,10 @@ function editHtml(){
   <script>
     let input = document.getElementsByTagName('input');
     let content = document.getElementsByTagName('textarea')[0]
-    input[0].value = 'id'
-    input[1].value = 20250103
-    input[2].value = 'name'
-    content.value = 'content'
+    input[0].value = ${find.id}
+    input[1].value = ${find.date}
+    input[2].value = ${find.name}
+    content.value = ${find.content}
   </script>
 </body>
 </html>
