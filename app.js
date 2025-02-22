@@ -547,6 +547,7 @@ const server = http.createServer((req, res) => {
         console.log(list)
 
         //다시 writeFile 사용
+        fs.writeFileSync('list.json',JSON.stringify(list))
       })
     }
   }
