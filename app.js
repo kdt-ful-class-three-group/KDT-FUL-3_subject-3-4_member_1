@@ -550,9 +550,8 @@ const server = http.createServer((req, res) => {
         fs.writeFileSync('list.json',JSON.stringify(list))
         //다시 상세페이지로 돌아가야함
         //date가 바뀔 수 있음 -> url에 /edit/이 지워지고 id와 name 정보가 들어가야함
-        let url = data.split('&',2).join('&')
         res.writeHead(200,{'content-type':'text.html; charset=utf-8'})
-        res.write(detailHtml(url));
+        res.write(detailHtml('/'+data));
         res.end()
       })
     }
