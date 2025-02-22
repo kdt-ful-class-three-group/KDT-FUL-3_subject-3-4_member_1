@@ -401,9 +401,9 @@ function editHtml(url){
     let input = document.getElementsByTagName('input');
     let content = document.getElementsByTagName('textarea')[0]
     input[0].value = ${find.id}
-    input[1].value = ${find.date}
-    input[2].value = ${find.name}
-    content.value = ${find.content}
+    input[1].value = '${find.date}'
+    input[2].value = '${find.name}'
+    content.value = '${find.content}'
   </script>
 </body>
 </html>
