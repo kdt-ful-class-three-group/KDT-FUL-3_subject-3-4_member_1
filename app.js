@@ -292,6 +292,9 @@ function detailHtml(url){
 <body>
   <div id="root">
     <h1>${find.name}</h1>
+    <div>
+      <a href="/">x</a>
+    </div>
     <section>
       <ul>
         <li><a href="/edit${url}">수정</a></li>
