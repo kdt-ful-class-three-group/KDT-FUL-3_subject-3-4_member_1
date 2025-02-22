@@ -342,7 +342,7 @@ const server = http.createServer((req, res) => {
       res.write(addHtml('first'));
       res.end();
     }
-    //[ ] 상세 페이지 : url에 id와 name이 포함되어 있으면
+    //[x] 상세 페이지 : url에 id와 name이 포함되어 있으면
     else if (req.url.includes('id')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
       res.write(detailHtml(req.url));
