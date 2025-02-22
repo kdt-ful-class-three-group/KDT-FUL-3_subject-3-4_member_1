@@ -221,9 +221,76 @@ function addHtml(when) {
 }
 
 //[ ] 상세 페이지
-//url : /date=@@&name=@@
+//url : /id=111111&date=20250101
 //수정하기 버튼
 //삭제하기 버튼
+function detailHtml(){
+  let htmlString = `
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100vh;
+    }
+    #root {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #root > section {
+      width: 90%;
+    }
+    a{
+      text-decoration: none;
+      color: black;
+      background-color: #ccc;
+      padding: 5px 10px;
+    }
+    a:hover {
+      background-color: black;
+      color: white;
+    }
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      padding: 0;
+    }
+    section > div > p:first-child {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <h1>${name}</h1>
+    <section>
+      <ul>
+        <li><a href="/edit">수정</a></li>
+        <li><a href="/delete">삭제</a></li>
+      </ul>
+    </section>
+    <section>
+      <div>
+        <p>${date}</p>
+        <p>${content}</p>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
+
+  `
+}
 
 //[ ] 수정하기 /edit
 //list.json에서 수정하고자하는 데이터에 접근할 수 있어야함함
