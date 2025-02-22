@@ -226,7 +226,7 @@ function addHtml(when) {
 //삭제하기 버튼
 
 //[ ]url을 통해 정보 칮기
-let reqUrl = '/id=741286&date=20250304'
+let reqUrl = '/id=741286&date=20250304'.slice(1)
 console.log('url 변환',qs.parse(reqUrl))
 
 
