@@ -29,7 +29,7 @@ function liTag(obj,admin) {
     return `<li><a href=/${url}>${obj.name}</a></li>`
   }
 
-  return `<li><a href=/${admin}${url}>${obj.name}</a></li>`;
+  return `<li><a href=/${admin}/${url}>${obj.name}</a></li>`;
 }
 
 //[x]liTag를 사용해서 ul태그 만드는 함수
@@ -53,7 +53,7 @@ function ulTag(obj,admin) {
 function addTag(){
   return `<a href="/add">추가</a>`
 }
-function indexHtml(admin) {
+function indexHtml(admin,aTag) {
   let string = "";
 
   if (!fs.existsSync("list.json")) {
@@ -114,7 +114,7 @@ function indexHtml(admin) {
     <div id="root">
     <h1>오늘 간식</h1>
       <section>
-      ${admin}
+      ${aTag}
       ${string}
       </section>
       </div>
@@ -466,7 +466,7 @@ const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
       res.writeHead(200, { "content-type": "utf-8;text/html" });
-      res.write(indexHtml(''));
+      res.write(indexHtml('',''));
       res.end();
     }
     //작성완료 버튼
@@ -507,9 +507,9 @@ const server = http.createServer((req, res) => {
       res.end()
     }
     //[ ] admin
-    else if (req.url.includes('admin')){
+    else if (req.url==='/admin'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(indexHtml(addTag()))
+      res.write(indexHtml('admin',addTag()))
       res.end()
     }
     //! 지정한 url이외의 요청, else문 안에 넣어야함
