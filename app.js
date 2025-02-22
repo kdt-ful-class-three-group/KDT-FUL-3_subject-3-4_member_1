@@ -316,7 +316,7 @@ function detailHtml(url){
 //[ ] 수정하기 /edit
 //list.json에서 수정하고자하는 데이터에 접근할 수 있어야함함
 
-//[ ] 삭제하기 /delete
+//[x] 삭제하기 /delete
 //list.json에서 해당 데이터를 삭제
 //그 후 홈페이지로 이동하면 글 목록에서 삭제되어 있을 듯
 
@@ -350,7 +350,7 @@ const server = http.createServer((req, res) => {
       res.write(detailHtml(req.url));
       res.end()
     }
-    //[ ] 삭제하기
+    //[x] 삭제하기
     else if (req.url.includes('delete')){
       //[x]url을 통해 데이터를 찾음
       //url에서 /delete/를 삭제해야함
@@ -363,7 +363,7 @@ const server = http.createServer((req, res) => {
       list = list.filter(i=> !((i.id === urlObj.id)&&(i.date===urlObj.date)))
       //삭제한 후 다시 writeFile하는 과정이 필요
       fs.writeFileSync('list.json',JSON.stringify(list));
-      //[ ]데이터 삭제후 다시 홈페이지로 돌아가기
+      //[x]데이터 삭제후 다시 홈페이지로 돌아가기
       res.writeHead(200,{'content-type':'text/html; charset=urf-8'});
       res.write(indexHtml());
       res.end()
