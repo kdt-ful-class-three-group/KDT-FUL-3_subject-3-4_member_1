@@ -529,15 +529,22 @@ const server = http.createServer((req, res) => {
         body += data
       )
       req.on('end',()=>{
-        console.log(body.toString())
         //id 정보를 비교해서 동일하면 덮어씌우기
         //list.json 정보 -> 객체로 변경경
         let listJson = fs.readFileSync('list.json');
         let list = JSON.parse(listJson)
       
         //브라우저에서 입력한 정보 -> 객체
-
+        let data = body.toString();
+        let dataObj = qs.parse(data);
         //id로 해당 데이터를 찾고 값 덮어씌우기
+        list.filter(i=>i.id === dataObj.id).map(i=> {
+          i.name = dataObj.name; 
+          i.date = dataObj.date; 
+          i.content = dataObj.content
+        })
+
+        console.log(list)
       })
     }
   }
