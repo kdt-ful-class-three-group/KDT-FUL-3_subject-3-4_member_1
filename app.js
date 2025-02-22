@@ -41,6 +41,7 @@ function ulTag(obj) {
 //파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
 //만약에 파일이 존재하지 않으면 > ul태그 없이 작성
 //만약에 파일이 있으면 원래 하려던 방향으로 진행
+//[ ] admin 경로를 위해 a태그 함수 만들기기
 function indexHtml() {
   let string = "";
 
@@ -229,7 +230,9 @@ function addHtml(when) {
 //date를 수정하고 싶을 수도 있는데 date를 url에 넣으면 수정한 후엔...?
 //[x]일단 url로 값을 찾는 거 부터 진행
 
-//[ ] 상세페이지에서 목록으로 이동하는 버튼
+//[x] 상세페이지에서 목록으로 이동하는 버튼
+
+//[ ] admin에서 접근했을 때 수정, 삭제 버튼
 
 function detailHtml(url){
   let listJson = fs.readFileSync('list.json');
@@ -441,6 +444,10 @@ return editHtml
 //[x] write에 넣어주고 이 외의 req.url일 때 404 에러
 
 //TODO데이터 유효성 검사 필요성 있음
+
+//[ ] /admin으로 접속 했을 때만 추가하기, 수정, 삭제 버튼 보이기
+// 외에는 목록과 상세 피이지만
+// [ ] 경로 수정
 const server = http.createServer((req, res) => {
   //req.method, req.url 확인
   console.log(`${req.method}  ${req.url}`);
