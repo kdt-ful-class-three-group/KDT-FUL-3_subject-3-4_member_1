@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADD</title>
   <style>
     body {
       margin: 0;
@@ -20,43 +20,56 @@
     #root > section {
       width: 90%;
     }
-    a{
-      text-decoration: none;
-      color: black;
-      background-color: #ccc;
-      padding: 5px 10px;
-    }
-    a:hover {
-      background-color: black;
-      color: white;
-    }
-    ul {
-      list-style: none;
+    #root > section > form {
+      width: 100%;
       display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 20px;
-      padding: 0;
     }
-    section > div > p:first-child {
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 10px;
+    form > div:last-of-type {
+      display: flex;
+      gap: 10px;
+    }
+    form > div:last-of-type textarea {
+      width: 380px;
+    }
+    form > button {
+      border-style: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      background-color: #ccc;
+    }
+    form > button:hover {
+      background-color: black;
+      color: #fff;
     }
   </style>
 </head>
 <body>
   <div id="root">
-    <h1>${name}</h1>
+    <h1>간식 추가</h1>
     <section>
-      <ul>
-        <li><a href="/edit">수정</a></li>
-        <li><a href="/delete">삭제</a></li>
-      </ul>
-    </section>
-    <section>
-      <div>
-        <p>${date}</p>
-        <p>${content}</p>
-      </div>
+      <form action="/plus" method="POST">
+        <input type="hidden" name="id">
+        <div>
+          <label for="date">간식 먹은 날</label>
+          <input type="number" name="date" placeholder="2025MMDD" required/>
+          <label for="name">간식</label>
+          <input type="text" name="name" placeholder="간식 이름" required/>
+        </div>
+        <div>
+          <label for="content">내용</label>
+          <textarea
+          name="content"
+            placeholder="후기나 하고싶은 말"
+          ></textarea>
+        </div>
+        <button type="submit">작성완료</button>
+      </form>
     </section>
   </div>
+  <script>
+  </script>
 </body>
 </html>
