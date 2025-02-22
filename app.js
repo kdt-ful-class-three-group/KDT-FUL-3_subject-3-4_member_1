@@ -315,7 +315,10 @@ function detailHtml(url){
 //href안에 데이터 추가하기...?
 //[ ] 수정하기 /edit
 //list.json에서 수정하고자하는 데이터에 접근할 수 있어야함함
-
+//수정하기를 누르면 나오는 페이지는 addHtml가 동일한 구성에 입력창에 내용이 나오면 될듯듯
+function editHtml(){
+  
+}
 //[x] 삭제하기 /delete
 //list.json에서 해당 데이터를 삭제
 //그 후 홈페이지로 이동하면 글 목록에서 삭제되어 있을 듯
