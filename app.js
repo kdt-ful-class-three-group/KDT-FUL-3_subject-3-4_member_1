@@ -45,7 +45,7 @@ function ulTag(obj) {
 function addTag(){
   return `<a href="/add">추가</a>`
 }
-function indexHtml() {
+function indexHtml(admin) {
   let string = "";
 
   if (!fs.existsSync("list.json")) {
@@ -106,7 +106,7 @@ function indexHtml() {
     <div id="root">
     <h1>오늘 간식</h1>
       <section>
-      <a href="/add">추가</a>
+      ${admin}
       ${string}
       </section>
       </div>
