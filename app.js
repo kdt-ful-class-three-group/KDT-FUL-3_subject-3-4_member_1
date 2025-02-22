@@ -119,6 +119,14 @@ function indexHtml() {
 //[x] 데이터 유효성 검사를 위한 script넣을 변수 만들어주기
 //[x] alert을 위한 함수 작성
 //[ ]form태그에서 랜덤 숫자 가져오기
+//[ ]만든 함수를 script에 포함하기
+function randomId(){
+  let randomScript = `
+    let id = document.getElementsByTagName('input')[0]
+    id.value = Math.floor(Math.random()*899999)+100000;
+  `
+  return randomScript
+}
 function alert(){
   return `<script>alert("'2025MMDD'의 형식을 지켜주세요")</script>`
 }
