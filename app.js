@@ -21,10 +21,10 @@ import qs from "querystring";
 // {id: '111111', date : '20250220',name : '하리보', content: '작은 사이즈 봉투에 들어있음'}
 
 //[x]liTag 만드는 함수
-//a태그 > url에 date와 name포함...?
+//a태그 > url에 id와 name을 포함
 //제목은 list[i].name
 function liTag(obj) {
-  let url = qs.stringify(obj).split("&", 2).join("&");
+  let url = qs.stringify(obj).split("&",2).join("&")
 
   return `<li><a href=/${url}>${obj.name}</a></li>`;
 }
