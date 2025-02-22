@@ -274,6 +274,9 @@ function detailHtml(url){
       font-size: 30px;
       color:#ccc;
     }
+    #root > div > a:hover {
+      color:black;
+    }
     #root > section {
       width: 90%;
     }
