@@ -50,7 +50,7 @@
   <div id="root">
     <h1>간식 추가</h1>
     <section>
-      <form action="/plus" method="POST">
+      <form action="/edit" method="POST">
         <input type="hidden" name="id">
         <div>
           <label for="date">간식 먹은 날</label>
@@ -70,6 +70,12 @@
     </section>
   </div>
   <script>
+    let input = document.getElementsByTagName('input');
+    let content = document.getElementsByTagName('textarea')[0]
+    input[0].value = 'id'
+    input[1].value = 20250103
+    input[2].value = 'name'
+    content.value = 'content'
   </script>
 </body>
 </html>
