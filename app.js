@@ -361,6 +361,7 @@ const server = http.createServer((req, res) => {
       console.log(urlObj)
     
       let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
+      //삭제한 후 다시 writeFile하는 과정이 필요
       //[ ]데이터 삭제후 다시 홈페이지로 돌아가기
 
     }
