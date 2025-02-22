@@ -23,10 +23,13 @@ import qs from "querystring";
 //[x]liTag 만드는 함수
 //a태그 > url에 id와 name을 포함
 //제목은 list[i].name
-function liTag(obj) {
+function liTag(obj,admin) {
   let url = qs.stringify(obj).split("&",2).join("&")
+  if(admin===''){
+    return `<li><a href=/${url}>${obj.name}</a></li>`
+  }
 
-  return `<li><a href=/${url}>${obj.name}</a></li>`;
+  return `<li><a href=/${admin}/${url}>${obj.name}</a></li>`;
 }
 
 //[x]liTag를 사용해서 ul태그 만드는 함수
@@ -41,7 +44,8 @@ function ulTag(obj) {
 //파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
 //만약에 파일이 존재하지 않으면 > ul태그 없이 작성
 //만약에 파일이 있으면 원래 하려던 방향으로 진행
-//[ ] admin 경로를 위해 a태그 함수 만들기
+//[x] admin 경로를 위해 a태그 함수 만들기
+//[ ] admin으로 접속한 후 목록을 누르면 수정, 삭제 버튼 보여야함함
 function addTag(){
   return `<a href="/add">추가</a>`
 }
