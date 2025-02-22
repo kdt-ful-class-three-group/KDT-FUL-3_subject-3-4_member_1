@@ -220,10 +220,16 @@ function addHtml(when) {
   return htmlString;
 }
 
-//[ ] 상세 페이지
+//[x] 상세 페이지
 //url : /id=111111&date=20250101
 //수정하기 버튼
 //삭제하기 버튼
+
+//[ ]url을 통해 정보 칮기
+let reqUrl = '/id=741286&date=20250304'
+console.log('url 변환',qs.parse(reqUrl))
+
+
 function detailHtml(){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(list)
