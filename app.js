@@ -438,7 +438,7 @@ const server = http.createServer((req, res) => {
       res.end();
     }
     //[x] 상세 페이지 : url에 id와 name이 포함되어 있으면
-    else if (req.url.includes('id') && !req.url.includes('delete')){
+    else if (req.url.includes('id') && !req.url.includes('delete')&&!req.url.includes('edit')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
       res.write(detailHtml(req.url));
       res.end()
@@ -460,8 +460,9 @@ const server = http.createServer((req, res) => {
       res.writeHead(200,{'content-type':'text/html; charset=urf-8'});
       res.write(indexHtml());
       res.end()
-
     }
+    //[ ]수정하기
+    else if(req.url.includes('edit')){}
     //! 지정한 url이외의 요청, else문 안에 넣어야함
     else {
       res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
