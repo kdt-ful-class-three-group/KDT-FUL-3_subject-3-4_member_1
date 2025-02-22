@@ -49,7 +49,7 @@ function ulTag(obj,admin) {
 //만약에 파일이 존재하지 않으면 > ul태그 없이 작성
 //만약에 파일이 있으면 원래 하려던 방향으로 진행
 //[x] admin 경로를 위해 a태그 함수 만들기
-//[ ] admin으로 접속한 후 목록을 누르면 수정, 삭제 버튼 보여야함함
+//[x] admin으로 접속한 후 목록을 누르면 수정, 삭제 버튼 보여야함함
 function addTag(){
   return `<a href="/add">추가</a>`
 }
@@ -243,7 +243,7 @@ function addHtml(when) {
 
 //[x] 상세페이지에서 목록으로 이동하는 버튼
 
-//[ ] admin에서 접근했을 때 수정, 삭제 버튼
+//[x] admin에서 접근했을 때 수정, 삭제 버튼
 function delAddBtn(url){
   return `<section>
       <ul>
@@ -261,11 +261,15 @@ function detailHtml(url,admin){
 
   if(admin===''){
     urlObj = qs.parse(url.slice(1))
-  } else{
+  }
+  if(admin==='admin'){
     urlObj = qs.parse(url.slice(7))
     btnSection = delAddBtn(url)
   }
-
+  if(admin==='again'){
+    urlObj = qs.parse(url.slice(1))
+    btnSection = delAddBtn(url)
+  }
 
   let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
 
@@ -365,7 +369,7 @@ function editHtml(url){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(listJson)
 
-  let urlObj = qs.parse(url.slice(6))
+  let urlObj = qs.parse(url.slice(12))
 
   let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
   //post edit으로 가져온 정보를 수정
@@ -500,7 +504,7 @@ const server = http.createServer((req, res) => {
       let listJson = fs.readFileSync('list.json');
       let list = JSON.parse(listJson)
     
-      let urlObj = qs.parse(req.url.slice(8))
+      let urlObj = qs.parse(req.url.slice(14))
       console.log(urlObj)
     
       list = list.filter(i=> !((i.id === urlObj.id)&&(i.date===urlObj.date)))
@@ -508,7 +512,7 @@ const server = http.createServer((req, res) => {
       fs.writeFileSync('list.json',JSON.stringify(list));
       //[x]데이터 삭제후 다시 홈페이지로 돌아가기
       res.writeHead(200,{'content-type':'text/html; charset=urf-8'});
-      res.write(indexHtml());
+      res.write(indexHtml('admin',addTag()));
       res.end()
     }
     //[x]수정하기
@@ -605,12 +609,14 @@ const server = http.createServer((req, res) => {
 
         console.log(list)
 
+
         //다시 writeFile 사용
         fs.writeFileSync('list.json',JSON.stringify(list))
         //다시 상세페이지로 돌아가야함
         //date가 바뀔 수 있음 -> url에 /edit/이 지워지고 id와 name 정보가 들어가야함
+        let url = data.split('&',2).join('&')
         res.writeHead(200,{'content-type':'text.html; charset=utf-8'})
-        res.write(detailHtml('/'+data));
+        res.write(detailHtml(`/${url}`,'again'));
         res.end()
       })
     }
