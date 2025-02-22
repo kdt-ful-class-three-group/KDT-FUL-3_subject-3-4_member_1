@@ -17,6 +17,8 @@ import qs from "querystring";
 // list.json
 // date를 숫자만 작성하면 크기 비교하기 괜찮을지도...?
 // {date : '20250220',name : '하리보', content: '작은 사이즈 봉투에 들어있음'}
+//인식을 위해서 id 추가함
+// {id: '111111', date : '20250220',name : '하리보', content: '작은 사이즈 봉투에 들어있음'}
 
 //[x]liTag 만드는 함수
 //a태그 > url에 date와 name포함...?
