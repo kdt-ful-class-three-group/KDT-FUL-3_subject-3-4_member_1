@@ -264,6 +264,11 @@ function detailHtml(url){
       flex-direction: column;
       align-items: center;
     }
+    #root > div {
+      position: absolute;
+      top: 2%;
+      right: 5%;
+    }
     #root > section {
       width: 90%;
     }
