@@ -229,6 +229,8 @@ function addHtml(when) {
 //date를 수정하고 싶을 수도 있는데 date를 url에 넣으면 수정한 후엔...?
 //[x]일단 url로 값을 찾는 거 부터 진행
 
+//[ ] 상세페이지에서 목록으로 이동하는 버튼
+
 function detailHtml(url){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(listJson)
