@@ -29,12 +29,16 @@ function liTag(obj,admin) {
     return `<li><a href=/${url}>${obj.name}</a></li>`
   }
 
-  return `<li><a href=/${admin}/${url}>${obj.name}</a></li>`;
+  return `<li><a href=/${admin}${url}>${obj.name}</a></li>`;
 }
 
 //[x]liTag를 사용해서 ul태그 만드는 함수
-function ulTag(obj) {
-  let liTags = obj.reduce((acc, i) => acc + liTag(i), "");
+function ulTag(obj,admin) {
+  let liTags=''
+  if(admin===''){
+    liTags = obj.reduce((acc, i) => acc + liTag(i), "");
+  }
+  liTags = obj.reduce((acc, i) => acc + liTag(i,admin), "");
   return `<ul>${liTags}</ul>`;
 }
 
