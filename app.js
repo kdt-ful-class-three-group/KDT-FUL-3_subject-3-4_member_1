@@ -317,7 +317,91 @@ function detailHtml(url){
 //list.json에서 수정하고자하는 데이터에 접근할 수 있어야함함
 //수정하기를 누르면 나오는 페이지는 addHtml가 동일한 구성에 입력창에 내용이 나오면 될듯듯
 function editHtml(){
-  
+  //url에서 가져온 정보를 input value 안에 넣음
+  //post edit으로 가져온 정보를 수정
+  let editHtml = `
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ADD</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100vh;
+    }
+    #root {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    #root > section {
+      width: 90%;
+    }
+    #root > section > form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    form > div:last-of-type {
+      display: flex;
+      gap: 10px;
+    }
+    form > div:last-of-type textarea {
+      width: 380px;
+    }
+    form > button {
+      border-style: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      background-color: #ccc;
+    }
+    form > button:hover {
+      background-color: black;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <h1>간식 추가</h1>
+    <section>
+      <form action="/edit" method="POST">
+        <input type="hidden" name="id">
+        <div>
+          <label for="date">간식 먹은 날</label>
+          <input type="number" name="date" placeholder="2025MMDD" required/>
+          <label for="name">간식</label>
+          <input type="text" name="name" placeholder="간식 이름" required/>
+        </div>
+        <div>
+          <label for="content">내용</label>
+          <textarea
+          name="content"
+            placeholder="후기나 하고싶은 말"
+          ></textarea>
+        </div>
+        <button type="submit">작성완료</button>
+      </form>
+    </section>
+  </div>
+  <script>
+    let input = document.getElementsByTagName('input');
+    let content = document.getElementsByTagName('textarea')[0]
+    input[0].value = 'id'
+    input[1].value = 20250103
+    input[2].value = 'name'
+    content.value = 'content'
+  </script>
+</body>
+</html>
+  `
 }
 //[x] 삭제하기 /delete
 //list.json에서 해당 데이터를 삭제
