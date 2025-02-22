@@ -228,16 +228,6 @@ function addHtml(when) {
 //[ ]url을 통해 정보 칮기
 //date를 수정하고 싶을 수도 있는데 date를 url에 넣으면 수정한 후엔...?
 //[x]일단 url로 값을 찾는 거 부터 진행
-let reqUrl = '/id=741286&date=20250304'.slice(1)
-let reqObj = qs.parse(reqUrl)
-console.log('url 변환',reqObj)
-
-let listJson = fs.readFileSync('list.json');
-let list = JSON.parse(listJson)
-
-let find = list.filter(i=> (i.id === reqObj.id)&&(i.date===reqObj.date))
-
-console.log('find',find)
 
 function detailHtml(url){
   let listJson = fs.readFileSync('list.json');
