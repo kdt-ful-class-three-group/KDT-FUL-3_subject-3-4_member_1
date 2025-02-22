@@ -292,7 +292,7 @@ function detailHtml(url){
     <h1>${find.name}</h1>
     <section>
       <ul>
-        <li><a href="/edit">수정</a></li>
+        <li><a href="/edit${url}">수정</a></li>
         <li><a href="/delete${url}">삭제</a></li>
       </ul>
     </section>
