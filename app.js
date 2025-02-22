@@ -41,7 +41,10 @@ function ulTag(obj) {
 //파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
 //만약에 파일이 존재하지 않으면 > ul태그 없이 작성
 //만약에 파일이 있으면 원래 하려던 방향으로 진행
-//[ ] admin 경로를 위해 a태그 함수 만들기기
+//[ ] admin 경로를 위해 a태그 함수 만들기
+function addTag(){
+  return `<a href="/add">추가</a>`
+}
 function indexHtml() {
   let string = "";
 
