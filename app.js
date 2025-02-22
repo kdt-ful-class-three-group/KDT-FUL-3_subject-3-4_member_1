@@ -523,6 +523,16 @@ const server = http.createServer((req, res) => {
       });
     }
     //[ ]수정하기 안에서 수정 완료
+    if(req.url==='/edit'){
+      let body = ""
+      req.on('data',(data)=>
+        body += data
+      )
+      req.on('end',()=>{
+        console.log(body.toString())
+
+      })
+    }
   }
 });
 
