@@ -244,12 +244,28 @@ function addHtml(when) {
 //[x] 상세페이지에서 목록으로 이동하는 버튼
 
 //[ ] admin에서 접근했을 때 수정, 삭제 버튼
+function delAddBtn(url){
+  return `<section>
+      <ul>
+        <li><a href="/edit${url}">수정</a></li>
+        <li><a href="/delete${url}">삭제</a></li>
+      </ul>
+    </section>`
+}
 
-function detailHtml(url){
+function detailHtml(url,admin){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(listJson)
+  let urlObj = ''
+  let btnSection = ''
 
-  let urlObj = qs.parse(url.slice(1))
+  if(admin===''){
+    urlObj = qs.parse(url.slice(1))
+  } else{
+    urlObj = qs.parse(url.slice(7))
+    btnSection = delAddBtn(url)
+  }
+
 
   let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
 
@@ -320,13 +336,9 @@ function detailHtml(url){
   <div id="root">
     <h1>${find.name}</h1>
     <div>
-      <a href="/">x</a>
+      <a href="/${admin}">x</a>
     </div>
-    <section>
-      <ul>
-        <li><a href="/edit${url}">수정</a></li>
-        <li><a href="/delete${url}">삭제</a></li>
-      </ul>
+    ${btnSection}
     </section>
     <section>
       <div>
@@ -476,9 +488,9 @@ const server = http.createServer((req, res) => {
       res.end();
     }
     //[x] 상세 페이지 : url에 id와 name이 포함되어 있으면
-    else if (req.url.includes('id') && !req.url.includes('delete')&&!req.url.includes('edit')){
+    else if (req.url.includes('id') && !req.url.includes('delete')&&!req.url.includes('edit')&&!req.url.includes('admin')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
-      res.write(detailHtml(req.url));
+      res.write(detailHtml(req.url,''));
       res.end()
     }
     //[x] 삭제하기
@@ -510,6 +522,11 @@ const server = http.createServer((req, res) => {
     else if (req.url==='/admin'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(indexHtml('admin',addTag()))
+      res.end()
+    }
+    else if (req.url.includes('/admin/')){
+      res.writeHead(200,{'content-type':'text/html;charset=utf-8'})
+      res.write(detailHtml(req.url,'admin'))
       res.end()
     }
     //! 지정한 url이외의 요청, else문 안에 넣어야함
