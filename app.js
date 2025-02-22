@@ -353,6 +353,14 @@ const server = http.createServer((req, res) => {
     //[ ] 삭제하기
     else if (req.url.includes('delete')){
       //[ ]url을 통해 데이터를 찾음
+      //url에서 /delete/를 삭제해야함
+      let listJson = fs.readFileSync('list.json');
+      let list = JSON.parse(listJson)
+    
+      let urlObj = qs.parse(req.url.slice(8))
+      console.log(urlObj)
+    
+      let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
       //[ ]데이터 삭제후 다시 홈페이지로 돌아가기
 
     }
