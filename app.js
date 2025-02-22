@@ -128,14 +128,14 @@ function randomId(){
   return randomScript
 }
 function alert(){
-  return `<script>alert("'2025MMDD'의 형식을 지켜주세요")</script>`
+  return `alert("'2025MMDD'의 형식을 지켜주세요")`
 }
 function addHtml(when) {
   if(when === 'first'){
-    when = '';
+    when = randomId();
   }
   if(when === 'alert'){
-    when = alert()
+    when = alert()+randomId()
   }
   let htmlString = `
   <!DOCTYPE html>
@@ -209,7 +209,9 @@ function addHtml(when) {
         </form>
       </section>
     </div>
+    <script>
     ${when}
+    </script>
   </body>
 </html>
 `;
