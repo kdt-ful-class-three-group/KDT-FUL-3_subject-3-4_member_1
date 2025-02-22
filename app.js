@@ -61,7 +61,7 @@ function indexHtml(admin) {
   } else {
     let listJson = fs.readFileSync("list.json");
     let list = JSON.parse(listJson);
-    string = ulTag(list);
+    string = ulTag(list,admin);
   }
 
   let htmlString = `
