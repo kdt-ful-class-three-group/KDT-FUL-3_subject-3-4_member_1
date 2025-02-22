@@ -225,6 +225,11 @@ function addHtml(when) {
 //수정하기 버튼
 //삭제하기 버튼
 function detailHtml(){
+  let listJson = fs.readFileSync('list.json');
+  let list = JSON.parse(list)
+
+  //값 찾는게 필요함
+
   let htmlString = `
   <!DOCTYPE html>
 <html lang="en">
@@ -290,6 +295,8 @@ function detailHtml(){
 </html>
 
   `
+
+  return htmlString
 }
 
 //[ ] 수정하기 /edit
