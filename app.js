@@ -311,6 +311,8 @@ function detailHtml(url){
   return htmlString
 }
 
+//페이지 안에서 이동해도 req.url은 href안에 적힌 내용만 해당됨
+//href안에 데이터 추가하기...?
 //[ ] 수정하기 /edit
 //list.json에서 수정하고자하는 데이터에 접근할 수 있어야함함
 
