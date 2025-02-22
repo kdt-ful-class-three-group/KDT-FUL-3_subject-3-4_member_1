@@ -352,7 +352,7 @@ const server = http.createServer((req, res) => {
     }
     //[ ] 삭제하기
     else if (req.url.includes('delete')){
-      //[ ]url을 통해 데이터를 찾음
+      //[x]url을 통해 데이터를 찾음
       //url에서 /delete/를 삭제해야함
       let listJson = fs.readFileSync('list.json');
       let list = JSON.parse(listJson)
@@ -361,9 +361,12 @@ const server = http.createServer((req, res) => {
       console.log(urlObj)
     
       list = list.filter(i=> !((i.id === urlObj.id)&&(i.date===urlObj.date)))
-      fs.writeFileSync('list.json',JSON.stringify(list));
       //삭제한 후 다시 writeFile하는 과정이 필요
+      fs.writeFileSync('list.json',JSON.stringify(list));
       //[ ]데이터 삭제후 다시 홈페이지로 돌아가기
+      res.writeHead(200,{'content-type':'text/html; charset=urf-8'});
+      res.write(indexHtml());
+      res.end()
 
     }
     //! 지정한 url이외의 요청, else문 안에 넣어야함
