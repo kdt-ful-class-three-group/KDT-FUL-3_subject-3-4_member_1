@@ -227,7 +227,7 @@ function addHtml(when) {
 
 //[ ]url을 통해 정보 칮기
 //date를 수정하고 싶을 수도 있는데 date를 url에 넣으면 수정한 후엔...?
-//일단 url로 값을 찾는 거 부터 진행
+//[x]일단 url로 값을 찾는 거 부터 진행
 let reqUrl = '/id=741286&date=20250304'.slice(1)
 let reqObj = qs.parse(reqUrl)
 console.log('url 변환',reqObj)
@@ -235,15 +235,17 @@ console.log('url 변환',reqObj)
 let listJson = fs.readFileSync('list.json');
 let list = JSON.parse(listJson)
 
-let find = list.filter(({id},{date})=>{
-  (id === reqObj.id && date === reqObj.date)
-})
+let find = list.filter(i=> (i.id === reqObj.id)&&(i.date===reqObj.date))
 
 console.log('find',find)
 
-function detailHtml(){
+function detailHtml(url){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(listJson)
+
+  let urlObj = qs.parse(url.slice(1))
+
+  let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
 
   //값 찾는게 필요함
   //url에 id와 date가 있음
@@ -297,7 +299,7 @@ function detailHtml(){
 </head>
 <body>
   <div id="root">
-    <h1>${name}</h1>
+    <h1>${find.name}</h1>
     <section>
       <ul>
         <li><a href="/edit">수정</a></li>
@@ -306,8 +308,8 @@ function detailHtml(){
     </section>
     <section>
       <div>
-        <p>${date}</p>
-        <p>${content}</p>
+        <p>${find.date}</p>
+        <p>${find.content}</p>
       </div>
     </section>
   </div>
