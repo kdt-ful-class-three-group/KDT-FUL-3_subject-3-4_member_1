@@ -458,7 +458,7 @@ const server = http.createServer((req, res) => {
   if (req.method === "GET") {
     if (req.url === "/") {
       res.writeHead(200, { "content-type": "utf-8;text/html" });
-      res.write(indexHtml());
+      res.write(indexHtml(''));
       res.end();
     }
     //작성완료 버튼
@@ -496,6 +496,12 @@ const server = http.createServer((req, res) => {
       //페이지로 이동
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
       res.write(editHtml(req.url));
+      res.end()
+    }
+    //[ ] admin
+    else if (req.url.includes('admin')){
+      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
+      res.write(indexHtml(addTag()))
       res.end()
     }
     //! 지정한 url이외의 요청, else문 안에 넣어야함
