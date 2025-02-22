@@ -345,7 +345,7 @@ const server = http.createServer((req, res) => {
       res.end();
     }
     //[x] 상세 페이지 : url에 id와 name이 포함되어 있으면
-    else if (req.url.includes('id')){
+    else if (req.url.includes('id') && !req.url.includes('delete')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
       res.write(detailHtml(req.url));
       res.end()
