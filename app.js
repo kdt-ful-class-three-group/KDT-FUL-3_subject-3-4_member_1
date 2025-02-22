@@ -352,6 +352,8 @@ const server = http.createServer((req, res) => {
     }
     //[ ] 삭제하기
     else if (req.url.includes('delete')){
+      //[ ]url을 통해 데이터를 찾음
+      //[ ]데이터 삭제후 다시 홈페이지로 돌아가기
 
     }
     //! 지정한 url이외의 요청, else문 안에 넣어야함
