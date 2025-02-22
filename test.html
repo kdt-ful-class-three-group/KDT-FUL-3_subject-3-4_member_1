@@ -36,7 +36,10 @@
       gap: 20px;
       padding: 0;
     }
-    
+    section > div > p:first-child {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -51,9 +54,6 @@
     <section>
       <div>
         <p>${date}</p>
-      </div>
-      <div>
-        <h2>내용</h2>
         <p>${content}</p>
       </div>
     </section>
