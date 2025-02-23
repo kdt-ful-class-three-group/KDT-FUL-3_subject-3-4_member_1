@@ -657,6 +657,11 @@ const serverTwo = http.createServer((req,res)=>{
   }
   if(req.method==='POST'){
     ///plus
+    if(req.url==='/plus'){
+      //data 가져옴
+      //data 가져온 후 list.json에 저장
+      // /admin으로 이동
+    }
     //edit
     //delete
   }
