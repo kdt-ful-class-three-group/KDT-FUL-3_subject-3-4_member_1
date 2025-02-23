@@ -7,7 +7,7 @@ import home from './method/home.js'
 import add from './method/add.js'
 import detail from './method/detail.js'
 
-//[ ]server 안에서 받복되는 내용 함수로 작성
+//[x]server 안에서 받복되는 내용 함수로 작성
 function readFunc(res,callback){
   //content-type은 항상 html
   res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
@@ -28,35 +28,25 @@ const server= http.createServer((req,res)=>{
     }
     //admin : 관리자
     else if(req.url==='/admin'){
-      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(home.indexHtml(home.adminUrl));
-      res.end()
+      readFunc(res,home.indexHtml(home.adminUrl))
     }
     //detail : 상세페이지 - id가 포함되어 있으면면
     //admin, edit, delete가 각각 포함된 경로가 있음
     //조건문으로 제어
     else if(!req.url.includes('admin')&& req.url.includes('id')&&!req.url.includes('edit')&&!req.url.includes('delete')){
-      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(detail.detailHtml(req.url,''))
-      res.end()
+      readFunc(res,detail.detailHtml(req.url,''))
     }
     //admin+detail : 관리자 > 상세페이지
     else if(req.url.includes('admin')&&req.url.includes('id')){
-      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(detail.detailHtml(req.url,'admin'))
-      res.end()
+      readFunc(res,detail.detailHtml(req.url,'admin'))
     }
     //add : 추가페이지
     else if(req.url==='/add'){
-      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(add.addHtml('first','plus',req.url))
-      res.end()
+      readFunc(res,add.addHtml('first','plus',req.url))
     }
     //edit : 수정하기
     else if(req.url.includes('edit')){
-      res.writeHead(200,{'content-type':'text/html;charset=utf-8'})
-      res.write(add.addHtml('edit','edit',req.url));
-      res.end()
+      readFunc(res,add.addHtml('edit','edit',req.url))
     }
     //delete : 삭제하기
     //list.json에서 해당 데이터를 삭제하고 홈페이지로 이동하면 삭제한 내용에 대한 목록 지워짐
@@ -71,9 +61,7 @@ const server= http.createServer((req,res)=>{
       //삭제한 후 덮어씌우기
       fs.writeFileSync('list.json',JSON.stringify(list));
       // /admin으로 돌아가야함
-      res.writeHead(200,{'content-type':'text/html;charset=utf-8'});
-      res.write(home.indexHtml(home.adminUrl))
-      res.end()
+      readFunc(res,home.indexHtml(home.adminUrl))
     }
     //404 : 주어진 경로 외의 요청이 있을 때
     //else문 안에 넣어야함
@@ -104,9 +92,7 @@ const server= http.createServer((req,res)=>{
         let day = Number(dataObj.date.slice(-2))
         //유효성 검사 실패시 경고 페이지
         if(!(year===2025 && (month>0||month<13)&&(day>0||day<32))){
-          res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-          res.write(add.addHtml('alert','plus',req.url))
-          res.end()
+          readFunc(res,add.addHtml('alert','plus',req.url))
           return
         }
         //통과하면 기존의 list.json파일 읽어와서 객체로변경
@@ -145,9 +131,7 @@ const server= http.createServer((req,res)=>{
         fs.writeFileSync('list.json',JSON.stringify(list))
         // 경로에 edit이 지워지고 admin이 붙은 경로로 돌아가야함  
         //경로에는 id와 name만 포함되어야함
-        res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-        res.write(detail.detailHtml(`/admin/${data.split('&',2).join('&')}`,'admin'))
-        res.end()
+        readFunc(res,detail.detailHtml(`/admin/${data.split('&',2).join('&')}`,'admin'))
       })
     }
   }
