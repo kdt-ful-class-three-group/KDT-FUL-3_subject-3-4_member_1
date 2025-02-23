@@ -294,13 +294,13 @@ const serverTwo = http.createServer((req,res)=>{
     ///add
     if(req.url==='/add'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(add.addHtml('first'))
+      res.write(add.addHtml('first','plus',req.url))
       res.end()
     }
     //edit
     if(req.url.includes('edit')){
       res.writeHead(200,{'content-type':'text/html;charset=utf-8'})
-      res.write(editHtml(req.url));
+      res.write(add.addHtml('edit','edit',req.url));
       res.end()
     }
     //delete
@@ -339,7 +339,7 @@ const serverTwo = http.createServer((req,res)=>{
         //유효성 검사 실패시 경고 페이지
         if(!(year===2025 && (month>0||month<13)&&(day>0||day<32))){
           res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-          res.write(add.addHtml('alert'))
+          res.write(add.addHtml('alert','plus',req.url))
           res.end()
           return
         }
