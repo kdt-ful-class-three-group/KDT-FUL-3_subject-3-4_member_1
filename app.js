@@ -73,9 +73,7 @@ const server= http.createServer((req,res)=>{
     //404 : 주어진 경로 외의 요청이 있을 때
     //else문 안에 넣어야함
     else {
-      res.writeHead(404,{'content-type':'text/plain; charset=utf-8'})
-      res.write('NOT FOUNT')
-      res.end()
+      readErr(res)
     }
   }
   //POST
