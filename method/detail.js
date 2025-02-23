@@ -9,7 +9,6 @@ const detail = {
     </section>`
   },
   //홈페이지에서 목록을 클릭했을 때 보이는 화면
-  //url의 data와 list.json의 데이터를 비교해서 url과 동일한 데이터 불러오기
   //admin으로 접근하면 btnTag함수 사용
   detailHtml:function(url,admin){
     let listJson = fs.readFileSync('list.json');
@@ -26,7 +25,8 @@ const detail = {
       urlObj = qs.parse(url.slice(7))
       isBtn = detail.btnTag(url.slice(7).split('&',2).join('&'))
     }
-
+    
+    //url의 data와 list.json의 데이터를 비교해서 url과 동일한 데이터 불러오기
     let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
 
     let htmlString = `
