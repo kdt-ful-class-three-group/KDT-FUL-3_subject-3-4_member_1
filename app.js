@@ -371,13 +371,7 @@ function detailHtml(url,admin){
 //[x] 수정하기 /edit
 //list.json에서 수정하고자하는 데이터에 접근할 수 있어야함함
 //수정하기를 누르면 나오는 페이지는 addHtml가 동일한 구성에 입력창에 내용이 나오면 될듯듯
-let ex = '/edit/id=741286&date=20250304'
-let listJson = fs.readFileSync('list.json');
-let list = JSON.parse(listJson)
 
-let urlObj = qs.parse(ex.slice(6))
-
-let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
 //admin이 포함 되었을 때면 수정 버튼 나타남 > url 문자열 처리 수정 필요성
 function editHtml(url){
   //url에서 가져온 정보를 input value 안에 넣음
@@ -706,6 +700,14 @@ const serverTwo = http.createServer((req,res)=>{
       })
     }
     //edit
+    if(req.url==='/edit'){
+      //데이터 받아오기
+      // 데이터 받아온후
+      // list.json 정보 > 객체로 변경
+      // 브라우저 에서 입력한 정보 -> 객체로
+      // id 정보를 비교해서 동일하면 덮어씌우기
+      // 경로에 edit이 지워지고 admin이 붙은 경로로 돌아가야함  
+    }
     //delete
   }
 })
