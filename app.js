@@ -8,37 +8,6 @@ import add from './method/add.js'
 import detail from './method/detail.js'
 import read from './method/read.js'
 
-//[x]server 안에서 받복되는 내용 함수로 작성
-function readFunc(res,callback){
-  //content-type은 항상 html
-  res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-  //경로에 따라 함수가 바뀜
-  res.write(callback);
-  res.end()
-}
-
-//404에러 함수
-function readErr(res){
-  res.writeHead(404,{'content-type':'text/plain; charset=utf-8'})
-  res.write('NOT FOUNT')
-  res.end()
-}
-
-//리다이렉트 함수
-function readLocation(res,callback){
-  res.writeHead(302,{location:'/admin'})
-  res.write(callback)
-  res.end()
-}
-
-
-//list.json파일 읽고 객체로 변경경
-function readList(){
-  let listJson = fs.readFileSync('list.json')
-  let list = JSON.parse(listJson)
-  return list
-}
-
 const server= http.createServer((req,res)=>{
   //경로 확인
   console.log(`${req.method} ${req.url}`)
