@@ -1,7 +1,14 @@
 import fs from 'fs'
 import qs from 'querystring'
 
+//페이지 안에서 이동해도 req.url은 href안에 적힌 내용만 해당
+//list.json에서 수정하고자하는 데이터에 접근할 수 있어야함
+//admin이 포함 되었을 때면 수정 버튼 나타남
+
 const edit = {
+  //url에서 가져온 정보를 input value 안에 넣음
+  //post edit으로 가져온 정보를 수정
+  //addHtml과 형식은 동일 + 값이 미리 적혀있는 것
   editHtml: function(url){
     let listJson = fs.readFileSync('list.json');
     let list = JSON.parse(listJson)
