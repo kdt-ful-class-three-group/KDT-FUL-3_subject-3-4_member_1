@@ -32,11 +32,11 @@ const add = {
       content.value = '${find.content}'`
 
     return script
-  }
+  },
   //date, name, content 입력창, 제출 버튼이 있는 form태그
   //필수 작성 요소 : date, name
   //date : 2025MMDD
-  addHtml: function(when,action){
+  addHtml: function(when,action,url){
     //add, edit을 결정할 action
     let action = 'plus'
     //id를 위한 숨겨진 입력창이 포함됨
@@ -49,7 +49,7 @@ const add = {
     }
     if(action === 'edit'){
       action = 'edit'
-      when 
+      when = add.editScript(url)
     }
     let htmlString = `
       <!DOCTYPE html>
