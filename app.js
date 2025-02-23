@@ -145,7 +145,7 @@ const server= http.createServer((req,res)=>{
   }
 })
 
-PORT = 8000
+const PORT = 8000
 server.listen(PORT,()=>{
   console.log(`http://localhost:${PORT}`)
 })
