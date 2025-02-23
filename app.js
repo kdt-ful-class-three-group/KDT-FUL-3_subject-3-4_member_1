@@ -113,9 +113,7 @@ const server= http.createServer((req,res)=>{
         originObj.push(dataObj)
         fs.writeFileSync('list.json',JSON.stringify(originObj))
         // /admin으로 이동
-        res.writeHead(302,{location:'/admin'})
-        res.write(home.indexHtml(home.adminUrl))
-        res.end()
+        readLocation(res,home.indexHtml(home.adminUrl))
       })
     }
     //edit : admin > 상세페이지에서 수정 버튼
