@@ -7,6 +7,9 @@ import home from './method/home.js'
 import add from './method/add.js'
 import detail from './method/detail.js'
 
+//[ ]server 안에서 받복되는 내용 함수로 작성
+
+
 const server= http.createServer((req,res)=>{
   //경로 확인
   console.log(`${req.method} ${req.url}`)
