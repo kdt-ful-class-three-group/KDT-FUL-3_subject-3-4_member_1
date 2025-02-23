@@ -31,15 +31,13 @@ function url(obj){
 function adminUrl(obj){
   return '/admin/'+qs.stringify(obj).split("&",2).join("&")
 }
-function liTag(obj) {
-  let url = qs.stringify(obj).split("&",2).join("&")
-
-  return `<li><a href=/${url}>${obj.name}</a></li>`;
+function liTag(urlFunc) {
+  return `<li><a href=/${urlFunc}>${obj.name}</a></li>`;
 }
 
 //[x]liTag를 사용해서 ul태그 만드는 함수
-function ulTag(obj) {
-  let liTags = obj.reduce((acc, i) => acc + liTag(i), "");
+function ulTag(urlFunc,obj) {
+  let liTags = obj.reduce((acc, i) => acc + liTag(urlFunc(i)), "");
   return `<ul>${liTags}</ul>`;
 }
 
