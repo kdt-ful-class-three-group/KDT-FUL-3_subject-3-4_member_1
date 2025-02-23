@@ -638,8 +638,17 @@ const serverTwo = http.createServer((req,res)=>{
       res.end()
     }
     //detail
-    
+    if(!req.url.includes('admin')&& req.url.includes('id')){
+      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
+      res.write(detailHtml(req.url,false,''))
+      res.end()
+    }
     //admin+detail
+    if(req.url.includes('admin')&&req.url.includes('id')){
+      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
+      res.write(detailHtml(req.url,true,btnTag()))
+      res.end()
+    }
   }
 })
 
