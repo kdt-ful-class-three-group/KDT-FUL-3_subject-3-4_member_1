@@ -12,13 +12,19 @@ KDT-Ful-3_SUBJECT-3-4_member_1/
 
 # 실행 방법
 1. 저장소를 클론  
-  git clone https://github.com/kdt-ful-class-three-group/KDT-FUL-3_subject-3-4_member_1.git
+```
+git clone https://github.com/kdt-ful-class-three-group/KDT-FUL-3_subject-3-4_member_1.git
+```
 
 2. 프로젝트 폴더로 이동  
-  cd KDT-FUL-3_subject-3-5_member_1
+```
+cd KDT-FUL-3_subject-3-5_member_1
+```
 
 3. 터미널 명령어 입력 후 'localhost:8000'으로 이동  
-  node app.js
+```
+node app.js
+```
 
 # 구현 기능 목록
 ### 1. create
@@ -41,19 +47,19 @@ KDT-Ful-3_SUBJECT-3-4_member_1/
 
 # 학습 내용 정리
 ### 1. update에서 데이터를 수정
-a. url에서 데이터를 객체로 변환
-b. list.json을 불러와서 JSON.parse 사용 : 배열로 변환
-c. 배열 메서드를 사용해 url의 데이터를 가지고 있는 요소 찾음
-d. 수정한 값을 요소에 할당
-e. writeFileSync()를 사용해 list.json을 바뀐 데이터로 다시 생성
-f. 수정한 값을 사용해 생성한 url로 이동하면 상세페이로 이동, 수정된 내용 볼 수 있음
+a. url에서 데이터를 객체로 변환  
+b. list.json을 불러와서 JSON.parse 사용 : 배열로 변환  
+c. 배열 메서드를 사용해 url의 데이터를 가지고 있는 요소 찾음  
+d. 수정한 값을 요소에 할당  
+e. writeFileSync()를 사용해 list.json을 바뀐 데이터로 다시 생성  
+f. 수정한 값을 사용해 생성한 url로 이동하면 상세페이로 이동, 수정된 내용 볼 수 있음  
 
 ### 2. delete에서 데이터를 삭제하고 경로 이동
-a. a태그를 사용해서 GET방식에서 응답
-b. url에서 만든 데이터와 list.json을 불러와 비교
-c. 해당 요소가 아닌 요소들로만 배열 재반환 : filter() 사용
-d. 재구성된 배열을 writeFileSync()를 사용해서 list.json을 다시 생성
-f. 목록이 보이는 홈페이지로 이동
+a. a태그를 사용해서 GET방식에서 응답  
+b. url에서 만든 데이터와 list.json을 불러와 비교  
+c. 해당 요소가 아닌 요소들로만 배열 재반환 : filter() 사용  
+d. 재구성된 배열을 writeFileSync()를 사용해서 list.json을 다시 생성  
+f. 목록이 보이는 홈페이지로 이동  
 
 ### 3. 데이터 유효성 검사
 - date에 대한 유효성 검사 필요성 느낌 : 2025MMDD
