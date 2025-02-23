@@ -592,7 +592,8 @@ server.listen(PORT, () => {
 
 //! admin 경로를 테스트할 서버
 const serverTwo = http.createServer((req,res)=>{
-
+  //경로 확인
+  console.log(`${req.method} ${req.url}`)
 })
 
 serverTwo.listen(3050,()=>{
