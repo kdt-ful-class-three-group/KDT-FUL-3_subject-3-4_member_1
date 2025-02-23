@@ -5,6 +5,7 @@ import qs from "querystring";
 //method
 import home from './method/home.js'
 import add from './method/add.js'
+import detail from './method/detail.js'
 
 //[x] 상세 페이지
 //url : /id=111111&date=20250101
