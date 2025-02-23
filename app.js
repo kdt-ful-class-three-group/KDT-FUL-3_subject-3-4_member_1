@@ -607,7 +607,11 @@ const serverTwo = http.createServer((req,res)=>{
       res.write(indexHtml(url));
       res.end()
     }
-    if(req.url==='/admin'){}
+    if(req.url==='/admin'){
+      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
+      res.write(indexHtml(adminUrl));
+      res.end()
+    }
   }
 })
 
