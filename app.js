@@ -120,7 +120,7 @@ const serverTwo = http.createServer((req,res)=>{
       res.end()
     }
     //admin : 관리자
-    if(req.url==='/admin'){
+    else if(req.url==='/admin'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(home.indexHtml(home.adminUrl));
       res.end()
@@ -128,32 +128,32 @@ const serverTwo = http.createServer((req,res)=>{
     //detail : 상세페이지 - id가 포함되어 있으면면
     //admin, edit, delete가 각각 포함된 경로가 있음
     //조건문으로 제어
-    if(!req.url.includes('admin')&& req.url.includes('id')&&!req.url.includes('edit')&&!req.url.includes('delete')){
+    else if(!req.url.includes('admin')&& req.url.includes('id')&&!req.url.includes('edit')&&!req.url.includes('delete')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(detail.detailHtml(req.url,''))
       res.end()
     }
     //admin+detail : 관리자 > 상세페이지
-    if(req.url.includes('admin')&&req.url.includes('id')){
+    else if(req.url.includes('admin')&&req.url.includes('id')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(detail.detailHtml(req.url,'admin'))
       res.end()
     }
     //add : 추가페이지
-    if(req.url==='/add'){
+    else if(req.url==='/add'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(add.addHtml('first','plus',req.url))
       res.end()
     }
     //edit : 수정하기
-    if(req.url.includes('edit')){
+    else if(req.url.includes('edit')){
       res.writeHead(200,{'content-type':'text/html;charset=utf-8'})
       res.write(add.addHtml('edit','edit',req.url));
       res.end()
     }
     //delete : 삭제하기
     //list.json에서 해당 데이터를 삭제하고 홈페이지로 이동하면 삭제한 내용에 대한 목록 지워짐
-    if(req.url.includes('delete')){
+    else if(req.url.includes('delete')){
       let listJson = fs.readFileSync('list.json')
       let list = JSON.parse(listJson)
 
@@ -166,6 +166,13 @@ const serverTwo = http.createServer((req,res)=>{
       // /admin으로 돌아가야함
       res.writeHead(200,{'content-type':'text/html;charset=utf-8'});
       res.write(home.indexHtml(home.adminUrl))
+      res.end()
+    }
+    //404 : 주어진 경로 외의 요청이 있을 때
+    //else문 안에 넣어야함
+    else {
+      res.writeHead(404,{'content-type':'text/plain; charset=utf-8'})
+      res.write('NOT FOUNT')
       res.end()
     }
   }
