@@ -649,6 +649,11 @@ const serverTwo = http.createServer((req,res)=>{
       res.end()
     }
   }
+  if(req.method==='POST'){
+    ///plus
+    //edit
+    //delete
+  }
 })
 
 serverTwo.listen(3050,()=>{
