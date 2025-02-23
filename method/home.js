@@ -32,22 +32,25 @@ const home = {
   aAddTag : function(){
     return '<a href="/add">추가</a>'
   },
-  //li태그가 포함된 ul태그와 경로에 따른 a태그 사용 유무 판단
-  //list.json이 존재하지 않을때의 조건 포함
-  //list.json파일이 존재하지 않으면 빈배열을 넣어서 생성
-  //list.json파일이 있으면 데이터 가져오기
+  // write()로 읽을 html문자열
+  //urlFunc는 진입경로에 따른 함수 사용 결정
   indexHtml: function(urlFunc){
     let string = "";
     let aTag= ''
     
+    //list.json이 존재하지 않을때의 조건 포함
+    //list.json파일이 존재하지 않으면 빈배열을 넣어서 생성
     if (!fs.existsSync("list.json")) {
       fs.writeFile("list.json", JSON.stringify([]));
-    } else {
+    } 
+    //list.json파일이 있으면 데이터 가져오기
+    else {
       let listJson = fs.readFileSync("list.json");
       let list = JSON.parse(listJson);
       string = this.ulTag(urlFunc,list);
     }
     
+    //li태그가 포함된 ul태그와 경로에 따른 a태그 사용 유무 판단
     if(urlFunc===home.adminUrl){
       aTag = home.aAddTag()
     }
