@@ -97,3 +97,5 @@ const edit = {
 return editHtml
   }
 }
+
+export default edit
