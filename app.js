@@ -42,7 +42,7 @@ function ulTag(urlFunc,obj) {
 }
 
 function aAddTag(){
-  return `<a href="/add">추가</a>`
+  return '<a href="/add">추가</a>'
 }
 
 //[x]만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
@@ -63,7 +63,7 @@ function indexHtml(urlFunc) {
     string = ulTag(urlFunc,list);
   }
 
-  if(urlFunc==='adminUrl'){
+  if(urlFunc===adminUrl){
     aTag = aAddTag()
   }
 
@@ -126,6 +126,7 @@ function indexHtml(urlFunc) {
       `;
   return htmlString;
 }
+// console.log(indexHtml(adminUrl))
 
 //[x]addPage 함수 만들기
 //따로 추가할 내용 없어보임...?
@@ -263,24 +264,22 @@ function btnTag(){
 }
 
 
-function detailHtml(url,isAdmin,btn){
+function detailHtml(url,isAdmin){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(listJson)
 
   let urlObj  = {}
   let isBtn = ''
 
-  if(isAdmin){
+  if(!isAdmin){
     urlObj = qs.parse(url.slice(1))
-  } 
-  urlObj = qs.parse(url.slice(6))
+  } else {
+    urlObj = qs.parse(url.slice(7))
+    isBtn = btnTag()
+  }
 
 
   let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
-
-  if(!btn === ''){
-    isBtn = btnTag()
-  }
 
   //값 찾는게 필요함
   //url에 id와 date가 있음
@@ -640,13 +639,13 @@ const serverTwo = http.createServer((req,res)=>{
     //detail
     if(!req.url.includes('admin')&& req.url.includes('id')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(detailHtml(req.url,false,''))
+      res.write(detailHtml(req.url,false))
       res.end()
     }
     //admin+detail
     if(req.url.includes('admin')&&req.url.includes('id')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(detailHtml(req.url,true,btnTag()))
+      res.write(detailHtml(req.url,true))
       res.end()
     }
   }
