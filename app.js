@@ -81,7 +81,7 @@ const server= http.createServer((req,res)=>{
         let day = Number(dataObj.date.slice(-2))
         //유효성 검사 실패시 경고 페이지
         if(!(year===2025 && (month>0||month<13)&&(day>0||day<32))){
-          readFunc(res,add.addHtml('alert','plus',req.url))
+          read.readFunc(res,add.addHtml('alert','plus',req.url))
           return
         }
         //통과하면 기존의 list.json파일 읽어와서 객체로변경
