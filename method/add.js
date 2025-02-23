@@ -1,3 +1,6 @@
+import fs from 'fs'
+import qs from 'querystring'
+
 const add = {
   //list.json과 url에 사용할 id에 랜덤 숫자 부여하는 함수수
   randomId: function() {
@@ -37,8 +40,6 @@ const add = {
   //필수 작성 요소 : date, name
   //date : 2025MMDD
   addHtml: function(when,action,url){
-    //add, edit을 결정할 action
-    let action = 'plus'
     //id를 위한 숨겨진 입력창이 포함됨
     if(when === 'first'){
       when = add.randomId();
@@ -47,8 +48,7 @@ const add = {
     if(when === 'alert'){
       when = add.alert()+add.randomId()
     }
-    if(action === 'edit'){
-      action = 'edit'
+    if(when ==='edit'){
       when = add.editScript(url)
     }
     let htmlString = `
