@@ -677,6 +677,7 @@ const serverTwo = http.createServer((req,res)=>{
           res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
           res.write(addHtml('alert'))
           res.end()
+          return
         }
         //통과하면 기존의 list.json파일 읽어와서 객체로변경
         let origin = fs.readFileSync('list.json')
