@@ -8,6 +8,13 @@ import add from './method/add.js'
 import detail from './method/detail.js'
 
 //[ ]server 안에서 받복되는 내용 함수로 작성
+function readFunc(res,callback){
+  //content-type은 항상 html
+  res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
+  //경로에 따라 함수가 바뀜
+  res.write(callback);
+  res.end()
+}
 
 
 const server= http.createServer((req,res)=>{
