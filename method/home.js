@@ -41,7 +41,7 @@ const home = {
     //list.json이 존재하지 않을때의 조건 포함
     //list.json파일이 존재하지 않으면 빈배열을 넣어서 생성
     if (!fs.existsSync("list.json")) {
-      fs.writeFile("list.json", JSON.stringify([]));
+      fs.writeFileSync("list.json", JSON.stringify([]));
     } 
     //list.json파일이 있으면 데이터 가져오기
     else {
