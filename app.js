@@ -253,12 +253,22 @@ function addHtml(when) {
 //? [ ] 경로에 따른 객체 만드는 방식이 달라짐
 //? [ ] 경로에 따라 버튼의 유무 달라짐
 
+function btnTag(){
+  return `<section>
+      <ul>
+        <li><a href="/edit${url}">수정</a></li>
+        <li><a href="/delete${url}">삭제</a></li>
+      </ul>
+    </section>`
+}
 
-function detailHtml(url,isAdmin){
+
+function detailHtml(url,isAdmin,btn){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(listJson)
 
   let urlObj  = {}
+  let isBtn = ''
 
   if(isAdmin){
     urlObj = qs.parse(url.slice(1))
@@ -267,6 +277,10 @@ function detailHtml(url,isAdmin){
 
 
   let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
+
+  if(!btn === ''){
+    isBtn = btnTag()
+  }
 
   //값 찾는게 필요함
   //url에 id와 date가 있음
@@ -337,12 +351,7 @@ function detailHtml(url,isAdmin){
     <div>
       <a href="/">x</a>
     </div>
-    <section>
-      <ul>
-        <li><a href="/edit${url}">수정</a></li>
-        <li><a href="/delete${url}">삭제</a></li>
-      </ul>
-    </section>
+    ${isBtn}
     <section>
       <div>
         <p>${find.date}</p>
@@ -629,6 +638,7 @@ const serverTwo = http.createServer((req,res)=>{
       res.end()
     }
     //detail
+    
     //admin+detail
   }
 })
