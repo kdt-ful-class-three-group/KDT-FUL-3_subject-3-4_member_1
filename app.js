@@ -589,3 +589,12 @@ const PORT = 8000;
 server.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
 });
+
+//! admin 경로를 테스트할 서버
+const serverTwo = http.createServer((req,res)=>{
+
+})
+
+serverTwo.listen(3050,()=>{
+  console.log('http://localhost:3050')
+})
