@@ -639,7 +639,7 @@ const serverTwo = http.createServer((req,res)=>{
       res.end()
     }
     //detail
-    if(!req.url.includes('admin')&& req.url.includes('id')&&!req.url.includes('edit')){
+    if(!req.url.includes('admin')&& req.url.includes('id')&&!req.url.includes('edit')&&!req.url.includes('delete')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(detailHtml(req.url,''))
       res.end()
@@ -661,6 +661,10 @@ const serverTwo = http.createServer((req,res)=>{
       res.writeHead(200,{'content-type':'text/html;charset=utf-8'})
       res.write(editHtml(req.url));
       res.end()
+    }
+    //delete
+    if(req.url.includes('delete')){
+      
     }
   }
   if(req.method==='POST'){
@@ -727,7 +731,6 @@ const serverTwo = http.createServer((req,res)=>{
         res.end()
       })
     }
-    //delete
   }
 })
 
