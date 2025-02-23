@@ -2,6 +2,9 @@ import http from "http";
 import fs from "fs";
 import qs from "querystring";
 
+//method
+import home from './method/home.js'
+
 //list.json 파일이 존재한다면
 // let listJson = fs.readFileSync("list.json");
 // let list = JSON.parse(listJson);
