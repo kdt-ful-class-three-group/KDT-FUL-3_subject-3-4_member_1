@@ -679,8 +679,15 @@ const serverTwo = http.createServer((req,res)=>{
           res.end()
         }
         //통과하면 기존의 list.json파일 읽어와서 객체로변경
+        let origin = fs.readFileSync('list.json')
+        let originObj = JSON.parse(origin)
         //데이터 추가후 덮어씌우기
+        originObj.push(dataObj)
+        fs.writeFileSync('list.json',JSON.stringify(originObj))
         // /admin으로 이동
+        res.writeHead(302,{location:'/admin'})
+        res.write(indexHtml(adminUrl))
+        res.end()
       })
     }
     //edit
