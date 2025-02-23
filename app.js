@@ -702,11 +702,22 @@ const serverTwo = http.createServer((req,res)=>{
     //edit
     if(req.url==='/edit'){
       //데이터 받아오기
+      let body = ''
+      req.on('data',(data)=>{
+        body += data
+      })
       // 데이터 받아온후
-      // list.json 정보 > 객체로 변경
-      // 브라우저 에서 입력한 정보 -> 객체로
-      // id 정보를 비교해서 동일하면 덮어씌우기
-      // 경로에 edit이 지워지고 admin이 붙은 경로로 돌아가야함  
+      req.on('end',()=>{
+        // list.json 정보 > 객체로 변경
+        let listJson = fs.readFileSync('list.json')
+        let list = JSON.parse(listJson)
+        // 브라우저 에서 입력한 정보 -> 객체로
+        let data = body.toString()
+        let dataObj = qs.parse(data)
+        // id 정보를 비교해서 동일하면 덮어씌우기
+        // 경로에 edit이 지워지고 admin이 붙은 경로로 돌아가야함  
+
+      })
     }
     //delete
   }
