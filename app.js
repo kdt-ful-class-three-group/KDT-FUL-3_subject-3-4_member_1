@@ -7,106 +7,6 @@ import home from './method/home.js'
 import add from './method/add.js'
 import detail from './method/detail.js'
 
-
-//* page를 readFile로 읽기 > err일 때 : 404에러
-//[x] write에 넣어주고 이 외의 req.url일 때 404 에러
-
-//TODO데이터 유효성 검사 필요성 있음
-const server = http.createServer((req, res) => {
-    //! 지정한 url이외의 요청, else문 안에 넣어야함
-    else {
-      res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
-      res.write("NOT FOUND");
-      res.end();
-    }
-  
-  //POST
-  if (req.method === "POST") {
-    //addPage에서 form 태그에 대한 응답
-    // [x] 입력한 데이터로 list.json 생성
-    if (req.url === "/plus") {
-      //data 받아올 때
-      let body = "";
-      req.on("data", (data) => {
-        body += data;
-      });
-      //data 받아온 후
-      req.on("end", () => {
-        //[x]입력한 데이터를 객체로 변경
-        let data = body.toString();
-        let dataObj = qs.parse(data);
-        //[x]여기서 유효성 검사
-        console.log(typeof dataObj.date)
-        let year = Number(dataObj.date.slice(0,4))
-        let month = Number(dataObj.date.slice(4,6))
-        let day = Number(dataObj.date.slice(-2))
-        console.log (year,month,day)
-        if(!(year===2025 && (month>0||month<13)&&(day>0||day<32))){
-          //[x]addPage로 돌아감 + alert 안내 메시지
-          res.writeHead(200,{"content-type":'text/html;charset=utf-8'})
-          res.write(addHtml('alert'))
-          res.end();
-        }
-        //[x]파일이 없으면 json파일을 만들고 빈 배열 넣어주기
-        //indexHtml함수 안에서 처리 > 서버 실행되면 바로 진행됨
-        //[x] 파일이 있으면 기존의 파일 데이터 가져오기
-        let origin = fs.readFileSync("list.json");
-        //[x] json에 저장된 데이터는 문자열-> 객체로 변경이 필요
-        let originObj = JSON.parse(origin);
-        //[x] 객체로 변경된 기존 데이터에 새로 받아온 데이터 추가
-        originObj.push(dataObj);
-        console.log(originObj);
-        //[x] 객체를 문자열로 바꾼 후 저장 필요
-        console.log(JSON.stringify(originObj))
-        fs.writeFileSync('list.json',JSON.stringify(originObj));
-        //[x] 홈페이지로 이동이 필요함
-        res.writeHead(302,{location:'/'})
-        res.write(indexHtml());
-        res.end()
-      });
-    }
-    //[x]수정하기 안에서 수정 완료
-    if(req.url==='/edit'){
-      let body = ""
-      req.on('data',(data)=>
-        body += data
-      )
-      req.on('end',()=>{
-        //id 정보를 비교해서 동일하면 덮어씌우기
-        //list.json 정보 -> 객체로 변경경
-        let listJson = fs.readFileSync('list.json');
-        let list = JSON.parse(listJson)
-      
-        //브라우저에서 입력한 정보 -> 객체
-        let data = body.toString();
-        let dataObj = qs.parse(data);
-        //id로 해당 데이터를 찾고 값 덮어씌우기
-        list.filter(i=>i.id === dataObj.id).map(i=> {
-          i.name = dataObj.name; 
-          i.date = dataObj.date; 
-          i.content = dataObj.content
-        })
-
-        console.log(list)
-
-        //다시 writeFile 사용
-        fs.writeFileSync('list.json',JSON.stringify(list))
-        //다시 상세페이지로 돌아가야함
-        //date가 바뀔 수 있음 -> url에 /edit/이 지워지고 id와 name 정보가 들어가야함
-        res.writeHead(200,{'content-type':'text.html; charset=utf-8'})
-        res.write(detailHtml('/'+data));
-        res.end()
-      })
-    }
-  }
-});
-
-//8000번 포트 사용
-const PORT = 8000;
-server.listen(PORT, () => {
-  console.log(`http://localhost:${PORT}`);
-});
-
 //! admin 경로를 테스트할 서버
 const serverTwo = http.createServer((req,res)=>{
   //경로 확인
@@ -176,8 +76,10 @@ const serverTwo = http.createServer((req,res)=>{
       res.end()
     }
   }
+  //POST
   if(req.method==='POST'){
-    ///plus
+    //plus : /add에서 from태그 제출
+    //입력한 데이터로 list.json 생성
     if(req.url==='/plus'){
       //data 가져옴
       let body = '';
@@ -212,7 +114,7 @@ const serverTwo = http.createServer((req,res)=>{
         res.end()
       })
     }
-    //edit
+    //edit : admin > 상세페이지에서 수정 버튼
     if(req.url==='/edit'){
       //데이터 받아오기
       let body = ''
@@ -235,6 +137,7 @@ const serverTwo = http.createServer((req,res)=>{
         })
         fs.writeFileSync('list.json',JSON.stringify(list))
         // 경로에 edit이 지워지고 admin이 붙은 경로로 돌아가야함  
+        //경로에는 id와 name만 포함되어야함
         res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
         res.write(detail.detailHtml(`/admin/${data.split('&',2).join('&')}`,'admin'))
         res.end()
