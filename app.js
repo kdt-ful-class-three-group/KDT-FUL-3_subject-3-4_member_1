@@ -62,7 +62,7 @@ function indexHtml(urlFunc) {
   } else {
     let listJson = fs.readFileSync("list.json");
     let list = JSON.parse(listJson);
-    string = ulTag(urlFunc,list);
+    string = urlFunc(list);
   }
 
   let htmlString = `
@@ -602,7 +602,7 @@ const serverTwo = http.createServer((req,res)=>{
   if(req.method==="GET"){
     if(req.url==='/'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(indexHtml());
+      res.write(indexHtml(ulTag));
       res.end()
     }
   }
