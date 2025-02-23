@@ -8,6 +8,7 @@ import add from './method/add.js'
 import detail from './method/detail.js'
 import read from './method/read.js'
 
+//server
 const server= http.createServer((req,res)=>{
   //경로 확인
   console.log(`${req.method} ${req.url}`)
