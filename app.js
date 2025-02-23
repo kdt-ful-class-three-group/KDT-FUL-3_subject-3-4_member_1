@@ -16,6 +16,13 @@ function readFunc(res,callback){
   res.end()
 }
 
+//404에러 함수
+function readErr(res){
+  res.writeHead(404,{'content-type':'text/plain; charset=utf-8'})
+  res.write('NOT FOUNT')
+  res.end()
+}
+
 
 const server= http.createServer((req,res)=>{
   //경로 확인
