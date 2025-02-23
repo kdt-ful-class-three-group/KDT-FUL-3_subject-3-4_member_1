@@ -7,72 +7,19 @@ import home from './method/home.js'
 import add from './method/add.js'
 import detail from './method/detail.js'
 
-//[x] 삭제하기 /delete
-//list.json에서 해당 데이터를 삭제
-//그 후 홈페이지로 이동하면 글 목록에서 삭제되어 있을 듯
-
-//삭제하기, 수정하기 둘 다 해당 데이터에 접근하는 게 중요한듯
-//처음엔 date와 name으로 구별하려고 했는데 동일한 날짜에 동일한 제목이 있는 경우가 생각남
-//list.word에 저장될 정보에 랜덤 숫자를 적용해볼까 생각중
 
 //* page를 readFile로 읽기 > err일 때 : 404에러
 //[x] write에 넣어주고 이 외의 req.url일 때 404 에러
 
 //TODO데이터 유효성 검사 필요성 있음
 const server = http.createServer((req, res) => {
-  //req.method, req.url 확인
-  console.log(`${req.method}  ${req.url}`);
-  //GET
-  if (req.method === "GET") {
-    if (req.url === "/") {
-      res.writeHead(200, { "content-type": "utf-8;text/html" });
-      res.write(indexHtml());
-      res.end();
-    }
-    //작성완료 버튼
-    else if (req.url === "/add") {
-      res.writeHead(200, { "content-type": "text/html; charset=utf-8" });
-      res.write(addHtml('first'));
-      res.end();
-    }
-    //[x] 상세 페이지 : url에 id와 name이 포함되어 있으면
-    else if (req.url.includes('id') && !req.url.includes('delete')&&!req.url.includes('edit')){
-      res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
-      res.write(detailHtml(req.url));
-      res.end()
-    }
-    //[x] 삭제하기
-    else if (req.url.includes('delete')){
-      //[x]url을 통해 데이터를 찾음
-      //url에서 /delete/를 삭제해야함
-      let listJson = fs.readFileSync('list.json');
-      let list = JSON.parse(listJson)
-    
-      let urlObj = qs.parse(req.url.slice(8))
-      console.log(urlObj)
-    
-      list = list.filter(i=> !((i.id === urlObj.id)&&(i.date===urlObj.date)))
-      //삭제한 후 다시 writeFile하는 과정이 필요
-      fs.writeFileSync('list.json',JSON.stringify(list));
-      //[x]데이터 삭제후 다시 홈페이지로 돌아가기
-      res.writeHead(200,{'content-type':'text/html; charset=urf-8'});
-      res.write(indexHtml());
-      res.end()
-    }
-    //[x]수정하기
-    else if(req.url.includes('edit')){
-      //페이지로 이동
-      res.writeHead(200,{'content-type':'text/html; charset=utf-8'});
-      res.write(editHtml(req.url));
-      res.end()
-    }
     //! 지정한 url이외의 요청, else문 안에 넣어야함
     else {
       res.writeHead(404, { "content-type": "text/plain; charset=uft-8" });
       res.write("NOT FOUND");
       res.end();
     }
-  }
+  
   //POST
   if (req.method === "POST") {
     //addPage에서 form 태그에 대한 응답
@@ -164,49 +111,54 @@ server.listen(PORT, () => {
 const serverTwo = http.createServer((req,res)=>{
   //경로 확인
   console.log(`${req.method} ${req.url}`)
+  //GET
   if(req.method==="GET"){
-    //진입입
+    //진입
     if(req.url==='/'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(home.indexHtml(home.url));
       res.end()
     }
-    //admin
+    //admin : 관리자
     if(req.url==='/admin'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(home.indexHtml(home.adminUrl));
       res.end()
     }
-    //detail
+    //detail : 상세페이지 - id가 포함되어 있으면면
+    //admin, edit, delete가 각각 포함된 경로가 있음
+    //조건문으로 제어
     if(!req.url.includes('admin')&& req.url.includes('id')&&!req.url.includes('edit')&&!req.url.includes('delete')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(detail.detailHtml(req.url,''))
       res.end()
     }
-    //admin+detail
+    //admin+detail : 관리자 > 상세페이지
     if(req.url.includes('admin')&&req.url.includes('id')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(detail.detailHtml(req.url,'admin'))
       res.end()
     }
-    ///add
+    //add : 추가페이지
     if(req.url==='/add'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(add.addHtml('first','plus',req.url))
       res.end()
     }
-    //edit
+    //edit : 수정하기
     if(req.url.includes('edit')){
       res.writeHead(200,{'content-type':'text/html;charset=utf-8'})
       res.write(add.addHtml('edit','edit',req.url));
       res.end()
     }
-    //delete
+    //delete : 삭제하기
+    //list.json에서 해당 데이터를 삭제하고 홈페이지로 이동하면 삭제한 내용에 대한 목록 지워짐
     if(req.url.includes('delete')){
       let listJson = fs.readFileSync('list.json')
       let list = JSON.parse(listJson)
 
       //url을 통해 데이터 찾음
+      //'/delete/'를 삭제 후 객체로 만듦
       let urlObj = qs.parse(req.url.slice(8));
       list = list.filter(i=>!((i.id===urlObj.id)&&(i.date===urlObj.date)))
       //삭제한 후 덮어씌우기
