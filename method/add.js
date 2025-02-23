@@ -11,14 +11,14 @@ const add = {
     return `alert("'2025MMDD'의 형식을 지켜주세요")`
   },
   //date, name, content 입력창, 제출 버튼이 있는 form태그
-  //id를 위한 숨겨진 입력창이 포함됨
   //필수 작성 요소 : date, name
   //date : 2025MMDD
-  //데이터 형식이 잘못되었을 때는 alert메서드 포함
   addHtml: function(when){
+    //id를 위한 숨겨진 입력창이 포함됨
     if(when === 'first'){
       when = add.randomId();
     }
+    //데이터 형식이 잘못되었을 때는 alert메서드 포함
     if(when === 'alert'){
       when = add.alert()+add.randomId()
     }
