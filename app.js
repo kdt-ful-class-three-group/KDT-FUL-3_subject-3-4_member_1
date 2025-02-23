@@ -659,8 +659,29 @@ const serverTwo = http.createServer((req,res)=>{
     ///plus
     if(req.url==='/plus'){
       //data 가져옴
+      let body = '';
+      req.on('data',(data)=>{
+        body += data;
+      })
       //data 가져온 후 list.json에 저장
-      // /admin으로 이동
+      req.on('end',()=>{
+        //입력한 데이터를 객체로 변경
+        let data = body.toString()
+        let dataObj = qs.parse(data)
+        //데이터 유효성 검사
+        let year = Number(dataObj.date.slice(0,4))
+        let month = Number(dataObj.date.slice(4,6))
+        let day = Number(dataObj.date.slice(-2))
+        //유효성 검사 실패시 경고 페이지
+        if(!(year===2025 && (month>0||month<13)&&(day>0||day<32))){
+          res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
+          res.write(addHtml('alert'))
+          res.end()
+        }
+        //통과하면 기존의 list.json파일 읽어와서 객체로변경
+        //데이터 추가후 덮어씌우기
+        // /admin으로 이동
+      })
     }
     //edit
     //delete
