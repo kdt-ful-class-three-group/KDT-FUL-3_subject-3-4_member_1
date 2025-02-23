@@ -30,6 +30,14 @@ function readLocation(res,callback){
   res.end()
 }
 
+
+//list.json파일 읽고 객체로 변경경
+function readList(){
+  let listJson = fs.readFileSync('list.json')
+  let list = JSON.parse(listJson)
+  return list
+}
+
 const server= http.createServer((req,res)=>{
   //경로 확인
   console.log(`${req.method} ${req.url}`)
@@ -64,8 +72,7 @@ const server= http.createServer((req,res)=>{
     //delete : 삭제하기
     //list.json에서 해당 데이터를 삭제하고 홈페이지로 이동하면 삭제한 내용에 대한 목록 지워짐
     else if(req.url.includes('delete')){
-      let listJson = fs.readFileSync('list.json')
-      let list = JSON.parse(listJson)
+      let list = readList()
 
       //url을 통해 데이터 찾음
       //'/delete/'를 삭제 후 객체로 만듦
@@ -107,8 +114,7 @@ const server= http.createServer((req,res)=>{
           return
         }
         //통과하면 기존의 list.json파일 읽어와서 객체로변경
-        let origin = fs.readFileSync('list.json')
-        let originObj = JSON.parse(origin)
+        let originObj = readList()
         //데이터 추가후 덮어씌우기
         originObj.push(dataObj)
         fs.writeFileSync('list.json',JSON.stringify(originObj))
@@ -126,8 +132,7 @@ const server= http.createServer((req,res)=>{
       // 데이터 받아온후
       req.on('end',()=>{
         // list.json 정보 > 객체로 변경
-        let listJson = fs.readFileSync('list.json')
-        let list = JSON.parse(listJson)
+        let list = readList()
         // 브라우저 에서 입력한 정보 -> 객체로
         let data = body.toString()
         let dataObj = qs.parse(data)
