@@ -90,7 +90,7 @@ const server= http.createServer((req,res)=>{
         originObj.push(dataObj)
         fs.writeFileSync('list.json',JSON.stringify(originObj))
         // /admin으로 이동
-        readLocation(res,home.indexHtml(home.adminUrl))
+        read.readLocation(res,home.indexHtml(home.adminUrl))
       })
     }
     //edit : admin > 상세페이지에서 수정 버튼
