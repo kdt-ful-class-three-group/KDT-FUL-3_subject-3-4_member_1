@@ -7,8 +7,7 @@ import home from './method/home.js'
 import add from './method/add.js'
 import detail from './method/detail.js'
 
-//! admin 경로를 테스트할 서버
-const serverTwo = http.createServer((req,res)=>{
+const server= http.createServer((req,res)=>{
   //경로 확인
   console.log(`${req.method} ${req.url}`)
   //GET
@@ -146,6 +145,7 @@ const serverTwo = http.createServer((req,res)=>{
   }
 })
 
-serverTwo.listen(3050,()=>{
-  console.log('http://localhost:3050/admin')
+PORT = 8000
+server.listen(PORT,()=>{
+  console.log(`http://localhost:${PORT}`)
 })
