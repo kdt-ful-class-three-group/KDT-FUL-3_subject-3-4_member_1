@@ -245,14 +245,14 @@ function addHtml(when) {
 //date를 수정하고 싶을 수도 있는데 date를 url에 넣으면 수정한 후엔...?
 //[x]일단 url로 값을 찾는 거 부터 진행
 
-//[ ] 상세페이지에서 목록으로 이동하는 버튼
-//? [ ] admin에서 글 목록 : '/admin/id=111111&date=20250101'
+//[x] 상세페이지에서 목록으로 이동하는 버튼
+//? [x] admin에서 글 목록 : '/admin/id=111111&date=20250101'
 //? admin으로 들어옴 : 수정하기, 삭제하기 버튼
 //? /으로 진입했을 때 글 목록 : '/id=111111&date=20250101'
 //? /으로 진입 : 수정하기, 삭제하기 버튼 없음
 
-//? [ ] 경로에 따른 객체 만드는 방식이 달라짐
-//? [ ] 경로에 따라 버튼의 유무 달라짐
+//? [x] 경로에 따른 객체 만드는 방식이 달라짐
+//? [x] 경로에 따라 버튼의 유무 달라짐
 
 function btnTag(){
   return `<section>
@@ -264,14 +264,14 @@ function btnTag(){
 }
 
 
-function detailHtml(url,isAdmin){
+function detailHtml(url,admin){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(listJson)
 
   let urlObj  = {}
   let isBtn = ''
 
-  if(!isAdmin){
+  if(admin===''){
     urlObj = qs.parse(url.slice(1))
   } else {
     urlObj = qs.parse(url.slice(7))
@@ -348,7 +348,7 @@ function detailHtml(url,isAdmin){
   <div id="root">
     <h1>${find.name}</h1>
     <div>
-      <a href="/">x</a>
+      <a href="/${admin}">x</a>
     </div>
     ${isBtn}
     <section>
@@ -639,13 +639,13 @@ const serverTwo = http.createServer((req,res)=>{
     //detail
     if(!req.url.includes('admin')&& req.url.includes('id')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(detailHtml(req.url,false))
+      res.write(detailHtml(req.url,''))
       res.end()
     }
     //admin+detail
     if(req.url.includes('admin')&&req.url.includes('id')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(detailHtml(req.url,true))
+      res.write(detailHtml(req.url,'admin'))
       res.end()
     }
   }
