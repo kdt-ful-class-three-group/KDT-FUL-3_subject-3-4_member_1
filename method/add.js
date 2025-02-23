@@ -98,3 +98,5 @@ const add = {
   return htmlString;
   }
 }
+
+export default add
