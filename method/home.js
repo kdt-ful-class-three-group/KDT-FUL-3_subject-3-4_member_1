@@ -112,3 +112,5 @@ const home = {
       return htmlString;
   }
 }
+
+export default home
