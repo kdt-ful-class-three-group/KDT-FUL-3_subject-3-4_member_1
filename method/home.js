@@ -15,7 +15,7 @@ const home = {
   },
   // '/admin'으로 접근했을 때를 위한 url 문자열 함수
   adminUrl : function(obj){
-    return 'admin/'+this.url(obj)
+    return 'admin/'+home.url(obj)
   },
   //liTag를 만드는 함수
   //'admin' '/' 에 따른 a태그 링크 다름
@@ -45,11 +45,11 @@ const home = {
     } else {
       let listJson = fs.readFileSync("list.json");
       let list = JSON.parse(listJson);
-      string = ulTag(urlFunc,list);
+      string = this.ulTag(urlFunc,list);
     }
     
-    if(urlFunc===adminUrl){
-      aTag = aAddTag()
+    if(urlFunc===home.adminUrl){
+      aTag = home.aAddTag()
     }
     
     let htmlString = `

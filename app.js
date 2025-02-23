@@ -632,13 +632,13 @@ const serverTwo = http.createServer((req,res)=>{
     //진입입
     if(req.url==='/'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(indexHtml(url));
+      res.write(home.indexHtml(home.url));
       res.end()
     }
     //admin
     if(req.url==='/admin'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(indexHtml(adminUrl));
+      res.write(home.indexHtml(home.adminUrl));
       res.end()
     }
     //detail
@@ -677,7 +677,7 @@ const serverTwo = http.createServer((req,res)=>{
       fs.writeFileSync('list.json',JSON.stringify(list));
       // /admin으로 돌아가야함
       res.writeHead(200,{'content-type':'text/html;charset=utf-8'});
-      res.write(indexHtml(adminUrl))
+      res.write(home.indexHtml(home.adminUrl))
       res.end()
     }
   }
@@ -713,7 +713,7 @@ const serverTwo = http.createServer((req,res)=>{
         fs.writeFileSync('list.json',JSON.stringify(originObj))
         // /admin으로 이동
         res.writeHead(302,{location:'/admin'})
-        res.write(indexHtml(adminUrl))
+        res.write(home.indexHtml(home.adminUrl))
         res.end()
       })
     }
