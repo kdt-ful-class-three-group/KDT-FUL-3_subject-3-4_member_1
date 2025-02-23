@@ -664,7 +664,8 @@ const serverTwo = http.createServer((req,res)=>{
     }
     //delete
     if(req.url.includes('delete')){
-      
+      //url을 통해 데이터 찾음
+      // /admin으로 돌아가야함
     }
   }
   if(req.method==='POST'){
