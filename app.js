@@ -53,6 +53,7 @@ function aAddTag(){
 //만약에 파일이 있으면 원래 하려던 방향으로 진행
 function indexHtml(urlFunc) {
   let string = "";
+  let aTag= ''
 
   if (!fs.existsSync("list.json")) {
     fs.writeFile("list.json", JSON.stringify([]));
@@ -60,6 +61,10 @@ function indexHtml(urlFunc) {
     let listJson = fs.readFileSync("list.json");
     let list = JSON.parse(listJson);
     string = ulTag(urlFunc,list);
+  }
+
+  if(urlFunc==='adminUrl'){
+    aTag = aAddTag()
   }
 
   let htmlString = `
@@ -112,7 +117,7 @@ function indexHtml(urlFunc) {
     <div id="root">
     <h1>오늘 간식</h1>
       <section>
-      <a href="/add">추가</a>
+      ${aTag}
       ${string}
       </section>
       </div>
