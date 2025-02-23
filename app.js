@@ -4,6 +4,7 @@ import qs from "querystring";
 
 //method
 import home from './method/home.js'
+import add from './method/add.js'
 
 //[x]addPage 함수 만들기
 //따로 추가할 내용 없어보임...?
