@@ -28,3 +28,5 @@ const read = {
     return list
   }
 }
+
+export default read
