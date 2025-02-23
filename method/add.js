@@ -10,10 +10,23 @@ const add = {
   alert: function(){
     return `alert("'2025MMDD'의 형식을 지켜주세요")`
   },
+  editLogic: function(url){
+    let listJson = fs.readFileSync('list.json');
+    let list = JSON.parse(listJson)
+        
+    let urlObj = qs.parse(url.slice(6))
+        
+    let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
+
+    return find
+  },
+  editScript : function()
   //date, name, content 입력창, 제출 버튼이 있는 form태그
   //필수 작성 요소 : date, name
   //date : 2025MMDD
-  addHtml: function(when){
+  addHtml: function(when,action){
+    //add, edit을 결정할 action
+    let action = 'plus'
     //id를 위한 숨겨진 입력창이 포함됨
     if(when === 'first'){
       when = add.randomId();
@@ -21,6 +34,10 @@ const add = {
     //데이터 형식이 잘못되었을 때는 alert메서드 포함
     if(when === 'alert'){
       when = add.alert()+add.randomId()
+    }
+    if(action === 'edit'){
+      action = 'edit'
+      when 
     }
     let htmlString = `
       <!DOCTYPE html>
@@ -75,7 +92,7 @@ const add = {
       <div id="root">
         <h1>간식 추가</h1>
         <section>
-          <form action="/plus" method="POST">
+          <form action="/${action}" method="POST">
             <input type="hidden" name="id">
             <div>
               <label for="date">간식 먹은 날</label>
