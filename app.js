@@ -23,6 +23,14 @@ import qs from "querystring";
 //[x]liTag 만드는 함수
 //a태그 > url에 id와 name을 포함
 //제목은 list[i].name
+
+//? [ ] url > 그냥 들어갈 때, admin으로 들어갈 때
+function url(obj){
+  return qs.stringify(obj).split("&",2).join("&")
+}
+function adminUrl(obj){
+  return '/admin/'+qs.stringify(obj).split("&",2).join("&")
+}
 function liTag(obj) {
   let url = qs.stringify(obj).split("&",2).join("&")
 
