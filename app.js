@@ -715,6 +715,12 @@ const serverTwo = http.createServer((req,res)=>{
         let data = body.toString()
         let dataObj = qs.parse(data)
         // id 정보를 비교해서 동일하면 덮어씌우기
+        list.filter(i=>i.id === dataObj.id).map(i=> {
+          i.name = dataObj.name; 
+          i.date = dataObj.date; 
+          i.content = dataObj.content
+        })
+        fs.writeFileSync('list.json',JSON.stringify(list))
         // 경로에 edit이 지워지고 admin이 붙은 경로로 돌아가야함  
 
       })
