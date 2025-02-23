@@ -722,7 +722,9 @@ const serverTwo = http.createServer((req,res)=>{
         })
         fs.writeFileSync('list.json',JSON.stringify(list))
         // 경로에 edit이 지워지고 admin이 붙은 경로로 돌아가야함  
-
+        res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
+        res.write(detailHtml(req.url,'admin'))
+        res.end()
       })
     }
     //delete
