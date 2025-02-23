@@ -29,15 +29,22 @@ function url(obj){
   return qs.stringify(obj).split("&",2).join("&")
 }
 function adminUrl(obj){
-  return '/admin/'+qs.stringify(obj).split("&",2).join("&")
+  return '/admin/'+url(obj)
 }
-function liTag(urlFunc) {
-  return `<li><a href=/${urlFunc}>${obj.name}</a></li>`;
+function liTag(obj) {
+  return `<li><a href=/${url(obj)}>${obj.name}</a></li>`;
+}
+function adminLiTag(obj){
+  return `<li><a href=/${adminUrl(obj)}>${obj.name}</a></li>`;
 }
 
 //[x]liTag를 사용해서 ul태그 만드는 함수
-function ulTag(urlFunc,obj) {
-  let liTags = obj.reduce((acc, i) => acc + liTag(urlFunc(i)), "");
+function ulTag(obj) {
+  let liTags = obj.reduce((acc, i) => acc + liTag(i), "");
+  return `<ul>${liTags}</ul>`;
+}
+function adminUlTag(obj){
+  let liTags = obj.reduce((acc, i) => acc + adminLiTag(i), "");
   return `<ul>${liTags}</ul>`;
 }
 
@@ -47,7 +54,7 @@ function ulTag(urlFunc,obj) {
 //파일이 존재하지 않아도 페이지는 열려야함 (초기 화면을 생각하면)
 //만약에 파일이 존재하지 않으면 > ul태그 없이 작성
 //만약에 파일이 있으면 원래 하려던 방향으로 진행
-function indexHtml() {
+function indexHtml(urlFunc) {
   let string = "";
 
   if (!fs.existsSync("list.json")) {
@@ -55,7 +62,7 @@ function indexHtml() {
   } else {
     let listJson = fs.readFileSync("list.json");
     let list = JSON.parse(listJson);
-    string = ulTag(list);
+    string = ulTag(urlFunc,list);
   }
 
   let htmlString = `
@@ -592,6 +599,13 @@ server.listen(PORT, () => {
 const serverTwo = http.createServer((req,res)=>{
   //경로 확인
   console.log(`${req.method} ${req.url}`)
+  if(req.method==="GET"){
+    if(req.url==='/'){
+      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
+      res.write(indexHtml());
+      res.end()
+    }
+  }
 })
 
 serverTwo.listen(3050,()=>{
