@@ -664,8 +664,18 @@ const serverTwo = http.createServer((req,res)=>{
     }
     //delete
     if(req.url.includes('delete')){
+      let listJson = fs.readFileSync('list.json')
+      let list = JSON.parse(listJson)
+
       //url을 통해 데이터 찾음
+      let urlObj = qs.parse(req.url.slice(8));
+      list = list.filter(i=>!((i.id===urlObj.id)&&(i.date===urlObj.date)))
+      //삭제한 후 덮어씌우기
+      fs.writeFileSync('list.json',JSON.stringify(list));
       // /admin으로 돌아가야함
+      res.writeHead(200,{'content-type':'text/html;charset=utf-8'});
+      res.write(indexHtml(adminUrl))
+      res.end()
     }
   }
   if(req.method==='POST'){
