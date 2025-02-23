@@ -23,6 +23,12 @@ function readErr(res){
   res.end()
 }
 
+//리다이렉트 함수
+function readLocation(res,callback){
+  res.writeHead(302,{location:'/admin'})
+  res.write(callback)
+  res.end()
+}
 
 const server= http.createServer((req,res)=>{
   //경로 확인
