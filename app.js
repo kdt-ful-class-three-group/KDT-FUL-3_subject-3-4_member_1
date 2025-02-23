@@ -254,11 +254,11 @@ function addHtml(when) {
 //? [x] 경로에 따른 객체 만드는 방식이 달라짐
 //? [x] 경로에 따라 버튼의 유무 달라짐
 
-function btnTag(){
+function btnTag(url){
   return `<section>
       <ul>
-        <li><a href="/edit${url}">수정</a></li>
-        <li><a href="/delete${url}">삭제</a></li>
+        <li><a href="/edit/${url}">수정</a></li>
+        <li><a href="/delete/${url}">삭제</a></li>
       </ul>
     </section>`
 }
@@ -275,7 +275,7 @@ function detailHtml(url,admin){
     urlObj = qs.parse(url.slice(1))
   } else {
     urlObj = qs.parse(url.slice(7))
-    isBtn = btnTag()
+    isBtn = btnTag(url.slice(7).split('&',2).join('&'))
   }
 
 
@@ -371,6 +371,8 @@ function detailHtml(url,admin){
 //[x] 수정하기 /edit
 //list.json에서 수정하고자하는 데이터에 접근할 수 있어야함함
 //수정하기를 누르면 나오는 페이지는 addHtml가 동일한 구성에 입력창에 내용이 나오면 될듯듯
+
+//admin이 포함 되었을 때면 수정 버튼 나타남 > url 문자열 처리 수정 필요성
 function editHtml(url){
   //url에서 가져온 정보를 input value 안에 넣음
   let listJson = fs.readFileSync('list.json');
