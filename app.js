@@ -24,9 +24,7 @@ const server= http.createServer((req,res)=>{
   if(req.method==="GET"){
     //진입
     if(req.url==='/'){
-      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(home.indexHtml(home.url));
-      res.end()
+      readFunc(res,home.indexHtml(home.url))
     }
     //admin : 관리자
     else if(req.url==='/admin'){
