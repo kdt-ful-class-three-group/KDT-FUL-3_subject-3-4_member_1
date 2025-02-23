@@ -412,13 +412,13 @@ const serverTwo = http.createServer((req,res)=>{
     //detail
     if(!req.url.includes('admin')&& req.url.includes('id')&&!req.url.includes('edit')&&!req.url.includes('delete')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(detailHtml(req.url,''))
+      res.write(detail.detailHtml(req.url,''))
       res.end()
     }
     //admin+detail
     if(req.url.includes('admin')&&req.url.includes('id')){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(detailHtml(req.url,'admin'))
+      res.write(detail.detailHtml(req.url,'admin'))
       res.end()
     }
     ///add
@@ -509,7 +509,7 @@ const serverTwo = http.createServer((req,res)=>{
         fs.writeFileSync('list.json',JSON.stringify(list))
         // 경로에 edit이 지워지고 admin이 붙은 경로로 돌아가야함  
         res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-        res.write(detailHtml(`/admin/${data.split('&',2).join('&')}`,'admin'))
+        res.write(detail.detailHtml(`/admin/${data.split('&',2).join('&')}`,'admin'))
         res.end()
       })
     }
