@@ -1,4 +1,5 @@
 const detail = {
+  //admin으로 접속했을 때 보이는 a태그
   btnTag : function(url){
     return `<section>
       <ul>
@@ -7,6 +8,9 @@ const detail = {
       </ul>
     </section>`
   },
+  //홈페이지에서 목록을 클릭했을 때 보이는 화면
+  //url의 data와 list.json의 데이터를 비교해서 url과 동일한 데이터 불러오기
+  //admin으로 접근하면 btnTag함수 사용
   detailHtml:function(url,admin){
     let listJson = fs.readFileSync('list.json');
     let list = JSON.parse(listJson)
@@ -14,6 +18,8 @@ const detail = {
     let urlObj  = {}
     let isBtn = ''
     
+    //목록 url : /id=111111&date=20250101
+    //admin에서 접근한 목록 url : /admin/id=111111&date=20250101
     if(admin===''){
       urlObj = qs.parse(url.slice(1))
     } else {
