@@ -1,3 +1,6 @@
+import fs from 'fs'
+import qs from 'querystring'
+
 const detail = {
   //admin으로 접속했을 때 보이는 a태그
   btnTag : function(url){
