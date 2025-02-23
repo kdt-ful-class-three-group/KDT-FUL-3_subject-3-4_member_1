@@ -20,7 +20,19 @@ const add = {
 
     return find
   },
-  editScript : function()
+  editScript : function(url){
+    let find = add.editLogic(url);
+
+    let script = `
+      let input = document.getElementsByTagName('input');
+      let content = document.getElementsByTagName('textarea')[0]
+      input[0].value = ${find.id}
+      input[1].value = '${find.date}'
+      input[2].value = '${find.name}'
+      content.value = '${find.content}'`
+
+    return script
+  }
   //date, name, content 입력창, 제출 버튼이 있는 form태그
   //필수 작성 요소 : date, name
   //date : 2025MMDD
