@@ -648,6 +648,12 @@ const serverTwo = http.createServer((req,res)=>{
       res.write(detailHtml(req.url,'admin'))
       res.end()
     }
+    ///add
+    if(req.url==='/add'){
+      res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
+      res.write(addHtml('first'))
+      res.end()
+    }
   }
   if(req.method==='POST'){
     ///plus
@@ -657,5 +663,5 @@ const serverTwo = http.createServer((req,res)=>{
 })
 
 serverTwo.listen(3050,()=>{
-  console.log('http://localhost:3050')
+  console.log('http://localhost:3050/admin')
 })
