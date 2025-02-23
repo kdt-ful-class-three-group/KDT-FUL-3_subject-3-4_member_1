@@ -31,22 +31,22 @@ function url(obj){
 function adminUrl(obj){
   return '/admin/'+url(obj)
 }
-function liTag(obj) {
-  return `<li><a href=/${url(obj)}>${obj.name}</a></li>`;
+function liTag(urlFunc,obj) {
+  return `<li><a href=/${urlFunc(obj)}>${obj.name}</a></li>`;
 }
-function adminLiTag(obj){
-  return `<li><a href=/${adminUrl(obj)}>${obj.name}</a></li>`;
-}
+// function adminLiTag(obj){
+//   return `<li><a href=/${adminUrl(obj)}>${obj.name}</a></li>`;
+// }
 
 //[x]liTag를 사용해서 ul태그 만드는 함수
-function ulTag(obj) {
-  let liTags = obj.reduce((acc, i) => acc + liTag(i), "");
+function ulTag(urlFunc,obj) {
+  let liTags = obj.reduce((acc, i) => acc + liTag(urlFunc,i), "");
   return `<ul>${liTags}</ul>`;
 }
-function adminUlTag(obj){
-  let liTags = obj.reduce((acc, i) => acc + adminLiTag(i), "");
-  return `<ul>${liTags}</ul>`;
-}
+// function adminUlTag(obj){
+//   let liTags = obj.reduce((acc, i) => acc + adminLiTag(i), "");
+//   return `<ul>${liTags}</ul>`;
+// }
 
 //[x]만들어진 ul태그를 사용해서 홈페이지 문자열 만드는 함수
 //[x] a태그에 hover하면 스타일 변화
@@ -62,7 +62,7 @@ function indexHtml(urlFunc) {
   } else {
     let listJson = fs.readFileSync("list.json");
     let list = JSON.parse(listJson);
-    string = urlFunc(list);
+    string = ulTag(urlFunc,list);
   }
 
   let htmlString = `
@@ -602,7 +602,7 @@ const serverTwo = http.createServer((req,res)=>{
   if(req.method==="GET"){
     if(req.url==='/'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(indexHtml(ulTag));
+      res.write(indexHtml(url));
       res.end()
     }
   }
