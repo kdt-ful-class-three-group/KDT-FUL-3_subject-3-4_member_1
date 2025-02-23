@@ -6,6 +6,7 @@ import qs from "querystring";
 import home from './method/home.js'
 import add from './method/add.js'
 import detail from './method/detail.js'
+import read from './method/read.js'
 
 //[x]server 안에서 받복되는 내용 함수로 작성
 function readFunc(res,callback){
@@ -45,34 +46,34 @@ const server= http.createServer((req,res)=>{
   if(req.method==="GET"){
     //진입
     if(req.url==='/'){
-      readFunc(res,home.indexHtml(home.url))
+      read.readFunc(res,home.indexHtml(home.url))
     }
     //admin : 관리자
     else if(req.url==='/admin'){
-      readFunc(res,home.indexHtml(home.adminUrl))
+      read.readFunc(res,home.indexHtml(home.adminUrl))
     }
     //detail : 상세페이지 - id가 포함되어 있으면면
     //admin, edit, delete가 각각 포함된 경로가 있음
     //조건문으로 제어
     else if(!req.url.includes('admin')&& req.url.includes('id')&&!req.url.includes('edit')&&!req.url.includes('delete')){
-      readFunc(res,detail.detailHtml(req.url,''))
+      read.readFunc(res,detail.detailHtml(req.url,''))
     }
     //admin+detail : 관리자 > 상세페이지
     else if(req.url.includes('admin')&&req.url.includes('id')){
-      readFunc(res,detail.detailHtml(req.url,'admin'))
+      read.readFunc(res,detail.detailHtml(req.url,'admin'))
     }
     //add : 추가페이지
     else if(req.url==='/add'){
-      readFunc(res,add.addHtml('first','plus',req.url))
+      read.readFunc(res,add.addHtml('first','plus',req.url))
     }
     //edit : 수정하기
     else if(req.url.includes('edit')){
-      readFunc(res,add.addHtml('edit','edit',req.url))
+      read.readFunc(res,add.addHtml('edit','edit',req.url))
     }
     //delete : 삭제하기
     //list.json에서 해당 데이터를 삭제하고 홈페이지로 이동하면 삭제한 내용에 대한 목록 지워짐
     else if(req.url.includes('delete')){
-      let list = readList()
+      let list = read.readList()
 
       //url을 통해 데이터 찾음
       //'/delete/'를 삭제 후 객체로 만듦
@@ -81,12 +82,12 @@ const server= http.createServer((req,res)=>{
       //삭제한 후 덮어씌우기
       fs.writeFileSync('list.json',JSON.stringify(list));
       // /admin으로 돌아가야함
-      readFunc(res,home.indexHtml(home.adminUrl))
+      read.readFunc(res,home.indexHtml(home.adminUrl))
     }
     //404 : 주어진 경로 외의 요청이 있을 때
     //else문 안에 넣어야함
     else {
-      readErr(res)
+      read.readErr(res)
     }
   }
   //POST
@@ -114,7 +115,7 @@ const server= http.createServer((req,res)=>{
           return
         }
         //통과하면 기존의 list.json파일 읽어와서 객체로변경
-        let originObj = readList()
+        let originObj = read.readList()
         //데이터 추가후 덮어씌우기
         originObj.push(dataObj)
         fs.writeFileSync('list.json',JSON.stringify(originObj))
@@ -132,7 +133,7 @@ const server= http.createServer((req,res)=>{
       // 데이터 받아온후
       req.on('end',()=>{
         // list.json 정보 > 객체로 변경
-        let list = readList()
+        let list = read.readList()
         // 브라우저 에서 입력한 정보 -> 객체로
         let data = body.toString()
         let dataObj = qs.parse(data)
@@ -145,7 +146,7 @@ const server= http.createServer((req,res)=>{
         fs.writeFileSync('list.json',JSON.stringify(list))
         // 경로에 edit이 지워지고 admin이 붙은 경로로 돌아가야함  
         //경로에는 id와 name만 포함되어야함
-        readFunc(res,detail.detailHtml(`/admin/${data.split('&',2).join('&')}`,'admin'))
+        read.readFunc(res,detail.detailHtml(`/admin/${data.split('&',2).join('&')}`,'admin'))
       })
     }
   }
