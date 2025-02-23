@@ -24,12 +24,12 @@ import qs from "querystring";
 //a태그 > url에 id와 name을 포함
 //제목은 list[i].name
 
-//? [ ] url > 그냥 들어갈 때, admin으로 들어갈 때
+//? [x] url > 그냥 들어갈 때, admin으로 들어갈 때
 function url(obj){
   return qs.stringify(obj).split("&",2).join("&")
 }
 function adminUrl(obj){
-  return '/admin/'+url(obj)
+  return 'admin/'+url(obj)
 }
 function liTag(urlFunc,obj) {
   return `<li><a href=/${urlFunc(obj)}>${obj.name}</a></li>`;
@@ -245,12 +245,26 @@ function addHtml(when) {
 //[x]일단 url로 값을 찾는 거 부터 진행
 
 //[ ] 상세페이지에서 목록으로 이동하는 버튼
+//? [ ] admin에서 글 목록 : '/admin/id=111111&date=20250101'
+//? admin으로 들어옴 : 수정하기, 삭제하기 버튼
+//? /으로 진입했을 때 글 목록 : '/id=111111&date=20250101'
+//? /으로 진입 : 수정하기, 삭제하기 버튼 없음
 
-function detailHtml(url){
+//? [ ] 경로에 따른 객체 만드는 방식이 달라짐
+//? [ ] 경로에 따라 버튼의 유무 달라짐
+
+
+function detailHtml(url,isAdmin){
   let listJson = fs.readFileSync('list.json');
   let list = JSON.parse(listJson)
 
-  let urlObj = qs.parse(url.slice(1))
+  let urlObj  = {}
+
+  if(isAdmin){
+    urlObj = qs.parse(url.slice(1))
+  } 
+  urlObj = qs.parse(url.slice(6))
+
 
   let find = list.filter(i=> (i.id === urlObj.id)&&(i.date===urlObj.date))[0]
 
@@ -602,16 +616,20 @@ const serverTwo = http.createServer((req,res)=>{
   //경로 확인
   console.log(`${req.method} ${req.url}`)
   if(req.method==="GET"){
+    //진입입
     if(req.url==='/'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(indexHtml(url));
       res.end()
     }
+    //admin
     if(req.url==='/admin'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
       res.write(indexHtml(adminUrl));
       res.end()
     }
+    //detail
+    //admin+detail
   }
 })
 
