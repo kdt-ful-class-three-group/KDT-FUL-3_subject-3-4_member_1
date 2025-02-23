@@ -102,3 +102,5 @@ const detail = {
   return htmlString
   }
 }
+
+export default detail
