@@ -531,7 +531,7 @@ const serverTwo = http.createServer((req,res)=>{
     ///add
     if(req.url==='/add'){
       res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-      res.write(addHtml('first'))
+      res.write(add.addHtml('first'))
       res.end()
     }
     //edit
@@ -576,7 +576,7 @@ const serverTwo = http.createServer((req,res)=>{
         //유효성 검사 실패시 경고 페이지
         if(!(year===2025 && (month>0||month<13)&&(day>0||day<32))){
           res.writeHead(200,{'content-type':'text/html; charset=utf-8'})
-          res.write(addHtml('alert'))
+          res.write(add.addHtml('alert'))
           res.end()
           return
         }
