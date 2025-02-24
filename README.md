@@ -73,3 +73,22 @@ f. 목록이 보이는 홈페이지로 이동
 - 추가, 수정, 삭제 버튼은 admin이 있어야 보이도록 구성
 - 추가, 수정, 삭제를 한 뒤에도 계속 버튼이 보이도록 경로 수정
 - '/'를 통해서 들어오면 글 목록과 상세페이지로 이동만 가능함
+```
+KDT-FUL-3_subject-3-4_member_1
+├─ app.js
+├─ list.json
+├─ method
+│  ├─ add.js
+│  ├─ controller
+│  │  ├─ change.js
+│  │  └─ url.js
+│  ├─ detail.js
+│  ├─ home.js
+│  ├─ read.js
+│  └─ view
+│     ├─ html.js
+│     └─ tag.js
+├─ package.json
+└─ README.md
+
+```
