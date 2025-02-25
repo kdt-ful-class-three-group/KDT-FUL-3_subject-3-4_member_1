@@ -8,9 +8,7 @@
 <body>
   <div id="root">
     <h1>리스트</h1>
-    <ul>
-      <li></li>
-    </ul>
+    <ul></ul>
   </div>
   <script>
     //xmlhttprequest객체 생성
@@ -22,19 +20,26 @@
     //클라이언트가 서버로 전송할 데이터의 MIME 타입 지정:json
     xml.setRequestHeader('content-type','application/json')
 
+    //http요청이 성공적으로 완료한 경우
     xml.onload=()=>{
-      console.log(xml.response)
+      //response : http 요청에 대한 응답 몸체 response body
+      // response Type에 따라 타입이 다름
+      console.log(xml.response) //타입 : string
+
+      //문자열로 가져온 데이터를 객체로 변환
+      let dataArr = JSON.parse(xml.response)
+      console.log(dataArr)
+
+      let ul = document.getElementsByTagName('ul')[0]
+      dataArr.forEach(data=>{
+        let li = document.createElement('li')
+        li.textContent=`${data.name} ${data.content}`
+        ul.appendChild(li)
+      })
 
     }
     //http 요청 전송
     xml.send()
-
-
-    // xml.onload = function(){
-    //   if(xml.status ===200){
-
-    //   }
-    // }
   </script>
 </body>
 </html>
