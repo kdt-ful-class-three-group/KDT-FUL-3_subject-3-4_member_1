@@ -12,5 +12,19 @@
       <li></li>
     </ul>
   </div>
+  <script>
+    const get = function(){
+      //XMLHttpRequest 객체 생성
+      const xml = new XMLHttpRequest()
+      //요청 보낼 준비
+      xml.open('GET','http://localhost:8001')
+
+      xml.responseType ='json'
+
+      xml.onload = function(){
+        console.log(xml.response)
+      }
+    }
+  </script>
 </body>
 </html>

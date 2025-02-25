@@ -3,7 +3,15 @@ const fs = require('node:fs')
 
 //html에 대한 서버
 const server = http.createServer((req, res)=>{
-
+  //요청확인
+  console.log(`${req.method} ${req.url}`)
+  if(req.method==="GET"){
+    if(req.url==='/'){
+      res.writeHead(200,{'content-type':'text/html;charset=utf-8'})
+      res.write(fs.readFileSync('index.html'))
+      res.end()
+    }
+  }
 })
 
 server.listen(8000,()=>{
