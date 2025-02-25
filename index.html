@@ -21,10 +21,14 @@
     //http요청 헤더 설정
     //클라이언트가 서버로 전송할 데이터의 MIME 타입 지정:json
     xml.setRequestHeader('content-type','application/json')
+
+    xml.onload=()=>{
+      console.log(xml.response)
+
+    }
     //http 요청 전송
     xml.send()
 
-    console.log(xml.response)
 
     // xml.onload = function(){
     //   if(xml.status ===200){
