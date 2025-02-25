@@ -8,10 +8,9 @@ const server = http.createServer((req, res)=>{
   if(req.method==="GET"){
     if(req.url==='/'){
       res.writeHead(200,{'content-type':'text/html;charset=utf-8'})
+      res.set
       res.write(fs.readFileSync('index.html'))
       res.end()
-      //CORS
-      res.setHeader('Access-Control-Allow-Origin','http://localhost:8010')
     }
   }
 })
@@ -22,7 +21,10 @@ server.listen(8000,()=>{
 
 //json파일에 대한 서버
 const jsonServer =http.createServer((req,res)=>{
-  res.writeHead(200,{'content-type':'application/json; charset=utf-8'})
+  res.statusCode=200
+  res.setHeader('content-type','text/html;charset=utf-8')
+  res.setHeader('Access-Control-Allow-Origin','http://localhost:8000')
+  res.setHeader('Access-Control-Allow-Headers','Content-Type')
   res.write(fs.readFileSync('list.json'))
   res.end()
 })
