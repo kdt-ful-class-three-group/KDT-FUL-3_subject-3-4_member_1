@@ -13,18 +13,24 @@
     </ul>
   </div>
   <script>
-    const get = function(){
-      //XMLHttpRequest 객체 생성
-      const xml = new XMLHttpRequest()
-      //요청 보낼 준비
-      xml.open('GET','http://localhost:8001')
+    //xmlhttprequest객체 생성
+    let xml = new XMLHttpRequest();
 
-      xml.responseType ='json'
+    //open : http 요청 초기화
+    xml.open('GET','http://localhost:8010');
+    //http요청 헤더 설정
+    //클라이언트가 서버로 전송할 데이터의 MIME 타입 지정:json
+    xml.setRequestHeader('content-type','application/json')
+    //http 요청 전송
+    xml.send()
 
-      xml.onload = function(){
-        console.log(xml.response)
-      }
-    }
+    console.log(xml.response)
+
+    // xml.onload = function(){
+    //   if(xml.status ===200){
+
+    //   }
+    // }
   </script>
 </body>
 </html>

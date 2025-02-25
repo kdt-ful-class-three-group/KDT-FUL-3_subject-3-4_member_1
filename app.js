@@ -10,6 +10,8 @@ const server = http.createServer((req, res)=>{
       res.writeHead(200,{'content-type':'text/html;charset=utf-8'})
       res.write(fs.readFileSync('index.html'))
       res.end()
+      //CORS
+      res.setHeader('Access-Control-Allow-Origin','http://localhost:8010')
     }
   }
 })
