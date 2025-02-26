@@ -6,6 +6,8 @@ import exist from '../controller/existJson.js'
 import tag from './tag.js'
 //test하기 위해 url 모듈 가져옴
 import url from '../controller/url.js'
+//script를 가져오는 모듈
+import script from './script.js'
 
 const html = {
   /**
@@ -79,7 +81,15 @@ const html = {
         </body>
       </html>`
   },
-  form: function(){
+  /**
+   * 
+   * @param  {...any} func 
+   * @returns 
+   */
+  form: function(action,...script){
+    //edit : action = edit : script.edit(arr,url)
+    //add : action = add : script.randomId
+      //dataCheck : action = add : script.alert+script.randomId
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -149,10 +159,12 @@ const html = {
             </form>
           </section>
         </div>
-        <script>${when}</script>
+        <script>${script}</script>
       </body>
     </html>`
   }
 }
 
 export default html
+
+console.log(html.form('add',script.alert(),script.randomId()))
