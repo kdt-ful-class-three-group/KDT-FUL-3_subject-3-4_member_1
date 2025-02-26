@@ -1,6 +1,5 @@
 //list.json을 가져와 데이터로
 import read from '../read.js'
-import url from '../controller/url.js'
 
 //list.json을 가져와 배열로 변환
 let list = read.readList()
