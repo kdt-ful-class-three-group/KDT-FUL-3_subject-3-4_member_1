@@ -1,1 +1,5 @@
-const html = {}
+const html = {
+  home : function(){
+    
+  }
+}
