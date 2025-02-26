@@ -47,6 +47,8 @@ const tag = {
    * @param {Array} arr - 데이터가 담긴 배열 
    * @returns {string} 데이터만큼 만든 li태그 문자열 묶음
    */
+
+  //[ ] liTags를 재사용하고 싶음
   liTags : function(callback,arr){
     return arr.reduce((acc,obj)=>acc+tag.liTag(callback(obj),obj),"")
   }
