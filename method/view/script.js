@@ -36,3 +36,5 @@ const scriptInHtml = {
       `
   }
 }
+
+export default scriptInHtml
