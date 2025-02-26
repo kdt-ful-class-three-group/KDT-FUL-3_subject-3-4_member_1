@@ -2,16 +2,15 @@
 import read from '../read.js'
 import url from '../controller/url.js'
 
+//list.json을 가져와 배열로 변환
 let list = read.readList()
 console.log(list)
-
-list.forEach(i=> console.log(url.makeUrl(i)))
 
 const tag = {
   /**
    * href경로와 content로 a태그 생성
-   * @param {string} url - '/'제외한 url 
-   * @param {string} name - 데이터에서 name 
+   * @param {function} callback - url의 메서드
+   * @param {object} obj - 객체 데이터
    * @returns {string} a태그 문자열
    */
   aTag : function(callback,obj){
@@ -19,20 +18,20 @@ const tag = {
   },
   /**
    * a태그가 들어갈 li태그 생성 함수
-   * @param {string} url - aTag안에 들어갈 url
-   * @param {string} name - aTag에 사용될 content
+   * @param {function} callback - aTag안에 들어갈 url메서드
+   * @param {object} obj - 객체 데이터
    * @returns {string} a태그가 들어간 li태그 문자열
    */
-  liTag : function(url, name){
-    return `<li>${tag.aTag(url,name)}</li>`
+  liTag : function(callback,obj){
+    return `<li>${tag.aTag(callback,obj)}</li>`
   },
   /**
    * 
    * @param {*} obj 
    * @returns 
    */
-  liTags : function(obj){
-    return obj.reduce((acc,i)=>acc+tag.liTag())
+  liTags : function(callback,arr){
+    return arr.reduce((acc,obj)=>acc+tag.liTag(callback,obj),"")
   }
   ,
   /**
@@ -48,4 +47,5 @@ const tag = {
   }
 }
 
-list.forEach(i=> console.log(tag.aTag(url.makeUrl(i),i)))
+let test = list.reduce((acc,i)=> acc + tag.liTag(url.makeUrl(i),i),"")
+console.log(test)
