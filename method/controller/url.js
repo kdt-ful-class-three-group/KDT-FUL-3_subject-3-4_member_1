@@ -4,7 +4,7 @@ import qs from 'querystring'
 const url = {
   /**
    * 객체를 문자열로 바꾼 후 id와 date를 가져오는 함수
-   * @param {object} {id:'111111',date='20250101',...}
+   * @param {object} obj {id:'111111',date='20250101',...}
    * @return {string} id=111111&date=20250101
    */
   makeUrl : function(obj){
@@ -13,6 +13,7 @@ const url = {
   },
   /**
    * admin로 접근했을 때 url에 적용할 함수
+   * @param {object} obj {id:'111111',date='20250101',...}
    * @return {string} admin/id=111111&date='250101' 
    */
   adminUrl : function(obj){
