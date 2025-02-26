@@ -78,6 +78,9 @@ const html = {
           </div>
         </body>
       </html>`
+  },
+  form: function(){
+    
   }
 }
 
