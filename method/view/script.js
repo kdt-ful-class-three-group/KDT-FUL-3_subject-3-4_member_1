@@ -23,15 +23,13 @@ const scriptInHtml = {
    * 
    */
   edit : function(arr,url){
-    let inputValue = find.filter(arr,url,'edit')
-
     return `
       let input = document.getElementsByTagName('input');
       let content = document.getElementsByTagName('textarea')[0]
-      input[0].value = ${inputValue.id}
-      input[1].value = '${inputValue.date}'
-      input[2].value = '${inputValue.name}'
-      content.value = '${inputValue.content}'
+      input[0].value = ${find.filter(arr,url,'edit').id}
+      input[1].value = '${find.filter(arr,url,'edit').date}'
+      input[2].value = '${find.filter(arr,url,'edit').name}'
+      content.value = '${find.filter(arr,url,'edit').content}'
       `
   }
 }
