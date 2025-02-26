@@ -16,3 +16,5 @@ const url = {
     return `admin/${url.makeUrl(dataString)}`
   }
 }
+
+export default url
