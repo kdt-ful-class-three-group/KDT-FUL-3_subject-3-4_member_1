@@ -31,7 +31,7 @@ const tag = {
    * @returns 
    */
   liTags : function(callback,arr){
-    return arr.reduce((acc,obj)=>acc+tag.liTag(callback,obj),"")
+    return arr.reduce((acc,obj)=>acc+tag.liTag(callback(obj),obj),"")
   }
   ,
   /**
