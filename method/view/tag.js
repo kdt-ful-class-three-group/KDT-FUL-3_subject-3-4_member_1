@@ -1,5 +1,11 @@
 //list.json을 가져와 데이터로
 import read from '../read.js'
+import url from '../controller/url.js'
+
+let list = read.readList()
+console.log(list)
+
+url.makeUrl()
 
 const tag = {
   /**
@@ -21,6 +27,15 @@ const tag = {
     return `<li>${tag.aTag(url,name)}</li>`
   },
   /**
+   * 
+   * @param {*} obj 
+   * @returns 
+   */
+  liTags : function(obj){
+    return obj.reduce((acc,i)=>acc+tag.liTag())
+  }
+  ,
+  /**
    * ul태그 생성함수
    * @param {Array} dataArr - 데이터가 담긴 배열
    * @param {string} url - aTag안에 들어간 url
@@ -32,3 +47,4 @@ const tag = {
 
   }
 }
+
