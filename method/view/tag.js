@@ -22,8 +22,14 @@ const tag = {
     return `<a href=${href}>${content}</a>`
   }
   ,
-  btnATag : function(role,obj){
-    return `<a href=/${role}/${url.makeUrl(obj)}>${btnText[role]}</a>`
+  /**
+   * 수정, 삭제 버튼을 위한 a태그
+   * @param {string} role - 버튼 역할, 'edit' or 'delete'
+   * @param {String} url - id와 date가 있는 req.url
+   * @returns {string} <a href='/role/url'>btnText[role]</a>
+   */
+  btnATag : function(role,url){
+    return `<a href=/${role}/${url}>${btnText[role]}</a>`
   }
   ,
   /**
