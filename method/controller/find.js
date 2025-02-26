@@ -22,3 +22,5 @@ const find = {
     return arr.filter(i=> (i.id === find.urlToObj.id)&&(i.date===find.urlToObj.date))[0]
   }
 }
+
+export default find
