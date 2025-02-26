@@ -20,7 +20,10 @@ const scriptInHtml = {
     return `alert("'2025MMDD'의 형식을 지켜주세요")`
   },
   /**
-   * 
+   * 수정버튼을 눌렀을 때 해당 정보가 input의 value값에 들어오도록 하는 함수
+   * @param {Array} arr - 배열인 list.json의 데이터
+   * @param {String} url - id와 date가 있는 req.url
+   * @returns {String} 수정할 데이터를 입력창에 넣는 스크립트
    */
   edit : function(arr,url){
     return `
