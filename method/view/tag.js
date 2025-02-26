@@ -1,5 +1,6 @@
 //btnATag에서 사용할 text
 import btnText from '../../data/btnText.js'
+import url from '../controller/url.js'
 
 const tag = {
   /**
@@ -22,7 +23,7 @@ const tag = {
   }
   ,
   btnATag : function(role,obj){
-    return `<a href=/${role}/${}>${}</a>`
+    return `<a href=/${role}/${url.makeUrl(obj)}>${btnText[role]}</a>`
   }
   ,
   /**
