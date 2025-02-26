@@ -8,5 +8,12 @@ const scriptInHtml = {
     let id = document.getElementsByTagName('input')[0]
     id.value = Math.floor(Math.random()*899999)+100000;
   `
-  }
+  },
+  /**
+   * 데이터 형식이 잘못되었을 때 html문자열에 추가할 경고창
+   * @returns {String} alert창을 띄우는 스크립트
+   */
+  alert : function(){
+    return `alert("'2025MMDD'의 형식을 지켜주세요")`
+  },
 }
