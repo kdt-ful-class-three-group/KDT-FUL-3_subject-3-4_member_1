@@ -1,3 +1,6 @@
+//script안에 input.value를 지정하기 위해 값을 찾는 모듈
+import find from '../controller/find.js'
+
 const scriptInHtml = {
   /**
    * 데이터를 제출할 때 id에 6자리 랜덤 숫자 배정
@@ -16,4 +19,19 @@ const scriptInHtml = {
   alert : function(){
     return `alert("'2025MMDD'의 형식을 지켜주세요")`
   },
+  /**
+   * 
+   */
+  edit : function(arr,url){
+    let inputValue = find.filter(arr,url,'edit')
+
+    return `
+      let input = document.getElementsByTagName('input');
+      let content = document.getElementsByTagName('textarea')[0]
+      input[0].value = ${inputValue.id}
+      input[1].value = '${inputValue.date}'
+      input[2].value = '${inputValue.name}'
+      content.value = '${inputValue.content}'
+      `
+  }
 }
