@@ -1,3 +1,6 @@
+//btnATag에서 사용할 text
+import btnText from '../../data/btnText.js'
+
 const tag = {
   /**
    * href경로와 content로 a태그 생성
@@ -9,13 +12,17 @@ const tag = {
     return `<a href=/${callback}>${obj.name}</a>`
   },
   /**
-   * 
+   * a태그 만드는 함수
    * @param {string} href - 이동할 경로 
    * @param {content} content - a태그 안에 들어갈 내용 
    * @returns {string} <a href=href>content</a>
    */
   hrefATag : function(href,content){
     return `<a href=${href}>${content}</a>`
+  }
+  ,
+  btnATag : function(role,obj){
+    return `<a href=/${role}/${}>${}</a>`
   }
   ,
   /**
@@ -45,7 +52,8 @@ const tag = {
    */
   ulTag : function(callback,arr){
     return `<ul>${tag.liTags(callback,arr)}</ul>`
-  }
+  },
+
 }
 
 export default tag
