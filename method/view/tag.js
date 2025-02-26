@@ -1,6 +1,10 @@
 //btnATag에서 사용할 text
-import btnText from '../../data/btnText.js'
+import btnText from '../../data/btnATagText.js'
 import url from '../controller/url.js'
+
+//json가져오기위한 모듈
+import read from '../read.js'
+let list = read.readList()
 
 const tag = {
   /**
@@ -38,8 +42,9 @@ const tag = {
    * @param {object} obj - 객체 데이터
    * @returns {string} a태그가 들어간 li태그 문자열
    */
-  liTag : function(callback,obj){
-    return `<li>${tag.aTag(callback,obj)}</li>`
+  liTag : function(callback){
+    //`<li>${tag.aTag(callback,obj)}</li>`
+    return `<li>${callback}</li>`
   },
   /**
    * 데이터만큼 만든 li태그 묶음
@@ -66,3 +71,6 @@ const tag = {
 }
 
 export default tag
+console.log(list[0])
+
+console.log(tag.liTag(tag.aTag(url.adminUrl(list[0]),list[0])))
