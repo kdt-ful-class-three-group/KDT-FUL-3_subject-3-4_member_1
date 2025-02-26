@@ -4,6 +4,8 @@ import read from '../read.js'
 import exist from '../controller/existJson.js'
 //tag모듈
 import tag from './tag.js'
+//test하기 위해 url 모듈 가져옴
+import url from '../controller/url.js'
 
 const html = {
   /**
@@ -12,10 +14,11 @@ const html = {
    * @param {Function} callback - url을 결정할 함수 
    * @returns {String} 홈페이지 문자열
    */
-  home : function(isAdmin,callback){
+  home : function(isAdmin){
 
     //isAdmin에 따라 aTag유무 결정
     let addATag = isAdmin?tag.hrefATag('/add','추가'):''
+    let urlFunc = isAdmin?url.adminUrl:url.makeUrl
 
     //json파일 존재하는지 확인 후 없으면 생성
     exist.check()
@@ -71,7 +74,7 @@ const html = {
             <h1>오늘 간식</h1>
             <section>
               ${addATag}
-              ${tag.ulTag(callback,read.readList())}
+              ${tag.ulTag(urlFunc,read.readList())}
             </section>
           </div>
         </body>
@@ -79,4 +82,4 @@ const html = {
   }
 }
 
-html.home()
+console.log(html.home(false))
