@@ -6,8 +6,6 @@ import exist from '../controller/existJson.js'
 import tag from './tag.js'
 //test하기 위해 url 모듈 가져옴
 import url from '../controller/url.js'
-//script를 가져오는 모듈
-import script from './script.js'
 
 const html = {
   /**
@@ -82,9 +80,12 @@ const html = {
       </html>`
   },
   /**
-   * 
-   * @param  {...any} func 
-   * @returns 
+   * form태그가 있는 페이지
+   * 추가버튼 또는 수정버튼을 눌렀을 때 나오는 페이지
+   * 경로는 '/edit/...' 또는 '/...'
+   * @param  {String} action - form태그의 action경로, 'edit' 또는 'add'
+   * @param  {...any} script - script모듈의 함수, 필요에 따라 여러개 입력 가능 
+   * @returns {String} form태그가 있는 페이지 문자열
    */
   form: function(action,...script){
     //edit : action = edit : script.edit(arr,url)
@@ -166,5 +167,3 @@ const html = {
 }
 
 export default html
-
-console.log(html.form('add',script.alert(),script.randomId()))
