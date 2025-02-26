@@ -88,9 +88,6 @@ const html = {
    * @returns {String} form태그가 있는 페이지 문자열
    */
   form: function(action,...script){
-    //edit : action = edit : script.edit(arr,url)
-    //add : action = add : script.randomId
-      //dataCheck : action = add : script.alert+script.randomId
     return `
     <!DOCTYPE html>
     <html lang="en">
