@@ -18,8 +18,8 @@ const find = {
    * @param {Array} arr - 배열로 된 데이터 
    * @returns {Object} id와 date가 일치하는 배열의 요소
    */
-  filter : function(arr){
-    return arr.filter(i=> (i.id === find.urlToObj.id)&&(i.date===find.urlToObj.date))[0]
+  filter : function(arr,url,urlRole){
+    return arr.filter(i=> (i.id === find.urlToObj(url,urlRole).id)&&(i.date===find.urlToObj(url,urlRole).date))[0]
   }
 }
 
