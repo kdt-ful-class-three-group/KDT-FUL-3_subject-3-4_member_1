@@ -49,3 +49,6 @@ const tag = {
 
 let test = list.reduce((acc,i)=> acc + tag.liTag(url.makeUrl(i),i),"")
 console.log(test)
+
+let testTwo = tag.liTags(url.makeUrl,list)
+console.log(testTwo)
