@@ -5,7 +5,7 @@ import url from '../controller/url.js'
 let list = read.readList()
 console.log(list)
 
-url.makeUrl()
+list.forEach(i=> console.log(url.makeUrl(i)))
 
 const tag = {
   /**
@@ -14,8 +14,8 @@ const tag = {
    * @param {string} name - 데이터에서 name 
    * @returns {string} a태그 문자열
    */
-  aTag : function(url,name){
-    return `<a href=/${url}>${name}</a>`
+  aTag : function(callback,obj){
+    return `<a href=/${callback}>${obj.name}</a>`
   },
   /**
    * a태그가 들어갈 li태그 생성 함수
@@ -48,3 +48,4 @@ const tag = {
   }
 }
 
+list.forEach(i=> console.log(tag.aTag(url.makeUrl(i),i)))
