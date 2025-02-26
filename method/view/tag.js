@@ -26,29 +26,24 @@ const tag = {
     return `<li>${tag.aTag(callback,obj)}</li>`
   },
   /**
-   * 
-   * @param {*} obj 
-   * @returns 
+   * 데이터만큼 만든 li태그 묶음
+   * @param {Function} callback - url형식
+   * @param {Array} arr - 데이터가 담긴 배열 
+   * @returns {string} 데이터만큼 만든 li태그 문자열 묶음
    */
   liTags : function(callback,arr){
     return arr.reduce((acc,obj)=>acc+tag.liTag(callback(obj),obj),"")
   }
   ,
   /**
-   * ul태그 생성함수
-   * @param {Array} dataArr - 데이터가 담긴 배열
-   * @param {string} url - aTag안에 들어간 url
-   * @param {string} name - aTag에 사용될 content
+   * li태그문자열이 들어간 ul태그
+   * @param {Function} callback - url형식
+   * @param {Array} arr - 데이터가 담긴 배열
    * @returns {string} a태그가 들어간 li태그를 가진 ul태그
    */
-  ulTag : function(url,name,dataArr){
-    
-
+  ulTag : function(callback,arr){
+    return `<ul>${tag.liTags(callback,arr)}</ul>`
   }
 }
 
-let test = list.reduce((acc,i)=> acc + tag.liTag(url.makeUrl(i),i),"")
-console.log(test)
-
-let testTwo = tag.liTags(url.makeUrl,list)
-console.log(testTwo)
+export default tag
