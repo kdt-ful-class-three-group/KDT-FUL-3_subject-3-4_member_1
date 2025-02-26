@@ -1,10 +1,3 @@
-//list.json을 가져와 데이터로
-import read from '../read.js'
-
-//list.json을 가져와 배열로 변환
-let list = read.readList()
-console.log(list)
-
 const tag = {
   /**
    * href경로와 content로 a태그 생성
