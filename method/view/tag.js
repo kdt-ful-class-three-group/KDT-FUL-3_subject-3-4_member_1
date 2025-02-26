@@ -17,6 +17,16 @@ const tag = {
     return `<a href=/${callback}>${obj.name}</a>`
   },
   /**
+   * 
+   * @param {string} href - 이동할 경로 
+   * @param {content} content - a태그 안에 들어갈 내용 
+   * @returns {string} <a href=href>content</a>
+   */
+  hrefATag : function(href,content){
+    return `<a href=${href}>${content}</a>`
+  }
+  ,
+  /**
    * a태그가 들어갈 li태그 생성 함수
    * @param {function} callback - aTag안에 들어갈 url메서드
    * @param {object} obj - 객체 데이터
