@@ -11,7 +11,6 @@ const html = {
   /**
    * '/' 경로에 따른 홈페이지
    * @param {Boolean} isAdmin - admin이면 true, 아니면 false 
-   * @param {Function} callback - url을 결정할 함수 
    * @returns {String} 홈페이지 문자열
    */
   home : function(isAdmin){
@@ -81,5 +80,3 @@ const html = {
       </html>`
   }
 }
-
-console.log(html.home(false))
