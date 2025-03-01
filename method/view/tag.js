@@ -47,6 +47,16 @@ const tag = {
     return `<li>${callback}</li>`
   },
   /**
+   * 수정 삭제 버튼에 사용되는 a태그를 포함한 li태그
+   * @param {string} role = 버튼 역할, 'edit' or 'delete'
+   * @param {String} url = id와 date가 있는 req.url
+   * @return {string} <li><a href='/role/url'>btnText[role]</a></li>
+   */
+  btnLiTag : function(role,url){
+    return `<li>${btnATag(role,url)}</li>`
+  }
+  ,
+  /**
    * 데이터만큼 만든 li태그 묶음
    * @param {Function} callback - url형식
    * @param {Array} arr - 데이터가 담긴 배열 
