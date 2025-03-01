@@ -77,6 +77,12 @@ const tag = {
   ulTag : function(callback,arr){
     return `<ul>${tag.liTags(callback,arr)}</ul>`
   },
+  btnUlTag : function(url){
+    return `<ul>
+      ${this.btnLiTag('edit',url)}
+      ${this.btnLiTag('delete',url)}
+    </ul>`
+  }
 
 }
 
