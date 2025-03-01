@@ -6,6 +6,8 @@ import exist from '../controller/existJson.js'
 import tag from './tag.js'
 //test하기 위해 url 모듈 가져옴
 import url from '../controller/url.js'
+//detail에서 url정하기 위한 모듈
+import find from '../controller/find.js'
 
 const html = {
   /**
@@ -160,6 +162,19 @@ const html = {
         <script>${script}</script>
       </body>
     </html>`
+  },
+  detail : function(url,isAdmin){
+    //list 가져오기
+    let list = read.readList()
+    
+    //url변수
+    let btnUrl = ''
+
+    //목록 url설정
+    if(isAdmin){
+      
+    }
+
   }
 }
 
