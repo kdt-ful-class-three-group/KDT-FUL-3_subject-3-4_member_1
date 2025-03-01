@@ -59,3 +59,5 @@ const htmlString = {
     `
   }
 }
+
+export default htmlString
