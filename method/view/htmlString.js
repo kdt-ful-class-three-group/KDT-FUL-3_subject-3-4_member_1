@@ -1,4 +1,10 @@
 const htmlString = {
+  /**
+   * homePage에 대한 html문자열
+   * @param {String} addATag isAdmin에 따라 결정될 aTag유무
+   * @param {Function} callback isAdmin에 따라 결정될 url
+   * @returns {string} home.html에 해당하는 문자열
+   */
   homeHtml : function(addATag,callback){
     return `
     <!DOCTYPE html>
