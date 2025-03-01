@@ -1,0 +1,5 @@
+const htmlString = {
+  homeHtml : function(){
+    
+  }
+}
