@@ -28,6 +28,10 @@ const html = {
     
     return htmlString.homeHtml(addATag,tag.ulTag(urlFunc,read.readList()))
   },
+  add : function(){
+    return htmlString.formHtml('add',)
+  }
+  ,
   /**
    * form태그가 있는 페이지
    * 추가버튼 또는 수정버튼을 눌렀을 때 나오는 페이지
