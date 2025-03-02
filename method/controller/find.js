@@ -20,6 +20,9 @@ const find = {
    */
   filter : function(arr,url,urlRole){
     return arr.filter(i=> (i.id === find.urlToObj(url,urlRole).id)&&(i.date===find.urlToObj(url,urlRole).date))[0]
+  },
+  detailFilter : function(){
+    
   }
 }
 
