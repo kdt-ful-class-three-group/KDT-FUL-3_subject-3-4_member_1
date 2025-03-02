@@ -54,18 +54,9 @@ const html = {
     return htmlString.formHtml('edit',script.edit(arr,url))
   }
   ,
-  detail : function(url,isAdmin){
-    //list 가져오기
-    let list = read.readList()
-    
-    //url변수
-    let btnUrl = ''
-
-    //목록 url설정
-    if(isAdmin){
-      
-    }
-
+  detail : function(arr,url,isAdmin){
+    let obj = find.detailFilter(arr,url,isAdmin)
+    return htmlString.detailHtml(obj)
   }
 }
 
