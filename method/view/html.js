@@ -54,6 +54,13 @@ const html = {
     return htmlString.formHtml('edit',script.edit(arr,url))
   }
   ,
+  /**
+   * 목록을 클릭했을 때 필요한 html문자열
+   * @param {Array} arr 배열로 된 데이터
+   * @param {String} url id와 date가 있는 문자열 
+   * @param {Boolean} isAdmin admin경로인지 말하는 불리언값
+   * @returns {string} detail페이지에 필요한 html문자열 
+   */
   detail : function(arr,url,isAdmin){
     let obj = find.detailFilter(arr,url,isAdmin)
     return htmlString.detailHtml(obj)
