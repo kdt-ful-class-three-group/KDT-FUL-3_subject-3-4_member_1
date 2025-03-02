@@ -99,6 +99,3 @@ const tag = {
 }
 
 export default tag
-console.log(list[0])
-
-console.log(tag.liTag(tag.aTag(url.adminUrl(list[0]),list[0])))
