@@ -27,8 +27,12 @@ const find = {
     let obj = {}
     if(isAdmin){
       obj.urlObj = find.urlToObj(url,urlSlice.admin)
-      // obj.isBtn = tag.
+      obj.isBtn = tag.btnSectionTag(url)
+    } else {
+      obj.urlObj = find.urlToObj(url,urlSlice.url)
+      obj.isBtn = ''
     }
+    return obj
   }
 }
 
