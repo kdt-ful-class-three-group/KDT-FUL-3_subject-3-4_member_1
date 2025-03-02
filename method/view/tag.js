@@ -87,8 +87,15 @@ const tag = {
       ${this.btnLiTag('edit',url)}
       ${this.btnLiTag('delete',url)}
     </ul>`
+  },
+  /**
+   * btnUlTag가 포함한 section태그
+   * @param {String} url id와 date가 있는 req.url
+   * @returns {string} btnUlTag가 들어간 section태그
+   */
+  btnSectionTag : function(url){
+    return `<section>${tag.btnUlTag(url)}</section>`
   }
-
 }
 
 export default tag
