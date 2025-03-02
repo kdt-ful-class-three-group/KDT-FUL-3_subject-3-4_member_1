@@ -2,6 +2,8 @@
 import qs from 'querystring'
 //경로에 따라 잘라낼 url의 길이를 찾는 모듈
 import urlSlice from '../../data/urlSlice.js'
+//detail의 btnTag를 위한 모듈
+import tag from '../view/tag.js'
 
 const find = {
   /**
@@ -21,8 +23,12 @@ const find = {
   filter : function(arr,url,urlRole){
     return arr.filter(i=> (i.id === find.urlToObj(url,urlRole).id)&&(i.date===find.urlToObj(url,urlRole).date))[0]
   },
-  detailFilter : function(){
-    
+  detailFilter : function(url,isAdmin){
+    let obj = {}
+    if(isAdmin){
+      obj.urlObj = find.urlToObj(url,urlSlice.admin)
+      // obj.isBtn = tag.
+    }
   }
 }
 
