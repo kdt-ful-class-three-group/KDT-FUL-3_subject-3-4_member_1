@@ -77,6 +77,11 @@ const tag = {
   ulTag : function(callback,arr){
     return `<ul>${tag.liTags(callback,arr)}</ul>`
   },
+  /**
+   * 수정, 삭제 버튼을 포함한 ulTag
+   * @param {String} url id와 date가 있는 req.url
+   * @returns {String} btnAtag가 들어간 li태그를 가진 ul 태그
+   */
   btnUlTag : function(url){
     return `<ul>
       ${this.btnLiTag('edit',url)}
