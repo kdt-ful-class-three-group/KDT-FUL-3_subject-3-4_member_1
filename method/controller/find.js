@@ -30,7 +30,7 @@ const find = {
    * @param {Array} arr - 배열로 된 데이터 
    * @param {String} url - id와 name이 있는 req.url 
    * @param {boolean} isAdmin - admin경로인지 true, false 
-   * @returns {object} html문자열에 들어갈 데이터가 답긴 data, btn문자열의 유무가 담긴 isBtn을 키로 가진 객체
+   * @returns {object} {data : req.url을 통해 list.json에서 가져온 요소, btn : 경로에 따른 버튼 문자열, url : 경로에 따른 url}
    */
   detailFilter : function(arr,url,isAdmin){
     let obj = {}
