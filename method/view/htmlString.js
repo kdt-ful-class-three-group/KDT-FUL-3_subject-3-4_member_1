@@ -146,6 +146,83 @@ const htmlString = {
       </body>
     </html>
     `
+  },
+  detailHtml : function(obj){
+    return `
+    <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+          body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100vh;
+          }
+          #root {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          #root > div {
+            position: absolute;
+            top: 2%;
+            right: 5%;
+          }
+          #root > div > a {
+            background-color:#fff;
+            font-size: 30px;
+            color:#ccc;
+          }
+          #root > div > a:hover {
+            color:black;
+          }
+          #root > section {
+            width: 90%;
+          }
+          a{
+            text-decoration: none;
+            color: black;
+            background-color: #ccc;
+            padding: 5px 10px;
+          }
+          a:hover {
+            background-color: black;
+            color: white;
+          }
+          ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            padding: 0;
+          }
+          section > div > p:first-child {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+          }
+        </style>
+      </head>
+      <body>
+        <div id="root">
+          <h1>${obj.data.name}</h1>
+          <div>
+            <a href="/${obj.url}">x</a>
+          </div>
+          ${obj.url}
+          <section>
+            <div>
+              <p>${obj.data.date}</p>
+              <p>${obj.data.content}</p>
+            </div>
+          </section>
+        </div>
+      </body>
+    </html>
+    `
   }
 }
 
