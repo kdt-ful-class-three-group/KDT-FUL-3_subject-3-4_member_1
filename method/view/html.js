@@ -10,6 +10,8 @@ import htmlString from '../view/htmlString.js'
 import url from '../controller/url.js'
 //detail에서 url정하기 위한 모듈
 import find from '../controller/find.js'
+//script에 작성할 모듈
+import script from './script.js'
 
 const html = {
   /**
@@ -29,7 +31,13 @@ const html = {
     return htmlString.homeHtml(addATag,tag.ulTag(urlFunc,read.readList()))
   },
   add : function(){
-    return htmlString.formHtml('add',)
+    return htmlString.formHtml('add',script.randomId())
+  },
+  alertAdd : function(){
+    return htmlString.formHtml('add',script.alert(),script.randomId())
+  },
+  edit : function(arr,url){
+    return htmlString.formHtml('edit',script.edit(arr,url))
   }
   ,
   /**
