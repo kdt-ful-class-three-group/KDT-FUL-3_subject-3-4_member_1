@@ -30,12 +30,26 @@ const html = {
     
     return htmlString.homeHtml(addATag,tag.ulTag(urlFunc,read.readList()))
   },
+  /**
+   * 추가 버튼 눌렀을 때 html문자열
+   * @returns {String} form태그가 들어간 html 문자열
+   */
   add : function(){
     return htmlString.formHtml('add',script.randomId())
   },
+  /**
+   * 데이터 유효성 검사에 의해 alert이 나오는 html문자열열
+   * @returns {String} script에 alert이 들어간 html문자열
+   */
   alertAdd : function(){
     return htmlString.formHtml('add',script.alert(),script.randomId())
   },
+  /**
+   * 수정 버튼 눌렀을 때 필요한 html문자열
+   * @param {Array} arr 배열로 된 데이터
+   * @param {string} url id와 date가 있는 문자열
+   * @returns {string} edit페이지에 필요한 html문자열
+   */
   edit : function(arr,url){
     return htmlString.formHtml('edit',script.edit(arr,url))
   }
