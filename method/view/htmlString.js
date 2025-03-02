@@ -147,6 +147,11 @@ const htmlString = {
     </html>
     `
   },
+  /**
+   * detail페이지에 해당하는 html문자열
+   * @param {Object} obj input내용에 해당하는 data, 경로에 따른 btn, url을 포함한 객체체
+   * @returns {string} detail페이지에 해당하는 html문자열
+   */
   detailHtml : function(obj){
     return `
     <!DOCTYPE html>
