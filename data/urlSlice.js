@@ -1,7 +1,7 @@
 const urlSlice = {
   url : 1,
   edit : 6,
-  admit: 7,
+  admin: 7,
   delete : 8,
 }
 
