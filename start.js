@@ -4,6 +4,7 @@ import qs from 'querystring'
 
 //모듈
 import read from './method/read.js'
+import html from './method/view/html.js'
 
 const server = http.createServer((req,res)=>{
   //method url 확인
@@ -13,7 +14,7 @@ const server = http.createServer((req,res)=>{
   if(req.method === 'GET'){
     //진입
     if(req.url==='/'){
-      
+      read.readFunc(res,html.home(false))
     }
   }
 })
